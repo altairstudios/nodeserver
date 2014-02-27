@@ -1,0 +1,37 @@
+{
+  "name": "nodeserver",
+  "version": "0.0.1",
+  "description": "Nodeserver is a NodeJS Web Server with reverse proxy functionality alternative to Nginx reverse proxy for NodeJS projects",
+  "main": "nodeserver.js",
+  "author": {
+    "name": "Juan Benavides Romero",
+    "email": "juan@altairstudios.es",
+    "url": "http://www.altairstudios.es"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/altairstudios/nodeserver.git"
+  },
+  "bugs": {
+    "url": "https://github.com/altairstudios/nodeserver/issues",
+    "email": "juan@altairstudios.es"
+  },
+  "keywords": [
+    "server",
+    "web",
+    "http",
+    "https",
+    "webserver",
+    "apache",
+    "nginx",
+    "proxy",
+    "reverse-proxy"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    
+  },
+  "engines": {
+    "http-proxy": ">= 1.0.2"
+  }
+}

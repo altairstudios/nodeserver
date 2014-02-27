@@ -1,4 +1,4 @@
 nodeserver
 ==========
 
-NodeJS Web Server with reverse proxy functionality like Nginx
+Nodeserver is a NodeJS Web Server with reverse proxy functionality alternative to Nginx reverse proxy for NodeJS projects
