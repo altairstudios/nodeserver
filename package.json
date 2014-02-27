@@ -29,9 +29,9 @@
   ],
   "license": "MIT",
   "dependencies": {
-    
+    "http-proxy": ">= 1.0.2"
   },
   "engines": {
-    "http-proxy": ">= 1.0.2"
+    "node": ">= 0.10.0"
   }
 }
