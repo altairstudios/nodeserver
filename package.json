@@ -32,6 +32,9 @@
   "dependencies": {
     "http-proxy": ">= 1.0.2"
   },
+  "bin": {
+    "nodeserver": "./bin/nodeserver"
+  },
   "engines": {
     "node": "0.10.x",
     "npm": "1.3.x"
