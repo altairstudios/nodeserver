@@ -20,6 +20,10 @@ module.exports = exports = new function() {
 		console.log("###--------  " + host);
 
 		if(website == null) {
+			website = self.getWebsiteFromUrl(host + ":80");
+		}
+
+		if(website == null) {
 			res.end();
 			return;
 		}
