@@ -1,21 +1,31 @@
 var httpProxy = require('http-proxy');
 var proxy = httpProxy.createProxy();
 var urlparser = require('url');
+var fs = require('fs');
+var forever = require('forever-monitor');
+var path = require('path');
+require('colors');
 
 module.exports = exports = new function() {
 	var self = this;
 	this.websites = [];
 	this.ports = [];
+	this.servers = [];
 
 
 	this.serverWorker = function(req, res) {
 		var host = req.headers.host;
 		var website = self.getWebsiteFromUrl(host);
 
+		console.log("###--------  " + host);
+
 		if(website == null) {
 			res.end();
 			return;
 		}
+
+		console.log("########");
+		console.log(website);
 
 		proxy.web(req, res, {
 			target: website.target
@@ -24,10 +34,12 @@ module.exports = exports = new function() {
 		});
 	};
 
-	this.server = require('http').createServer(this.serverWorker);
+	//this.server = require('http').createServer(this.serverWorker);
 	
 	this.getWebsiteFromUrl = function(url) {
 		var websitesCount = this.websites.length;
+
+		console.log(url);
 
 		for(var i = 0; i < websitesCount; i++) {
 			var website = this.websites[i];
@@ -44,34 +56,120 @@ module.exports = exports = new function() {
 	}
 
 
-	this.addWebsite = function(website) {
-		/*var bindings = website.bindings;
+	this.readConfigFile = function(configFile) {
+		configFile = configFile || "nodeserver.config";
+		var config = null;
 
-		for(var i = 0; i < bindings.length; i++) {
-			bindings[i] = urlparser.parse(bindings[i]);
-		}*/
+		if(fs.existsSync(configFile)) {
+			config = fs.readFileSync(configFile);
+		} else if(fs.existsSync(__dirname + configFile)) {
+			config = fs.readFileSync(__dirname + configFile);
+		}  else if(fs.existsSync(__dirname + "/" + configFile)) {
+			config = fs.readFileSync(__dirname + "/" + configFile);
+		} else if(fs.existsSync("/etc/nodeserver/nodeserver.config")) {
+			config = fs.readFileSync("/etc/nodeserver/nodeserver.config");
+		}
+
+		var jsonConfig = JSON.parse(config);
+
+		for(var i = 0; i < jsonConfig.length; i++) {
+			this.addWebsite(jsonConfig[i]);
+		}
+	}
+
+
+	this.addWebsite = function(website) {
+		console.log("add url: ".grey + website.name.blue);
+
+		if(website.type == "node") {
+			this.startChild(website);
+		}
+
+		for(var i = 0; i < website.bindings.length; i++) {
+			url = urlparser.parse("http://" + website.bindings[i]);
+
+			this.addPort(url.port);
+		}
+
+		website.port = website.port || (Math.floor(Math.random() * 65000) + 20000);
+		website.target = website.target || "http://localhost:" + website.port;
 
 		this.websites.push(website);
 	};
 
 
 	this.addPort = function(port) {
+		for(var i = 0; i < this.ports.length; i++) {
+			if(this.ports[i] == port) {
+				return;
+			}
+		}
+
 		this.ports.push(port);
 	};
+
+
+	this.startChild = function(website) {
+		var scriptPath = "";
+		var script = "";
+		//var port = (website.port) ? website.port : (Math.floor(Math.random() * 65000) + 20000);
+		var port = website.port;
+
+		//website.script = path.normalize(website.script);
+
+		if(website.absoluteScript) {
+			scriptPath = path.dirname(website.script);
+		} else {
+			scriptPath = process.cwd() + "/" + path.dirname(website.script);
+		}
+
+		script = path.basename(website.script);
+
+		console.log("SCRIPT: " + script);
+		console.log("PATH: " + scriptPath);
+		console.log("PORT: " + port);
+
+		var childConfig = {
+			spinSleepTime: 10000,
+			max: 3,
+			silent: false,
+			options: [],
+			sourceDir: scriptPath,
+			cwd: scriptPath,
+			env: { 'PORT': port }
+		};
+
+		var child = new (forever.Monitor)(script, childConfig);
+
+		child.on('exit', function () {
+			console.log(arguments);
+			console.log(script + ' has exited after 3 restarts');
+		});
+
+		child.start();
+
+		return website;
+	}
 
 
 	this.start = function() {
 		var ports = this.ports.length;
 
 		for(var i = 0; i < ports; i++) {
-			console.log(this.ports[i]);
-			this.server.listen(this.ports[i]);
+			var server = require('http').createServer(this.serverWorker);
+			server.listen(this.ports[i]);
+
+			this.servers.push(server);
+			//this.server = require('http').createServer(this.serverWorker);
+			//this.server.listen(this.ports[i]);
 		}
 	};
 
 
 	this.stop = function() {
-		this.server.close();
+		for(var i = 0; i < this.servers.length; i++) {
+			this.servers[i].close();
+		}
 	};
 
 
