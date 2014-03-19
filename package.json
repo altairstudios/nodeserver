@@ -1,6 +1,6 @@
 {
   "name": "nodeserver",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Nodeserver is a NodeJS Web Server with reverse proxy functionality alternative to Nginx reverse proxy for NodeJS projects",
   "main": "nodeserver.js",
   "author": {
