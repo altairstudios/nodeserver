@@ -17,8 +17,6 @@ module.exports = exports = new function() {
 		var host = req.headers.host;
 		var website = self.getWebsiteFromUrl(host);
 
-		console.log("###--------  " + host);
-
 		if(website == null) {
 			website = self.getWebsiteFromUrl(host + ":80");
 		}
@@ -28,9 +26,6 @@ module.exports = exports = new function() {
 			return;
 		}
 
-		console.log("########");
-		console.log(website);
-
 		proxy.web(req, res, {
 			target: website.target
 		}, function(e) {
@@ -38,8 +33,6 @@ module.exports = exports = new function() {
 		});
 	};
 
-	//this.server = require('http').createServer(this.serverWorker);
-	
 	this.getWebsiteFromUrl = function(url) {
 		var websitesCount = this.websites.length;
 
@@ -116,10 +109,7 @@ module.exports = exports = new function() {
 	this.startChild = function(website) {
 		var scriptPath = "";
 		var script = "";
-		//var port = (website.port) ? website.port : (Math.floor(Math.random() * 65000) + 20000);
 		var port = website.port;
-
-		//website.script = path.normalize(website.script);
 
 		if(website.absoluteScript) {
 			scriptPath = path.dirname(website.script);
@@ -145,12 +135,22 @@ module.exports = exports = new function() {
 
 		var child = new (forever.Monitor)(script, childConfig);
 
-		child.on('exit', function () {
-			console.log(arguments);
-			console.log(script + ' has exited after 3 restarts');
+		child.on('exit', function (forever) {
+			console.log('Closing script ' + forever.args[0]);
 		});
 
 		child.start();
+
+		var watchFucntion = function (curr, prev) {
+			child.stop();
+			
+			setTimeout(function() {
+				child.start();
+			}, 1000);
+		};
+		
+		fs.watchFile(scriptPath + '/' + script, watchFucntion);
+		fs.watchFile(scriptPath + '/package.json', watchFucntion);
 
 		return website;
 	}
@@ -164,8 +164,6 @@ module.exports = exports = new function() {
 			server.listen(this.ports[i]);
 
 			this.servers.push(server);
-			//this.server = require('http').createServer(this.serverWorker);
-			//this.server.listen(this.ports[i]);
 		}
 	};
 
