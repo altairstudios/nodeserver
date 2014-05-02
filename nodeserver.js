@@ -132,7 +132,7 @@ module.exports = exports = new function() {
 
 		var childConfig = {
 			spinSleepTime: 10000,
-			max: 3,
+			max: 10,
 			silent: false,
 			options: [],
 			sourceDir: scriptPath,
@@ -146,7 +146,21 @@ module.exports = exports = new function() {
 			console.log('Closing script ' + forever.args[0]);
 		});
 
+		website.log = [];
+
+		//console.log(child);
+
 		child.start();
+
+		child.child.stdout.on('data', function (data) {
+			var buff = new Buffer(data);
+			var lines = buff.toString('utf8').split(/(\r?\n)/g);
+			//console.log("foo: " + buff.toString('utf8'));
+			for (var i=0; i<lines.length; i++) {
+				// Process the line, noting it might be incomplete.
+				//console.log('###: ' + i + ' - ' + lines[i]);
+			}
+		});
 
 		var watchFucntion = function (curr, prev) {
 			child.stop();

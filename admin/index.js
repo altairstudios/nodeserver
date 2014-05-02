@@ -10,7 +10,7 @@ module.exports = exports = function(nodeserver) {
 	this.config = nodeserver.config;
 	this.nodeserver = nodeserver;
 
-	console.log(this.config);
+	//console.log(this.config);
 
 
 	this.configureExpress = function() {
@@ -40,6 +40,11 @@ module.exports = exports = function(nodeserver) {
 
 		this.app.all('/login', this.routes.login);
 		this.app.get('/logout', this.routes.logout);
+
+		this.app.get('/websites/:binding', this.routes.website);
+		this.app.get('/websites/:binding/start', this.routes.websiteStart);
+		this.app.get('/websites/:binding/restart', this.routes.websiteRestart);
+		this.app.get('/websites/:binding/stop', this.routes.websiteStop);
 	};
 
 
@@ -65,7 +70,7 @@ module.exports = exports = function(nodeserver) {
 			}
 		});
 */
-
+/*
 		this.app.get('/restart/:id', function(req, res) {
 			var i = req.params.id;
 			var website = self.websites[i];
@@ -79,7 +84,7 @@ module.exports = exports = function(nodeserver) {
 			res.redirect('/');
 		});
 
-
+*/
 		/*this.app.all('/login', function(req, res) {
 			if(req.route.method == 'post') {
 				var user = req.body.user;
