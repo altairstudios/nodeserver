@@ -1,0 +1,57 @@
+doctype html
+html
+	head
+		meta(charset="utf-8")
+		meta(name="viewport" content="width=device-width, initial-scale=1.0")
+		title Start Bootstrap - SB Admin Version 2.0 Demo
+		link(href="/css/bootstrap.min.css" rel="stylesheet")
+		link(href="/font-awesome/css/font-awesome.css" rel="stylesheet")
+		link(href="css/plugins/morris/morris-0.4.3.min.css" rel="stylesheet")
+		link(href="css/plugins/timeline/timeline.css" rel="stylesheet")
+		link(href="/css/sb-admin.css" rel="stylesheet")
+	body
+		div#wrapper
+			nav.navbar.navbar-default.navbar-fixed-top(role="navigation" style="margin-bottom: 0")
+				div.navbar-header
+					button.navbar-toggle(type="button" data-toggle="collapse" data-target=".sidebar-collapse")
+						span.sr-only Toggle navigation
+						span.icon-bar
+						span.icon-bar
+						span.icon-bar
+					a.navbar-brand(href="/") Nodeserver Admin
+
+
+				ul.nav.navbar-top-links.navbar-right
+					li.dropdown
+						a.dropdown-toggle(data-toggle="dropdown" href="#")
+							i.fa.fa-user.fa-fw
+							|&nbsp;&nbsp;
+							i.fa.fa-caret-down
+						ul.dropdown-menu.dropdown-user
+							li
+								a(href="/logout")
+									i.fa.fa-sign-out.fa-fw
+									| Logout
+
+
+				div.navbar-default.navbar-static-side(role="navigation")
+					div.sidebar-collapse
+						ul#side-menu.nav
+							li
+								a(href="/")
+									i.fa.fa-dashboard.fa-fw
+									| Dashboard
+							
+
+			
+			div#page-wrapper
+				block content
+
+
+		script(src="/js/jquery-1.10.2.js")
+		script(src="/js/bootstrap.min.js")
+		script(src="/js/plugins/metisMenu/jquery.metisMenu.js")
+		script(src="/js/plugins/morris/raphael-2.1.0.min.js")
+		script(src="/js/plugins/morris/morris.js")
+		script(src="/js/sb-admin.js")
+		script(src="/js/demo/dashboard-demo.js")

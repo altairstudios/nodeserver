@@ -4,7 +4,7 @@ var urlparser = require('url');
 var fs = require('fs');
 var forever = require('forever-monitor');
 var path = require('path');
-var express = require("express");
+var nodeserverAdmin = require('./admin');
 require('colors');
 
 module.exports = exports = new function() {
@@ -12,7 +12,9 @@ module.exports = exports = new function() {
 	this.websites = [];
 	this.ports = [];
 	this.servers = [];
-	this.app = express();
+	this.config = null;
+	//this.admin = nodeserverAdmin;
+	//this.app = express();
 
 
 	this.serverWorker = function(req, res) {
@@ -67,14 +69,15 @@ module.exports = exports = new function() {
 			config = fs.readFileSync("/etc/nodeserver/nodeserver.config");
 		}
 
-		var jsonConfig = JSON.parse(config);
+		this.config = JSON.parse(config);
 
-		for(var i = 0; i < jsonConfig.sites.length; i++) {
-			this.addWebsite(jsonConfig.sites[i]);
+		for(var i = 0; i < this.config.sites.length; i++) {
+			this.addWebsite(this.config.sites[i]);
 		}
 
-		if(jsonConfig.nodeserver.admin.active) {
-			this.adminInterface(jsonConfig.nodeserver.admin);
+		if(this.config.nodeserver.admin.active) {
+			this.admin = new nodeserverAdmin(self);
+			this.admin.adminInterface();
 		}
 	}
 
@@ -187,62 +190,5 @@ module.exports = exports = new function() {
 	};
 
 
-	this.adminInterface = function(config) {
-		var self = this;
-		this.app.use(express.bodyParser());
-		this.app.use(express.cookieParser());
-		this.app.use(express.session({ secret: require("crypto").createHash('sha1').digest('base64') }));
-		this.app.use('/', express.static(__dirname + '/public'));
-
-		this.app.get('/', function(req, res) {
-			if(false && !req.session.validAdmin) {
-				res.redirect('/login');
-			} else {
-				var html = '<ul>';
-
-				for(var i = 0; i < self.websites.length; i++) {
-					var website = self.websites[i];
-
-					html += '<li><a href="/restart/' + i + '">' + ((website.process.running) ? '►' : '￭' ) + ' ' + website.name + '</a></li>';
-				}
-
-				html += '</ul>';
-				res.write('<html><head><meta charset="utf-8"><title>nodeserver admin</title></head><body><h1>webs</h1>' + html + '</body></html>');
-				res.end();
-			}
-		});
-
-
-		this.app.get('/restart/:id', function(req, res) {
-			var i = req.params.id;
-			var website = self.websites[i];
-
-			website.process.stop();
-			
-			setTimeout(function() {
-				website.process.start();
-			}, 1000);
-
-			res.redirect('/');
-		});
-
-
-		this.app.all('/login', function(req, res) {
-			if(req.route.method == 'post') {
-				var user = req.body.user;
-				var password = req.body.password;
-
-				if(user == config.user && password == config.password) {
-					req.session.validAdmin = true;
-					res.redirect('/');
-					return;
-				}
-			}
-
-			res.write('<html><body><form method="post" action="/login"><input type="text" name="user" /><input type="password" name="password" /><input type="submit" /></form></body></html>');
-			res.end();
-		});
-
-		this.app.listen(config.port || 10000);
-	};
+	
 };

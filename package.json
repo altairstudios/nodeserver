@@ -33,7 +33,8 @@
     "http-proxy": ">= 1.0.2",
     "colors": ">=0.6.2",
     "forever-monitor": ">=1.2.3",
-    "express": "3.5.1"
+    "express": "3.5.1",
+    "jade": "1.3.0"
   },
   "bin": {
     "nodeserver": "./bin/nodeserver"
