@@ -1,12 +1,19 @@
 nodeserver History Version
 ==========================
 
-## Current version 0.2.0
+## Current version 0.3.0
+
+* New admin interface
+* Fixed many bugs
+
+## Lasts versions
+
+### v0.2
+
+#### v0.2.0
 
 * New config with sites and nodeserver config
 * Admin interface configuration
-
-## Lasts versions
 
 ### v0.1
 
