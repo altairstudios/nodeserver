@@ -7,11 +7,11 @@ block content
 
 
 	div.row
-		div.col-lg-12
+		div.col-lg-4
 			div.panel.panel-default
 				div.panel-heading
 					i.fa.fa-sitemap.fa-fw
-					|Notifications Panel
+					| Websites
 				div.panel-body
 					div.list-group
 						each website in websites
@@ -20,3 +20,25 @@ block content
 								=website.name
 								span.pull-right.text-muted.small
 									em=((website.process.running) ? 'started' : 'stopped')
+
+
+		div.col-lg-4
+			div.panel.panel-default
+				div.panel-heading
+					i.fa.fa-tachometer.fa-fw
+					| Server memory
+				div.panel-bodye
+					div#memory-usage-donut
+
+
+		div.col-lg-4
+			div.panel.panel-default
+				div.panel-heading
+					i.fa.fa-signal.fa-fw
+					| Server load
+				div.panel-body
+					div#load-usage-chart
+
+	script
+		|var memory = !{JSON.stringify(memory)};
+		|var cpus = !{JSON.stringify(cpus)};

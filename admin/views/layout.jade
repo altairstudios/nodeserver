@@ -41,6 +41,16 @@ html
 								a(href="/")
 									i.fa.fa-dashboard.fa-fw
 									| Dashboard
+							li
+								a(href="#")
+									i.fa.fa-sitemap.fa-fw
+									| Websites 
+									span.fa.arrow
+								ul.nav.nav-second-level
+									each website in websites
+										li
+											a(href="/websites/" + website.bindings[0])=website.name
+									
 							
 
 			
@@ -54,4 +64,4 @@ html
 		script(src="/js/plugins/morris/raphael-2.1.0.min.js")
 		script(src="/js/plugins/morris/morris.js")
 		script(src="/js/sb-admin.js")
-		script(src="/js/demo/dashboard-demo.js")
+		script(src="/js/nodeserver.js")

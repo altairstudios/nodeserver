@@ -150,17 +150,21 @@ module.exports = exports = new function() {
 
 		//console.log(child);
 
-		child.start();
+		if(fs.existsSync(website.script)) {
+			child.start();
+		}
 
-		child.child.stdout.on('data', function (data) {
-			var buff = new Buffer(data);
-			var lines = buff.toString('utf8').split(/(\r?\n)/g);
-			//console.log("foo: " + buff.toString('utf8'));
-			for (var i=0; i<lines.length; i++) {
-				// Process the line, noting it might be incomplete.
-				//console.log('###: ' + i + ' - ' + lines[i]);
-			}
-		});
+		if(child.child != null) {
+			child.child.stdout.on('data', function (data) {
+				var buff = new Buffer(data);
+				var lines = buff.toString('utf8').split(/(\r?\n)/g);
+				//console.log("foo: " + buff.toString('utf8'));
+				for (var i=0; i<lines.length; i++) {
+					// Process the line, noting it might be incomplete.
+					//console.log('###: ' + i + ' - ' + lines[i]);
+				}
+			});
+		}
 
 		var watchFucntion = function (curr, prev) {
 			child.stop();

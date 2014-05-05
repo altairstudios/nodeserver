@@ -13,8 +13,8 @@ module.exports = exports = function(req, res) {
 			}
 		}
 	};
-	
+
 	var website = findBinding(req.nodeserver.websites, req.params.binding);
 
-	res.render('website', { website: website });
+	res.render('website', { website: website, websites: req.nodeserver.websites });
 };

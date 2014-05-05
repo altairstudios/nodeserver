@@ -1,3 +1,5 @@
+var fs = require('fs');
+
 var findBinding = function(websites, binding) {
 	for(var i = 0; i < websites.length; i++) {
 		for(var j = 0; j < websites[i].bindings.length; j++) {
@@ -17,7 +19,7 @@ var stop = function(website) {
 
 
 var start = function(website) {
-	if(!website.process.running) {
+	if(!website.process.running && fs.existsSync(website.script)) {
 		website.process.start();
 	}
 }
@@ -25,9 +27,11 @@ var start = function(website) {
 var restart = function(website) {
 	stop(website);
 
-	setTimeout(function() {
-		website.process.start(true);
-	}, 2000);
+	if(fs.existsSync(website.script)) {
+		setTimeout(function() {
+			website.process.start(true);
+		}, 2000);
+	}
 }
 
 
