@@ -1,6 +1,8 @@
 nodeserver
 ==========
 
+![nodeserver logo](https://raw.githubusercontent.com/altairstudios/nodeserver/master/nodeserver-logo.png)
+
 Nodeserver is a NodeJS Web Server with reverse proxy functionality alternative to Nginx reverse proxy for NodeJS projects
 
 
