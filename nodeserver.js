@@ -52,6 +52,20 @@ module.exports = exports = new function() {
 				}
 			}
 		}
+
+		//double check with regex
+		for(var i = 0; i < websitesCount; i++) {
+			var website = this.websites[i];
+			var bindingsCount = website.bindings.length;
+
+			for(var j = 0; j < bindingsCount; j++) {
+				var regex = new RegExp(website.bindings[j], "gi")
+				
+				if(regex.test(url)) {
+					return website;
+				}
+			}
+		}
 	}
 
 
@@ -72,7 +86,10 @@ module.exports = exports = new function() {
 		this.config = JSON.parse(config);
 
 		for(var i = 0; i < this.config.sites.length; i++) {
-			this.addWebsite(this.config.sites[i]);
+			var site = this.config.sites[i];
+
+			site.id = site.id || site.bindings[0];
+			this.addWebsite(site);
 		}
 
 		if(this.config.nodeserver.admin.active) {
