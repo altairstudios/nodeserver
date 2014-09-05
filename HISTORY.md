@@ -1,12 +1,19 @@
 nodeserver History Version
 ==========================
 
-## Current version 0.3.0
+## Current version 0.3.1
+
+* Added server logo to admin website
+* Added support to wildcard with regex to bindings domains
+
+## Lasts versions
+
+### v0.3
+
+#### v0.3.0
 
 * New admin interface
 * Fixed many bugs
-
-## Lasts versions
 
 ### v0.2
 
