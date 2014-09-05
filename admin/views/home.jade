@@ -18,8 +18,9 @@ block content
 							a.list-group-item(href="/websites/" + website.bindings[0])
 								i.fa.fa-cloud.fa-fw
 								=website.name
-								span.pull-right.text-muted.small
-									em=((website.process.running) ? 'started' : 'stopped')
+								if website.process
+									span.pull-right.text-muted.small
+										em=((website.process.running) ? 'started' : 'stopped')
 
 
 		div.col-lg-4

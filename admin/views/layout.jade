@@ -22,6 +22,9 @@ html
 
 
 				ul.nav.navbar-top-links.navbar-right
+					li
+						a(href="/config/refresh")
+							i.fa.fa-refresh.fa-fw
 					li.dropdown
 						a.dropdown-toggle(data-toggle="dropdown" href="#")
 							i.fa.fa-user.fa-fw
@@ -50,6 +53,8 @@ html
 									each website in websites
 										li
 											a(href="/websites/" + website.bindings[0])=website.name
+							li.text-center
+								img(src='/images/nodeserver-logo-mini.png')
 									
 							
 
