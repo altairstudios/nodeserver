@@ -59,7 +59,7 @@ module.exports = exports = new function() {
 			var bindingsCount = website.bindings.length;
 
 			for(var j = 0; j < bindingsCount; j++) {
-				var regex = new RegExp(website.bindings[j], "gi")
+				var regex = new RegExp("^" + website.bindings[j] + "$", "gi")
 				
 				if(regex.test(url)) {
 					return website;
