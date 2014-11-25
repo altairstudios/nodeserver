@@ -1,0 +1,28 @@
+{
+	"mimes": {
+		"css": {
+			"contentType": "text/css",
+			"type": "static"
+		},
+		"gif": {
+			"contentType": "image/gif",
+			"type": "static"
+		},
+		"jpg": {
+			"contentType": "image/jpeg",
+			"type": "static"
+		},
+		"js": {
+			"contentType": "application/javascript",
+			"type": "static"
+		},
+		"php": {
+			"contentType": "text/php",
+			"type": "php"
+		},
+		"png": {
+			"contentType": "image/png",
+			"type": "static"
+		}
+	}
+}

@@ -1,14 +1,22 @@
 nodeserver History Version
 ==========================
 
-## Current version 0.3.1
+## Current version 0.3.3
 
-* Added server logo to admin website
-* Added support to wildcard with regex to bindings domains
+* Added partial support for CGI pages. Now can support simple php pages with some static files
 
 ## Lasts versions
 
 ### v0.3
+
+#### v0.3.2
+
+* fixed a error when uses a root domain and subdomians. When use domain like demo.com with a home website and services.demo.com the regex pattern resolve the root domain demo.com when uses http://services.demo.com.
+
+#### v0.3.1
+
+* Added server logo to admin website
+* Added support to wildcard with regex to bindings domains
 
 #### v0.3.0
 
