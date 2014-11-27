@@ -6,6 +6,8 @@ var forever = require('forever-monitor');
 var path = require('path');
 var nodeserverAdmin = require('./admin');
 var childProcess = require('child_process');
+var os = require('os');
+var net = require('net');
 require('colors');
 
 module.exports = exports = new function() {
@@ -14,6 +16,9 @@ module.exports = exports = new function() {
 	this.ports = [];
 	this.servers = [];
 	this.config = null;
+	this.unix = (os.platform() == 'darwin' || os.platform() == 'linux');
+	this.running = false;
+	this.socket = null;
 	//this.admin = nodeserverAdmin;
 	//this.app = express();
 
@@ -292,6 +297,18 @@ module.exports = exports = new function() {
 
 
 	this.start = function() {
+		if(this.unix) {
+			self.socket = net.createServer(function(client) {
+				client.on('data', function(data) {
+					console.log(data.toString());
+					client.end();
+				});
+			});
+			
+			self.socket.listen('/tmp/nodeserver.sock');
+		}
+
+
 		var ports = this.ports.length;
 
 		for(var i = 0; i < ports; i++) {
@@ -300,6 +317,8 @@ module.exports = exports = new function() {
 
 			this.servers.push(server);
 		}
+
+		this.running = true;
 	};
 
 
@@ -316,5 +335,22 @@ module.exports = exports = new function() {
 	};
 
 
-	
+
+	process.on('exit', function(code) {
+		if(self.unix && self.socket) {
+			self.socket.close();
+		}
+	});
+
+
+	process.on('uncaughtException', function(err) {
+		console.log('Error!!!!: ' + err);
+		console.log(arguments);
+	});
+
+
+	process.on('SIGINT', function() {
+		console.log('\nSayonara baby!!');
+		process.exit(0);
+	});
 };
