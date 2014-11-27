@@ -1,11 +1,39 @@
 {
 	"mimes": {
+		"atom": {
+			"contentType": "application/atom+xml",
+			"type": "static"
+		},
 		"css": {
 			"contentType": "text/css",
 			"type": "static"
 		},
+		"csv": {
+			"contentType": "text/csv",
+			"type": "static"
+		},
+		"epub": {
+			"contentType": "application/epub+zip",
+			"type": "static"
+		},
 		"gif": {
 			"contentType": "image/gif",
+			"type": "static"
+		},
+		"htm": {
+			"contentType": "text/html",
+			"type": "static"
+		},
+		"html": {
+			"contentType": "text/html",
+			"type": "static"
+		},
+		"jpe": {
+			"contentType": "image/jpeg",
+			"type": "static"
+		},
+		"jpeg": {
+			"contentType": "image/jpeg",
 			"type": "static"
 		},
 		"jpg": {
@@ -16,12 +44,40 @@
 			"contentType": "application/javascript",
 			"type": "static"
 		},
+		"json": {
+			"contentType": "application/json",
+			"type": "static"
+		},
+		"mp4": {
+			"contentType": "video/mp4",
+			"type": "static"
+		},
+		"mp4v": {
+			"contentType": "video/mp4",
+			"type": "static"
+		},
+		"mpg4": {
+			"contentType": "video/mp4",
+			"type": "static"
+		},
+		"pdf": {
+			"contentType": "application/pdf",
+			"type": "static"
+		},
 		"php": {
 			"contentType": "text/php",
 			"type": "php"
 		},
 		"png": {
 			"contentType": "image/png",
+			"type": "static"
+		},
+		"xml": {
+			"contentType": "application/xml",
+			"type": "static"
+		},
+		"xsl": {
+			"contentType": "application/xml",
 			"type": "static"
 		}
 	}
