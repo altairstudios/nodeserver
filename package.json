@@ -19,6 +19,7 @@
   "keywords": [
     "server",
     "web",
+    "webserver"
     "http",
     "https",
     "webserver",
@@ -26,6 +27,7 @@
     "nginx",
     "proxy",
     "reverse-proxy",
+    "reverse proxy",
     "cgi",
     "php",
     "static"
