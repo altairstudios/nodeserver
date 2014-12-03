@@ -4,12 +4,24 @@
 			"contentType": "application/atom+xml",
 			"type": "static"
 		},
+		"avi": {
+			"contentType": "video/x-msvideo",
+			"type": "static"
+		},
 		"css": {
 			"contentType": "text/css",
 			"type": "static"
 		},
 		"csv": {
 			"contentType": "text/csv",
+			"type": "static"
+		},
+		"doc": {
+			"contentType": "application/msword",
+			"type": "static"
+		},
+		"dot": {
+			"contentType": "application/msword",
 			"type": "static"
 		},
 		"epub": {
@@ -26,6 +38,10 @@
 		},
 		"html": {
 			"contentType": "text/html",
+			"type": "static"
+		},
+		"jar": {
+			"contentType": "application/java-archive",
 			"type": "static"
 		},
 		"jpe": {
@@ -74,6 +90,10 @@
 		},
 		"xml": {
 			"contentType": "application/xml",
+			"type": "static"
+		},
+		"webm": {
+			"contentType": "video/webm",
 			"type": "static"
 		},
 		"xsl": {
