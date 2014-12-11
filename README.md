@@ -32,7 +32,7 @@ Here is an example:
 		name: "demo",
 		type: "proxy",
 		bindings: [
-			"localhsot"
+			"localhost"
 		],
 		target: "http://localhost:10000"
 	});
