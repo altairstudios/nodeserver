@@ -61,13 +61,16 @@ module.exports = exports = new function() {
 			pathinfo = "/index.php";
 		} 
 
-		env.GATEWAY_INTERFACE = "CGI/1.1",
-		env.SCRIPT_NAME = pathinfo,
-		env.PATH_INFO = pathinfo,
-		env.SERVER_NAME = address || 'unknown',
-		env.SERVER_PORT = port || 80,
-		env.SERVER_PROTOCOL = "HTTP/1.1",
-		env.SERVER_SOFTWARE = "NodeServer (AltairStudios)"
+		env.DOCUMENT_ROOT = website.script;
+		env.PATH_TRANSLATED = website.script;
+		env.SCRIPT_FILENAME = website.script + pathinfo;
+		env.GATEWAY_INTERFACE = "CGI/1.1";
+		env.SCRIPT_NAME = pathinfo;
+		env.PATH_INFO = pathinfo;
+		env.SERVER_NAME = address || 'unknown';
+		env.SERVER_PORT = port || 80;
+		env.SERVER_PROTOCOL = "HTTP/1.1";
+		env.SERVER_SOFTWARE = "NodeServer (AltairStudios)";
 
 		for (var header in req.headers) {
 			var name = 'HTTP_' + header.toUpperCase().replace(/-/g, '_');
@@ -92,6 +95,8 @@ module.exports = exports = new function() {
 			env.AUTH_TYPE = auth[0];
 		}
 
+		console.log(env);
+
 		var extension = path.extname(pathinfo).substring(1);
 		var mimes = JSON.parse(fs.readFileSync(__dirname + "/configuration/mimes.json"));
 		var mime = mimes.mimes[extension];
@@ -111,7 +116,7 @@ module.exports = exports = new function() {
 					res.end();
 				});
 			} else if(mime.type == "php") {
-				var cgi = childProcess.spawn("php", ["-f", website.script + pathinfo], { env: env });
+				var cgi = childProcess.spawn("php", ["-t", website.script, "-f", website.script + pathinfo], { env: env });
 				req.pipe(cgi.stdin);
 				
 				cgi.stderr.on('data', function(chunk) {
@@ -300,14 +305,17 @@ module.exports = exports = new function() {
 		if(this.unix) {
 			self.socket = net.createServer(function(client) {
 				client.on('data', function(data) {
-					console.log(data.toString());
-					client.end();
+					if(data == 'status') {
+						var json = JSON.stringify(self.websites);
+						client.write(new Buffer(json));
+					} else if(data == 'stop') {
+						process.exit(0);
+					}
 				});
 			});
 			
 			self.socket.listen('/tmp/nodeserver.sock');
 		}
-
 
 		var ports = this.ports.length;
 
@@ -320,6 +328,7 @@ module.exports = exports = new function() {
 
 		this.running = true;
 	};
+
 
 
 	this.stop = function() {
@@ -342,15 +351,80 @@ module.exports = exports = new function() {
 		}
 	});
 
-
+/*
 	process.on('uncaughtException', function(err) {
 		console.log('Error!!!!: ' + err);
 		console.log(arguments);
 	});
-
+*/
 
 	process.on('SIGINT', function() {
 		console.log('\nSayonara baby!!');
 		process.exit(0);
 	});
+
+
+
+	this.terminal = function(params) {
+		if(params[2] == 'start') {
+			var exists = fs.existsSync('/tmp/nodeserver.sock');
+
+			if(exists) {
+				console.log('server are running');
+			} else {
+				console.log('start server');
+
+				//exec with childprocess detached
+				self.readConfigFile(params[3] || '/etc/nodeserver/nodeserver.config')
+				self.start();
+			}
+		} else if(params[2] == 'reload') {
+			/*var exists = fs.existsSync('/tmp/nodeserver.sock');
+
+			if(exists) {
+				console.log('server are running');
+
+				
+			} else {
+				console.log('start server');
+
+				//self.readConfigFile(params[3] || '/etc/nodeserver/nodeserver.config')
+				self.start();
+			}*/
+			//TODO
+		} else if(params[2] == 'stop') {
+			var exists = fs.existsSync('/tmp/nodeserver.sock');
+
+			if(exists) {
+				console.log('stopping server');
+
+				var socket = new net.Socket();
+				socket.connect('/tmp/nodeserver.sock', function() {
+					socket.write('stop', function() {});
+
+					socket.on('data', function(data) {
+						console.log('server stopped');
+						socket.end();
+					});
+				});
+			} else {
+				console.log('no server running')
+			}
+		} else if(params[2] == 'status') {
+			var socket = new net.Socket();
+			socket.connect('/tmp/nodeserver.sock', function() {
+				socket.write('status', function() {
+					console.log(arguments);
+					console.log('---')
+				});
+
+				socket.on('data', function(data) {
+					console.log(data.toString());
+					socket.end();
+				});
+			});
+		}
+	}
+
+	this.terminal(process.argv);
 };

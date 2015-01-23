@@ -45,61 +45,13 @@ module.exports = exports = function(nodeserver) {
 		this.app.get('/websites/:binding/start', this.routes.websiteStart);
 		this.app.get('/websites/:binding/restart', this.routes.websiteRestart);
 		this.app.get('/websites/:binding/stop', this.routes.websiteStop);
+
+		this.app.get('/config/refresh', this.routes.config.refresh);
 	};
 
 
 	this.adminInterface = function() {
 		var self = this;
-		
-		/*
-		this.app.get('/', function(req, res) {
-			if(!req.session.validAdmin) {
-				res.redirect('/login');
-			} else {
-				var html = '<ul>';
-
-				for(var i = 0; i < self.websites.length; i++) {
-					var website = self.websites[i];
-
-					html += '<li><a href="/restart/' + i + '">' + ((website.process.running) ? '►' : '￭' ) + ' ' + website.name + '</a></li>';
-				}
-
-				html += '</ul>';
-				res.write('<html><head><meta charset="utf-8"><title>nodeserver admin</title></head><body><h1>webs</h1>' + html + '</body></html>');
-				res.end();
-			}
-		});
-*/
-/*
-		this.app.get('/restart/:id', function(req, res) {
-			var i = req.params.id;
-			var website = self.websites[i];
-
-			website.process.stop();
-			
-			setTimeout(function() {
-				website.process.start();
-			}, 1000);
-
-			res.redirect('/');
-		});
-
-*/
-		/*this.app.all('/login', function(req, res) {
-			if(req.route.method == 'post') {
-				var user = req.body.user;
-				var password = req.body.password;
-
-				if(user == config.user && password == config.password) {
-					req.session.validAdmin = true;
-					res.redirect('/');
-					return;
-				}
-			}
-
-			res.write('<html><body><form method="post" action="/login"><input type="text" name="user" /><input type="password" name="password" /><input type="submit" /></form></body></html>');
-			res.end();
-		});*/
 
 		this.app.listen(this.config.port || 10000);
 	};
