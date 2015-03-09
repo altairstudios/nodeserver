@@ -9,6 +9,7 @@ var childProcess = require('child_process');
 var os = require('os');
 var net = require('net');
 require('colors');
+var core = require('./core');
 
 module.exports = exports = new function() {
 	var self = this;
@@ -364,8 +365,10 @@ module.exports = exports = new function() {
 	});
 
 
+	this.terminal = core.terminal.process;
 
-	this.terminal = function(params) {
+
+	this.terminal2 = function(params) {
 		if(params[2] == 'start') {
 			var exists = fs.existsSync('/tmp/nodeserver.sock');
 
