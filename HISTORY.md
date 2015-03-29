@@ -1,11 +1,14 @@
 nodeserver History Version
 ==========================
 
-## Current version 0.3.3
-
-* Added partial support for CGI pages. Now can support simple php pages with some static files
 
 ## Lasts versions
+
+### v0.4
+
+#### v0.4.0
+
+* Added support for ssl. New configuration security json for specify certificates and ssl binding (443 for default).
 
 ### v0.3
 
