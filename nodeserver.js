@@ -1,5 +1,7 @@
 var httpProxy = require('http-proxy');
-var proxy = httpProxy.createProxy();
+var proxy = httpProxy.createProxy({
+	xfwd: true
+});
 var urlparser = require('url');
 var fs = require('fs');
 var forever = require('forever-monitor');
@@ -15,13 +17,15 @@ module.exports = exports = new function() {
 	var self = this;
 	this.websites = [];
 	this.ports = [];
+	this.securePorts = [];
+	this.baseCerts = {};
 	this.servers = [];
 	this.config = null;
 	this.unix = (os.platform() == 'darwin' || os.platform() == 'linux');
 	this.running = false;
 	this.socket = null;
-	//this.admin = nodeserverAdmin;
-	//this.app = express();
+
+	core.terminal.nodeserver = this;
 
 
 	this.serverWorker = function(req, res) {
@@ -33,7 +37,27 @@ module.exports = exports = new function() {
 		}
 
 		if(website == null) {
-			res.end();
+			var website = self.getWebsiteFromSecureUrl(host);
+
+			if(website == null) {
+				website = self.getWebsiteFromSecureUrl(host + ":443");
+			}
+
+			if(website == null) {
+				res.end();
+			} else {
+				if(website.type == "cgi") {
+					self.workerCGI(req, res, website);
+					return;
+				}
+
+				proxy.web(req, res, {
+					target: website.target
+				}, function(e) {
+					console.log(e);
+				});
+			}
+
 			return;
 		}
 
@@ -171,6 +195,47 @@ module.exports = exports = new function() {
 	}
 
 
+
+
+	this.getWebsiteFromSecureUrl = function(url) {
+		var websitesCount = this.websites.length;
+
+		for(var i = 0; i < websitesCount; i++) {
+			var website = this.websites[i];
+
+			if(website.security) {
+				var bindingsCount = website.security.bindings.length;
+
+				for(var j = 0; j < bindingsCount; j++) {
+					var binding = website.security.bindings[j];
+
+					if(binding == url) {
+						return website;
+					}
+				}
+			}
+		}
+
+		//double check with regex
+		for(var i = 0; i < websitesCount; i++) {
+			var website = this.websites[i];
+
+			if(website.security) {
+				var bindingsCount = website.security.bindings.length;
+
+				for(var j = 0; j < bindingsCount; j++) {
+					var regex = new RegExp("^" + url + ":", "gi")
+					
+					if(regex.test(website.security.bindings[j])) {
+						return website;
+					}
+				}
+			}
+		}
+	}
+
+
+
 	this.readConfigFile = function(configFile) {
 		configFile = configFile || "nodeserver.config";
 		var config = null;
@@ -209,9 +274,20 @@ module.exports = exports = new function() {
 		}
 
 		for(var i = 0; i < website.bindings.length; i++) {
-			url = urlparser.parse("http://" + website.bindings[i]);
+			var url = urlparser.parse("http://" + website.bindings[i]);
 
 			this.addPort(url.port);
+		}
+
+		if(website.security) {
+			for(var i = 0; i < website.security.bindings.length; i++) {
+				var url = urlparser.parse("https://" + website.security.bindings[i]);
+				this.addSecurePort(url.port);
+			}
+
+			if(website.security.certs) {
+				this.baseCerts = website.security.certs;
+			}
 		}
 
 		website.port = website.port || (Math.floor(Math.random() * 65000) + 20000);
@@ -232,10 +308,22 @@ module.exports = exports = new function() {
 	};
 
 
+	this.addSecurePort = function(port) {
+		for(var i = 0; i < this.securePorts.length; i++) {
+			if(this.securePorts[i] == port) {
+				return;
+			}
+		}
+
+		this.securePorts.push(port);
+	};
+
+
 	this.startChild = function(website) {
 		var scriptPath = "";
 		var script = "";
 		var port = website.port;
+		var sslport = website.portssl || port + 11000;
 
 		if(website.absoluteScript) {
 			scriptPath = path.dirname(website.script);
@@ -319,6 +407,7 @@ module.exports = exports = new function() {
 		}
 
 		var ports = this.ports.length;
+		var securePorts = this.securePorts.length;
 
 		for(var i = 0; i < ports; i++) {
 			var server = require('http').createServer(this.serverWorker);
@@ -326,6 +415,63 @@ module.exports = exports = new function() {
 
 			this.servers.push(server);
 		}
+
+
+		var secureOptions = {
+			SNICallback: function(domain, callback) {
+				var website = self.getWebsiteFromSecureUrl(domain);
+
+				if(website) {
+					var security = {
+						key: fs.readFileSync(website.security.certs.key),
+						cert: fs.readFileSync(website.security.certs.cert),
+					};
+
+					if(website.security.certs.ca) {
+						security.ca = [];
+
+						for (var i = website.security.certs.ca.length - 1; i >= 0; i--) {
+							security.ca.push(fs.readFileSync(website.security.certs.ca[i]));
+						};
+					}
+
+					//return require('tls').createSecureContext(security);
+					callback(null, require('tls').createSecureContext(security));
+				} else {
+					callback(true);
+				}
+			},
+			key: fs.readFileSync(self.baseCerts.key),
+			cert: fs.readFileSync(self.baseCerts.cert)
+		};
+
+		console.log('secure + ' + securePorts)
+
+		for(var i = 0; i < securePorts; i++) {
+			//var server = require('https').createServer(this.serverWorker);
+			var server = require('https').createServer(secureOptions, this.serverWorker);
+			server.listen(this.securePorts[i]);
+
+			//console.log(server)
+
+			this.servers.push(server);
+		}
+		//var sslServer = require('https').createServer(, function(req, res) { res.end('vamos! seguro'); }).listen(8083);
+
+		/*console.log('litesn ssl')
+		console.log(portsSsl)
+		for(var i = 0; i < portsSsl; i++) {
+			var server = require('https').createServer(this.serverWorker);
+			console.log('escuchando ' + this.portsSsl[i])
+			server.listen(this.portsSsl[i]);
+
+			this.servers.push(server);
+		}*/
+
+
+		//var serverssl = require('http').createServer(this.serverWorker);
+		//serverssl.listen('443');
+		//this.servers.push(serverssl);
 
 		this.running = true;
 	};
@@ -366,68 +512,6 @@ module.exports = exports = new function() {
 
 
 	this.terminal = core.terminal.process;
-
-
-	this.terminal2 = function(params) {
-		if(params[2] == 'start') {
-			var exists = fs.existsSync('/tmp/nodeserver.sock');
-
-			if(exists) {
-				console.log('server are running');
-			} else {
-				console.log('start server');
-
-				//exec with childprocess detached
-				self.readConfigFile(params[3] || '/etc/nodeserver/nodeserver.config')
-				self.start();
-			}
-		} else if(params[2] == 'reload') {
-			/*var exists = fs.existsSync('/tmp/nodeserver.sock');
-
-			if(exists) {
-				console.log('server are running');
-
-				
-			} else {
-				console.log('start server');
-
-				//self.readConfigFile(params[3] || '/etc/nodeserver/nodeserver.config')
-				self.start();
-			}*/
-			//TODO
-		} else if(params[2] == 'stop') {
-			var exists = fs.existsSync('/tmp/nodeserver.sock');
-
-			if(exists) {
-				console.log('stopping server');
-
-				var socket = new net.Socket();
-				socket.connect('/tmp/nodeserver.sock', function() {
-					socket.write('stop', function() {});
-
-					socket.on('data', function(data) {
-						console.log('server stopped');
-						socket.end();
-					});
-				});
-			} else {
-				console.log('no server running')
-			}
-		} else if(params[2] == 'status') {
-			var socket = new net.Socket();
-			socket.connect('/tmp/nodeserver.sock', function() {
-				socket.write('status', function() {
-					console.log(arguments);
-					console.log('---')
-				});
-
-				socket.on('data', function(data) {
-					console.log(data.toString());
-					socket.end();
-				});
-			});
-		}
-	}
-
+	
 	this.terminal(process.argv);
 };
