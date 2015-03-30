@@ -8,7 +8,7 @@ var terminal = module.exports = exports = {
 		start: function(params) {
 			var exists = fs.existsSync('/tmp/nodeserver.sock');
 
-			console.log('-= Nodeserver Help =-\n'.blue);
+			console.log('-= Nodeserver =-\n'.blue);
 
 			if(exists) {
 				console.log('Nodeserver are running'.yellow);
@@ -20,7 +20,7 @@ var terminal = module.exports = exports = {
 			}
 		},
 		stop: function(params) {
-			console.log('-= Nodeserver Help =-\n'.blue);
+			console.log('-= Nodeserver =-\n'.blue);
 			var exists = fs.existsSync('/tmp/nodeserver.sock');
 
 			if(exists) {
@@ -43,20 +43,25 @@ var terminal = module.exports = exports = {
 			console.log('reload')
 		},
 		status: function(params) {
-			console.log('-= Nodeserver Help =-\n'.blue);
+			console.log('-= Nodeserver =-\n'.blue);
 			var exists = fs.existsSync('/tmp/nodeserver.sock');
 
 			if(exists) {
 				var socket = new net.Socket();
 				socket.connect('/tmp/nodeserver.sock', function() {
-					socket.write('status', function() {
-						console.log(arguments);
-						console.log('---')
-					});
+					socket.write('status', function() {});
 
 					socket.on('data', function(data) {
-						console.log(data.toString());
+						var json = JSON.parse(data);
 						socket.end();
+
+						for (var i = 0; i < json.websites.length; i++) {
+							var website = json.websites[i];
+							var status = (website.status == 'started') ? ' * '.green : ' * '.red;
+							console.log(status + website.name + '\t\t'.gray);
+							console.log('   ' + website.type + '\t\t'.gray);
+							console.log('\n');
+						};
 					});
 				});
 			} else {
@@ -85,4 +90,4 @@ var terminal = module.exports = exports = {
 			terminal.operations.help(params);
 		}
 	}
-}
+};

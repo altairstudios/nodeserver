@@ -1,3 +1,4 @@
 module.exports = exports = {
-	terminal: require('./terminal')
+	terminal: require('./terminal'),
+	sockets: require('./sockets')
 };

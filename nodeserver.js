@@ -26,6 +26,7 @@ module.exports = exports = new function() {
 	this.socket = null;
 
 	core.terminal.nodeserver = this;
+	core.sockets.nodeserver = this;
 
 
 	this.serverWorker = function(req, res) {
@@ -392,7 +393,7 @@ module.exports = exports = new function() {
 
 	this.start = function() {
 		if(this.unix) {
-			self.socket = net.createServer(function(client) {
+			/*self.socket = net.createServer(function(client) {
 				client.on('data', function(data) {
 					if(data == 'status') {
 						var json = JSON.stringify(self.websites);
@@ -403,7 +404,9 @@ module.exports = exports = new function() {
 				});
 			});
 			
-			self.socket.listen('/tmp/nodeserver.sock');
+			self.socket.listen('/tmp/nodeserver.sock');*/
+
+			core.sockets.start();
 		}
 
 		var ports = this.ports.length;
@@ -435,7 +438,6 @@ module.exports = exports = new function() {
 						};
 					}
 
-					//return require('tls').createSecureContext(security);
 					callback(null, require('tls').createSecureContext(security));
 				} else {
 					callback(true);
@@ -445,33 +447,11 @@ module.exports = exports = new function() {
 			cert: fs.readFileSync(self.baseCerts.cert)
 		};
 
-		console.log('secure + ' + securePorts)
-
 		for(var i = 0; i < securePorts; i++) {
-			//var server = require('https').createServer(this.serverWorker);
 			var server = require('https').createServer(secureOptions, this.serverWorker);
 			server.listen(this.securePorts[i]);
-
-			//console.log(server)
-
 			this.servers.push(server);
 		}
-		//var sslServer = require('https').createServer(, function(req, res) { res.end('vamos! seguro'); }).listen(8083);
-
-		/*console.log('litesn ssl')
-		console.log(portsSsl)
-		for(var i = 0; i < portsSsl; i++) {
-			var server = require('https').createServer(this.serverWorker);
-			console.log('escuchando ' + this.portsSsl[i])
-			server.listen(this.portsSsl[i]);
-
-			this.servers.push(server);
-		}*/
-
-
-		//var serverssl = require('http').createServer(this.serverWorker);
-		//serverssl.listen('443');
-		//this.servers.push(serverssl);
 
 		this.running = true;
 	};
@@ -512,6 +492,6 @@ module.exports = exports = new function() {
 
 
 	this.terminal = core.terminal.process;
-	
+
 	this.terminal(process.argv);
 };
