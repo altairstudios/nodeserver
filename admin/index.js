@@ -9,6 +9,7 @@ module.exports = exports = function(nodeserver) {
 	this.routes = routes;
 	this.config = nodeserver.config;
 	this.nodeserver = nodeserver;
+	this.loginErros = {};
 
 	//console.log(this.config);
 
@@ -25,7 +26,23 @@ module.exports = exports = function(nodeserver) {
 		this.app.use(function(req, res, next) {
 			req.config = admin.config;
 			req.nodeserver = admin.nodeserver;
+			req.admin = admin;
+
 			next();
+		});
+
+		this.app.use(function(req, res, next) {
+			var ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+
+			if(admin.loginErros[ip]) {
+				if(admin.loginErros[ip].block != null && admin.loginErros[ip].block.getTime() > new Date().getTime()) {
+					res.status(403).end('Banned');
+				} else {
+					next();
+				}
+			} else {
+				next();
+			}
 		});
 
 		this.app.set('views', __dirname + '/views');

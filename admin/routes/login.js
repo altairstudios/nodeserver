@@ -7,6 +7,25 @@ module.exports = exports = function(req, res) {
 			req.session.validAdmin = true;
 			res.redirect('/');
 			return;
+		} else {
+			var ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+
+			console.log(req.admin.loginErros)
+
+			if(req.admin.loginErros[ip]) {
+				req.admin.loginErros[ip].errors = req.admin.loginErros[ip].errors + 1;
+				req.admin.loginErros[ip].last = new Date();
+				
+				if(req.admin.loginErros[ip].errors > 5) {
+					req.admin.loginErros[ip].block = new Date(new Date().getTime() + 60 * 60 * 24 * 1000);
+				}
+			} else {
+				req.admin.loginErros[ip] = {
+					errors: 1,
+					last: new Date(),
+					block: null
+				}
+			}
 		}
 	}
 
