@@ -80,7 +80,7 @@ module.exports = exports = new function() {
 		var address = host[0];
 		var port = host[1];
 		var env = JSON.parse(JSON.stringify(process.env));
-		var requestUrl = url.parse(req.url, true);
+		var requestUrl = urlparser.parse(req.url, true);
 		var pathinfo = requestUrl.pathname;
 
 		if(pathinfo == "/") {
@@ -443,8 +443,8 @@ module.exports = exports = new function() {
 					callback(true);
 				}
 			},
-			key: fs.readFileSync(self.baseCerts.key),
-			cert: fs.readFileSync(self.baseCerts.cert)
+			key: (self.baseCerts.key && fs.existsSync(self.baseCerts.key)) ? fs.readFileSync(self.baseCerts.key) : '',
+			cert: (self.baseCerts.cert && fs.existsSync(self.baseCerts.cert)) ? fs.readFileSync(self.baseCerts.cert) : ''
 		};
 
 		for(var i = 0; i < securePorts; i++) {
