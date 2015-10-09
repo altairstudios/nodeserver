@@ -415,7 +415,7 @@ module.exports = exports = new function() {
 		};
 		
 		fs.watchFile(scriptPath + '/' + script, watchFucntion);
-		fs.watchFile(scriptPath + '/package.json', watchFucntion);
+		//fs.watchFile(scriptPath + '/package.json', watchFucntion);
 
 		website.process = child;
 

@@ -56,7 +56,24 @@ var terminal = module.exports = exports = {
 			}
 		},
 		reload: function(params) {
-			console.log('reload')
+			console.log('-= Nodeserver =-\n'.blue);
+			var exists = fs.existsSync('/tmp/nodeserver.sock');
+
+			if(exists) {
+				console.log('stopping server...'.grey);
+
+				var socket = new net.Socket();
+				socket.connect('/tmp/nodeserver.sock', function() {
+					socket.write('reload', function() {});
+
+					socket.on('data', function(data) {
+						console.log('Server reloaded'.grey);
+						socket.end();
+					});
+				});
+			} else {
+				console.log('No server running'.yellow)
+			}
 		},
 		password: function(params) {
 			console.log('-= Nodeserver =-\n'.blue);
@@ -101,6 +118,20 @@ var terminal = module.exports = exports = {
 				console.log('No server running'.yellow)
 			}
 		},
+		install: function(params) {
+			console.log('-= Nodeserver =-\n'.blue);
+
+			if(!params[3]) {
+				return console.log('No system for install. Use nodeserver install [centos]"'.red);
+			}
+
+			var daemonScript = '/etc/init.d/nodeserver.sh';
+			var script = fs.readFileSync(__dirname + '/daemons/scripts/centos.sh', {encoding: 'utf8'});
+
+			fs.writeFileSync(daemonScript, script);
+
+			console.log('Daemon script are installed'.yellow)
+		},
 		help: function(params) {
 			console.log('-= Nodeserver Help =-'.blue);
 			console.log('use: nodeserver [command] [parameters]\n'.green);
@@ -110,6 +141,7 @@ var terminal = module.exports = exports = {
 			console.log('* reload\tReload server configuration. Stop all child process and restart its'.gray);
 			console.log('* status\tShow status of all child websites'.gray);
 			console.log('* password\tSend a password by param and hash it'.gray);
+			console.log('* install\tInstall script on the system. Pass the system code [centos] currently only support CentOS'.gray);
 		},
 	},
 	process: function(params) {

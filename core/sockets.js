@@ -11,6 +11,8 @@ var sockets = module.exports = exports = {
 					sockets.operations.status(client);
 				} else if(data == 'stop') {
 					sockets.operations.stop(client);
+				} else if(data == 'reload') {
+					sockets.operations.reload(client);
 				}
 			});
 		});
@@ -20,6 +22,10 @@ var sockets = module.exports = exports = {
 	operations: {
 		stop: function(client) {
 			process.exit(0);
+		},
+		reload: function(client) {
+			sockets.nodeserver.hotConfig();
+			client.write(new Buffer('reloaded'));
 		},
 		status: function(client) {
 			//console.log(sockets.nodeserver.websites);
@@ -37,22 +43,9 @@ var sockets = module.exports = exports = {
 				jsonWebsite.name = website.name;
 				jsonWebsite.status = ((website.process) ? ((website.process.running) ? 'started' : 'stopped') : 'started');
 
-				console.log(website)
-
-				/*if(website.type == 'cgi') {
-					jsonWebsite.type = 'cgi';
-				} else {
-					jsonWebsite.type = 'node';
-				}
-
-				*/
-
 				json.websites.push(jsonWebsite);
 			};
 
-			//var json = JSON.stringify(sockets.nodeserver.websites);
-			//client.write(new Buffer(json));
-			
 			client.write(new Buffer(JSON.stringify(json)));
 		},
 	}
