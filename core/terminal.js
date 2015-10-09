@@ -16,7 +16,7 @@ var terminal = module.exports = exports = {
 			} else {
 				console.log('start nodeserver'.yellow);
 
-				var child = childProcess.spawn(__dirname + "/../bin/nodeserver", ["start-loop"], { detached: true, stdio: 'ignore' });
+				var child = childProcess.spawn(__dirname + "/../bin/nodeserver", ["start-loop", params[3] || '/etc/nodeserver/nodeserver.config'], { detached: true, stdio: 'ignore' });
 				child.unref();
 			}
 		},
