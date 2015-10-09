@@ -62,6 +62,8 @@ var terminal = module.exports = exports = {
 			var exists = fs.existsSync('/tmp/nodeserver.sock');
 
 			if(exists) {
+				console.log('Server running'.yellow);
+
 				var socket = new net.Socket();
 				socket.connect('/tmp/nodeserver.sock', function() {
 					socket.write('status', function() {});
@@ -70,13 +72,17 @@ var terminal = module.exports = exports = {
 						var json = JSON.parse(data);
 						socket.end();
 
-						for (var i = 0; i < json.websites.length; i++) {
-							var website = json.websites[i];
-							var status = (website.status == 'started') ? ' * '.green : ' * '.red;
-							console.log(status + website.name + '\t\t'.gray);
-							console.log('   ' + website.type + '\t\t'.gray);
-							console.log('\n');
-						};
+						if(json.websites.length > 0) {
+							for (var i = 0; i < json.websites.length; i++) {
+								var website = json.websites[i];
+								var status = (website.status == 'started') ? ' * '.green : ' * '.red;
+								console.log(status + website.name + '\t\t'.gray);
+								console.log('   ' + website.type + '\t\t'.gray);
+								console.log('\n');
+							};
+						} else {
+							console.log('No websites configured'.gray);
+						}
 					});
 				});
 			} else {
