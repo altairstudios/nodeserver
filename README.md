@@ -63,6 +63,7 @@ Here is an example of etc file:
 			"localhost:8081"
 		],
 		"port": "10001",
+		"portssl": "11001",
 		"script": "../web2/web2.js",
 		"absoluteScript": false
 	},{
@@ -72,6 +73,7 @@ Here is an example of etc file:
 			"localhost:8082"
 		],
 		"port": "10002",
+		"portssl": "11002",
 		"script": "/Users/myuser/Sites/web1/web1.js",
 		"absoluteScript": true
 	}]

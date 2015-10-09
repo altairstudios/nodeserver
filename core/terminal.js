@@ -1,11 +1,26 @@
 require('colors');
 var fs = require('fs');
 var net = require('net');
+var childProcess = require('child_process');
 
 
 var terminal = module.exports = exports = {
 	operations: {
 		start: function(params) {
+			var exists = fs.existsSync('/tmp/nodeserver.sock');
+
+			console.log('-= Nodeserver =-\n'.blue);
+
+			if(exists) {
+				console.log('Nodeserver are running'.yellow);
+			} else {
+				console.log('start nodeserver'.yellow);
+
+				var child = childProcess.spawn(__dirname + "/../bin/nodeserver", ["start-loop"], { detached: true, stdio: 'ignore' });
+				child.unref();
+			}
+		},
+		'start-loop': function(params) {
 			var exists = fs.existsSync('/tmp/nodeserver.sock');
 
 			console.log('-= Nodeserver =-\n'.blue);
@@ -69,8 +84,10 @@ var terminal = module.exports = exports = {
 			}
 		},
 		help: function(params) {
-			console.log('-= Nodeserver Help =-\n'.blue);
-			console.log('* start\t\tStart server service'.gray);
+			console.log('-= Nodeserver Help =-'.blue);
+			console.log('use: nodeserver [command] [parameters]\n'.green);
+			console.log('* start\t\tStart server service in background'.gray);
+			console.log('* start-loop\t\tStart server service in loop'.gray);
 			console.log('* stop\t\tStop server service'.gray);
 			console.log('* reload\tReload server configuration. Stop all child process and restart its'.gray);
 			console.log('* status\tShow status of all child websites'.gray);

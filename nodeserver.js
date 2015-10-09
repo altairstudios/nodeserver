@@ -253,6 +253,10 @@ module.exports = exports = new function() {
 
 		this.config = JSON.parse(config);
 
+		if(this.config == null) {
+			return;
+		}
+
 		for(var i = 0; i < this.config.sites.length; i++) {
 			var site = this.config.sites[i];
 
