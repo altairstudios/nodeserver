@@ -358,10 +358,10 @@ module.exports = exports = new function() {
 		var port = website.port;
 		var sslport = website.portssl || port + 11000;
 
-		if(website.absoluteScript) {
-			scriptPath = path.dirname(website.script);
-		} else {
+		if(website.absoluteScript === false) {
 			scriptPath = process.cwd() + "/" + path.dirname(website.script);
+		} else {
+			scriptPath = path.dirname(website.script);
 		}
 
 		script = path.basename(website.script);
