@@ -2,6 +2,7 @@ require('colors');
 var fs = require('fs');
 var net = require('net');
 var childProcess = require('child_process');
+var crypto = require('crypto');
 
 
 var terminal = module.exports = exports = {
@@ -57,6 +58,17 @@ var terminal = module.exports = exports = {
 		reload: function(params) {
 			console.log('reload')
 		},
+		password: function(params) {
+			console.log('-= Nodeserver =-\n'.blue);
+
+			if(!params[3]) {
+				console.log('No text for hash. Use "nodeserver password [text]"'.red);
+			} else {
+				console.log('The password is:'.yellow);
+				console.log(crypto.createHash('md5').update(params[3]).digest('hex').yellow);
+				console.log('Use it on password config json file'.yellow);
+			}
+		},
 		status: function(params) {
 			console.log('-= Nodeserver =-\n'.blue);
 			var exists = fs.existsSync('/tmp/nodeserver.sock');
@@ -97,6 +109,7 @@ var terminal = module.exports = exports = {
 			console.log('* stop\t\tStop server service'.gray);
 			console.log('* reload\tReload server configuration. Stop all child process and restart its'.gray);
 			console.log('* status\tShow status of all child websites'.gray);
+			console.log('* password\tSend a password by param and hash it'.gray);
 		},
 	},
 	process: function(params) {
