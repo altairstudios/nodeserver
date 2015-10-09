@@ -30,6 +30,8 @@
     "reverse proxy",
     "cgi",
     "php",
+    "python",
+    "nodejs",
     "static"
   ],
   "readmeFilename": "README.md",
