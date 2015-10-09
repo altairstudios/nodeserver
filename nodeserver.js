@@ -12,6 +12,8 @@ var os = require('os');
 var net = require('net');
 require('colors');
 var core = require('./core');
+var crypto = require('crypto');
+
 
 module.exports = exports = new function() {
 	var self = this;
@@ -24,9 +26,17 @@ module.exports = exports = new function() {
 	this.unix = (os.platform() == 'darwin' || os.platform() == 'linux');
 	this.running = false;
 	this.socket = null;
+	this.configFile = '/etc/nodeserver/nodeserver.config';
 
 	core.terminal.nodeserver = this;
 	core.sockets.nodeserver = this;
+
+
+
+	this.hotConfig = function() {
+
+	};
+
 
 
 	this.serverWorker = function(req, res) {
@@ -242,12 +252,16 @@ module.exports = exports = new function() {
 		var config = null;
 
 		if(fs.existsSync(configFile)) {
+			this.configFile = configFile;
 			config = fs.readFileSync(configFile);
 		} else if(fs.existsSync(__dirname + configFile)) {
+			this.configFile = __dirname + configFile;
 			config = fs.readFileSync(__dirname + configFile);
 		}  else if(fs.existsSync(__dirname + "/" + configFile)) {
+			this.configFile = __dirname + "/" + configFile;
 			config = fs.readFileSync(__dirname + "/" + configFile);
 		} else if(fs.existsSync("/etc/nodeserver/nodeserver.config")) {
+			this.configFile = "/etc/nodeserver/nodeserver.config";
 			config = fs.readFileSync("/etc/nodeserver/nodeserver.config");
 		}
 
@@ -260,7 +274,7 @@ module.exports = exports = new function() {
 		for(var i = 0; i < this.config.sites.length; i++) {
 			var site = this.config.sites[i];
 
-			site.id = site.id || site.bindings[0];
+			site.id = crypto.createHash('md5').update(site.name + site.bindings[0]).digest('hex');
 			this.addWebsite(site);
 		}
 

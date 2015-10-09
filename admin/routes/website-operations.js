@@ -1,11 +1,15 @@
 var fs = require('fs');
 
-var findBinding = function(websites, binding) {
+var findId = function(websites, webisteId) {
 	for(var i = 0; i < websites.length; i++) {
-		for(var j = 0; j < websites[i].bindings.length; j++) {
+		/*for(var j = 0; j < websites[i].bindings.length; j++) {
 			if(websites[i].bindings[j] == binding) {
 				return websites[i];
 			}
+		}*/
+
+		if(websites[i].id == webisteId) {
+			return websites[i];
 		}
 	}
 };
@@ -42,11 +46,11 @@ module.exports = exports = {
 			return;
 		}
 
-		var website = findBinding(req.nodeserver.websites, req.params.binding);
+		var website = findId(req.nodeserver.websites, req.params.websiteId);
 
 		start(website);
 
-		res.redirect('/websites/' + req.params.binding);
+		res.redirect('/websites/' + req.params.websiteId);
 	},
 	restart: function(req, res) {
 		if(!req.session || !req.session.validAdmin) {
@@ -54,12 +58,12 @@ module.exports = exports = {
 			return;
 		}
 
-		var website = findBinding(req.nodeserver.websites, req.params.binding);
+		var website = findId(req.nodeserver.websites, req.params.websiteId);
 
 		restart(website);
 
 		setTimeout(function() {
-			res.redirect('/websites/' + req.params.binding);
+			res.redirect('/websites/' + req.params.websiteId);
 		}, 2500);
 	},
 	stop: function(req, res) {
@@ -68,12 +72,12 @@ module.exports = exports = {
 			return;
 		}
 
-		var website = findBinding(req.nodeserver.websites, req.params.binding);
+		var website = findId(req.nodeserver.websites, req.params.websiteId);
 
 		stop(website);
 
 		setTimeout(function() {
-			res.redirect('/websites/' + req.params.binding);
+			res.redirect('/websites/' + req.params.websiteId);
 		}, 2000);
 	}
 }

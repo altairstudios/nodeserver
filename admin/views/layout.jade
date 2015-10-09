@@ -49,7 +49,7 @@ html
 									i.fa.fa-sitemap.fa-fw
 									| Websites 
 									span.fa.arrow
-								ul.nav.nav-second-level
+								ul.nav.nav-second-level.collapse
 									each website in websites
 										li
 											a(href="/websites/" + website.bindings[0])=website.name

@@ -15,7 +15,7 @@ block content
 				div.panel-body
 					div.list-group
 						each website in websites
-							a.list-group-item(href="/websites/" + website.bindings[0])
+							a.list-group-item(href="/websites/" + website.id)
 								i.fa.fa-cloud.fa-fw
 								=website.name
 								if website.process

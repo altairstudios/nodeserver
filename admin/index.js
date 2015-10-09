@@ -58,10 +58,10 @@ module.exports = exports = function(nodeserver) {
 		this.app.all('/login', this.routes.login);
 		this.app.get('/logout', this.routes.logout);
 
-		this.app.get('/websites/:binding', this.routes.website);
-		this.app.get('/websites/:binding/start', this.routes.websiteStart);
-		this.app.get('/websites/:binding/restart', this.routes.websiteRestart);
-		this.app.get('/websites/:binding/stop', this.routes.websiteStop);
+		this.app.get('/websites/:webisteId', this.routes.website);
+		this.app.get('/websites/:webisteId/start', this.routes.websiteStart);
+		this.app.get('/websites/:webisteId/restart', this.routes.websiteRestart);
+		this.app.get('/websites/:webisteId/stop', this.routes.websiteStop);
 
 		this.app.get('/config/refresh', this.routes.config.refresh);
 	};
