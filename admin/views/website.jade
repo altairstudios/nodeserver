@@ -16,11 +16,11 @@ block content
 				div.panel-body
 					if website.process
 						h4 Operations
-						button.btn.btn-success.btn-circle.btn-xl(type='buton' title='start' onclick='document.location="/websites/' + website.bindings[0] + '/start"')
+						button.btn.btn-success.btn-circle.btn-xl(type='buton' title='start' onclick='document.location="/websites/' + website.id + '/start"')
 							i.fa.fa-bolt
-						button.btn.btn-warning.btn-circle.btn-xl(type='buton' title='restart' onclick='document.location="/websites/' + website.bindings[0] + '/restart"')
+						button.btn.btn-warning.btn-circle.btn-xl(type='buton' title='restart' onclick='document.location="/websites/' + website.id + '/restart"')
 							i.fa.fa-power-off
-						button.btn.btn-danger.btn-circle.btn-xl(type='buton' title='stop' onclick='document.location="/websites/' + website.bindings[0] + '/stop"')
+						button.btn.btn-danger.btn-circle.btn-xl(type='buton' title='stop' onclick='document.location="/websites/' + website.id + '/stop"')
 							i.fa.fa-square
 
 		div.col-lg-4

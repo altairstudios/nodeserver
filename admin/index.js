@@ -49,6 +49,7 @@ module.exports = exports = function(nodeserver) {
 		this.app.set('view engine', 'jade');
 
 		this.app.locals.pretty = true;
+		this.app.locals.version = this.nodeserver.getVersion();
 	};
 
 
@@ -58,10 +59,10 @@ module.exports = exports = function(nodeserver) {
 		this.app.all('/login', this.routes.login);
 		this.app.get('/logout', this.routes.logout);
 
-		this.app.get('/websites/:webisteId', this.routes.website);
-		this.app.get('/websites/:webisteId/start', this.routes.websiteStart);
-		this.app.get('/websites/:webisteId/restart', this.routes.websiteRestart);
-		this.app.get('/websites/:webisteId/stop', this.routes.websiteStop);
+		this.app.get('/websites/:websiteId', this.routes.website);
+		this.app.get('/websites/:websiteId/start', this.routes.websiteStart);
+		this.app.get('/websites/:websiteId/restart', this.routes.websiteRestart);
+		this.app.get('/websites/:websiteId/stop', this.routes.websiteStop);
 
 		this.app.get('/config/refresh', this.routes.config.refresh);
 	};
@@ -71,6 +72,10 @@ module.exports = exports = function(nodeserver) {
 		var self = this;
 
 		this.app.listen(this.config.port || 10000);
+	};
+
+	this.stopAdminInterface = function() {
+		this.app.close();
 	};
 
 

@@ -47,7 +47,9 @@ module.exports = exports = {
 		}
 
 		var website = findId(req.nodeserver.websites, req.params.websiteId);
-
+console.log('#######')
+		console.log(req.params)
+		console.log('#######')
 		start(website);
 
 		res.redirect('/websites/' + req.params.websiteId);

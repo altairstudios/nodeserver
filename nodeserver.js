@@ -34,7 +34,15 @@ module.exports = exports = new function() {
 
 
 	this.hotConfig = function() {
+		this.stop();
+		this.readConfigFile(this.configFile);
+		this.start(false);
+	};
 
+
+
+	this.getVersion = function() {
+		return require('./package.json').version;
 	};
 
 
@@ -271,6 +279,8 @@ module.exports = exports = new function() {
 			return;
 		}
 
+		this.websites = [];
+
 		for(var i = 0; i < this.config.sites.length; i++) {
 			var site = this.config.sites[i];
 
@@ -279,8 +289,12 @@ module.exports = exports = new function() {
 		}
 
 		if(this.config.nodeserver.admin.active) {
-			this.admin = new nodeserverAdmin(self);
-			this.admin.adminInterface();
+			if(!this.admin) {
+				this.admin = new nodeserverAdmin(self);
+				this.admin.adminInterface();
+			}
+		} else if(this.admin) {
+			this.admin.stopAdminInterface();
 		}
 	}
 
@@ -409,23 +423,26 @@ module.exports = exports = new function() {
 	}
 
 
-	this.start = function() {
-		if(this.unix) {
-			/*self.socket = net.createServer(function(client) {
-				client.on('data', function(data) {
-					if(data == 'status') {
-						var json = JSON.stringify(self.websites);
-						client.write(new Buffer(json));
-					} else if(data == 'stop') {
-						process.exit(0);
-					}
+	this.start = function(started) {
+		if(started === undefined) {
+			if(this.unix) {
+				/*self.socket = net.createServer(function(client) {
+					client.on('data', function(data) {
+						if(data == 'status') {
+							var json = JSON.stringify(self.websites);
+							client.write(new Buffer(json));
+						} else if(data == 'stop') {
+							process.exit(0);
+						}
+					});
 				});
-			});
-			
-			self.socket.listen('/tmp/nodeserver.sock');*/
+				
+				self.socket.listen('/tmp/nodeserver.sock');*/
 
-			core.sockets.start();
+				core.sockets.start();
+			}
 		}
+
 
 		var ports = this.ports.length;
 		var securePorts = this.securePorts.length;
