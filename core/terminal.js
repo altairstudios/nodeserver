@@ -125,12 +125,15 @@ var terminal = module.exports = exports = {
 				return console.log('No system for install. Use nodeserver install [centos]"'.red);
 			}
 
-			var daemonScript = '/etc/init.d/nodeserver.sh';
+			var daemonScript = '/etc/init.d/nodeserver';
 			var script = fs.readFileSync(__dirname + '/daemons/scripts/centos.sh', {encoding: 'utf8'});
 
 			fs.writeFileSync(daemonScript, script);
 
-			console.log('Daemon script are installed'.yellow)
+			var shell = 'chmod +x ' + daemonScript + '; chkconfig --level 345 nodeserver on';
+			childProcess.exec(shell, function() {
+				console.log('Daemon script are installed'.yellow);
+			});
 		},
 		help: function(params) {
 			console.log('-= Nodeserver Help =-'.blue);

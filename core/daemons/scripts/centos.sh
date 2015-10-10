@@ -20,7 +20,7 @@
 ### END INIT INFO
 
 NAME=nodeserver
-NODESERVER=nodeserver
+NODESERVER=/usr/local/bin/nodeserver
 USER=root
 
 export PATH=%NODE_PATH%:$PATH

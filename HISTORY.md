@@ -4,6 +4,23 @@ nodeserver History Version
 
 ## Lasts versions
 
+### v0.5
+
+#### v0.5.1
+
+* Fixed some errors on install system
+
+#### v0.5.0
+
+* Added terminal daemon for start
+* Added terminal daemon for status
+* Added terminal daemon for stop
+* Change website id format
+* Encrypted password for access to the admin
+* Refresh without stop the server all websites
+* Change absoluteScript configuration to optionaly and mark false by default
+* Add installation system for CentOS
+
 ### v0.4
 
 #### v0.4.0
