@@ -14,11 +14,11 @@ If you have ideas or questions, open a new issue with your ideas.
 
 Install nodeserver script via npm:
 
-	sudo npm install nodeserver -g
+	$ sudo npm install nodeserver -g
 
 Install daemon on the system. Currently only support CentOS.
 
-	sudo nodeserver install centos
+	$ sudo nodeserver install centos
 
 
 ### Configuration
@@ -94,8 +94,27 @@ The syntax of these file are:
 	}
 
 
+### Servers operations
 
+Start server
 
+	$ sudo nodeserver start
+
+Check status and show a list of active webites
+
+	$ nodeserver status
+
+Stop the server
+
+	$ nodeserver stop
+
+Reload server configuration if nodeserver.config change without stop the server
+
+	$ nodeserver reload
+
+Generate a hash password for use in config file
+
+	$ nodeserver password mypasswordtohash
 
 
 ## Thanks
