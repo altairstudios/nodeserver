@@ -1,83 +1,99 @@
 nodeserver
 ==========
 
+Production webserver for Node.js applications, php websites, statics websites, etc.
+
 ![nodeserver logo](https://raw.githubusercontent.com/altairstudios/nodeserver/master/nodeserver-logo.png)
 
-Nodeserver is a NodeJS Web Server with reverse proxy functionality alternative to Nginx reverse proxy for NodeJS projects
-
-
-## About
-
-Nodeserver gives you:
-*	A simple and light webserver written in javascript
-*	Reverse proxy for nodejs projects and other web projects
-*	Support PHP, nodejs websites and we work for python
-
-... and also you can modify and adapt the server code.
-
-We have a demo server site at [www.altairstudios.es](http://www.altairstudios.es/) and [www.copitosdenieve.com](http://www.copitosdenieve.com/) where you can see nodeserver in action.
+Nodeserver is a production webserver Node.js applications. It allows you to keep applications alive forever, to reload them, start webistes on php or html, reverse proxy.
 
 If you have ideas or questions, open a new issue with your ideas.
 
 
-### Example application script (proxytest.js)
+### How install
 
-You can found a demo in proxytest.js
+Install nodeserver script via npm:
 
-Here is an example:
-	
-	var httpProxy = require('http-proxy');
-	var nodeserver = require('nodeserver');
+	sudo npm install nodeserver -g
 
-	nodeserver.addWebsite({
-		name: "demo",
-		type: "proxy",
-		bindings: [
-			"localhost"
-		],
-		target: "http://localhost:10000"
-	});
+Install daemon on the system. Currently only support CentOS.
 
-	nodeserver.addPort(80);
-
-	nodeserver.start();
+	sudo nodeserver install centos
 
 
+### Configuration
 
-### Example etc configuration
+Nodeserver can read a configuration in /etc/nodeserver/nodeserver.config
 
-Nodeserver binary can read a defined configuration in the same path of execution of nodeserver or /etc/nodeserver/nodeserver.config.
+The syntax of these file are:
 
-Here is an example of etc file:
+	{
+		"nodeserver": {
+			"admin": {
+				"active": [true|false],
+				"port": admin-port-number,
+				"user": "user-for-admin",
+				"password": "hash-password"
+			}
+		},
+		"sites": [{
+			"name": "website name",
+			"type": "node|cgi",
+			"bindings": [
+				"example.com:80",
+				"www.example.com:80",
+				"otherbindings:8080",
+			],
+			"port": "internal port number for the project, do not repeat it. Only for node"
+			"script": "absolute script for server.js for node or doc_root for php (cgi)",
+			"security": {
+				"certs": {
+					"key": "/absolutepath/keycert.key",
+					"cert": "/absolutepath/cert.cert",
+					"ca": ["/absolutepath/ca.cert"]
+				},
+				"bindings": [
+					"securehostforhttps.com:443",
+					"www.securehostforhttps.com:443"
+				]
+			},
+		}, {
+			"name": "php website",
+			"type": "cgi",
+			"bindings": [
+				"myphpsite.com:80"
+			],
+			"script": "/var/www/phpsite"
+		}, {
+			"name": "standar nodejs site",
+			"type": "node",
+			"bindings": [
+				"standarnodejs.com:80"
+			],
+			"port": "10001",
+			"script": "/var/www/nodejs1/server.js"
+		}, {
+			"name": "secure nodejs site",
+			"type": "node",
+			"bindings": [
+				"securenodejs.com:80"
+			],
+			"port": "10002",
+			"security": {
+				"certs": {
+					"key": "/absolutepath/keycert.key",
+					"cert": "/absolutepath/cert.cert",
+					"ca": ["/absolutepath/ca.cert"]
+				},
+				"bindings": [
+					"securenodejs.com:443"
+				]
+			},
+			"script": "/var/www/nodejs2/server.js"
+		}]
+	}
 
-	[{
-		"name": "demo",
-		"type": "proxy",
-		"bindings": [
-			"localhost:8080"
-		],
-		"target": "http://localhost:10001"
-	},{
-		"name": "demo - node",
-		"type": "node",
-		"bindings": [
-			"localhost:8081"
-		],
-		"port": "10001",
-		"portssl": "11001",
-		"script": "../web2/web2.js",
-		"absoluteScript": false
-	},{
-		"name": "demo 2 - node",
-		"type": "node",
-		"bindings": [
-			"localhost:8082"
-		],
-		"port": "10002",
-		"portssl": "11002",
-		"script": "/Users/myuser/Sites/web1/web1.js",
-		"absoluteScript": true
-	}]
+
 
 
 
@@ -88,13 +104,11 @@ NodeServer is a free and open source community-driven project.
 
 Thanks to the following companies and projects whose work we have used or taken inspiration from in the making of NodeServer:
 
+* [AltairStudios](http://www.altairstudios.es)
 * [Node.js](http://www.nodejs.org)
 * [KeystoneJS](http://www.keystonejs.com)
 * [ExpressJS](http://www.expressjs.com)
-* [jQuery](http://www.jquery.com)
 * [Digital Ocean](http://www.digitalocean.com/)
-* [Azure](http://www.windowsazure.com/)
-* [Lets Health](http://www.letshealth.com)
 
 
 
