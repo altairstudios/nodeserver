@@ -1,5 +1,9 @@
 {
 	"mimes": {
+		"123": {
+			"contentType": "application/vnd.lotus-1-2-3",
+			"type": "static"
+		},
 		"atom": {
 			"contentType": "application/atom+xml",
 			"type": "static"
@@ -98,6 +102,3438 @@
 		},
 		"xsl": {
 			"contentType": "application/xml",
+			"type": "static"
+		},
+		"ez": {
+			"contentType": "application/andrew-inset",
+			"type": "static"
+		},
+		"aw": {
+			"contentType": "application/applixware",
+			"type": "static"
+		},
+		"atomcat": {
+			"contentType": "application/atomcat+xml",
+			"type": "static"
+		},
+		"atomsvc": {
+			"contentType": "application/atomsvc+xml",
+			"type": "static"
+		},
+		"ccxml": {
+			"contentType": "application/ccxml+xml",
+			"type": "static"
+		},
+		"cdmia": {
+			"contentType": "application/cdmi-capability",
+			"type": "static"
+		},
+		"cdmic": {
+			"contentType": "application/cdmi-container",
+			"type": "static"
+		},
+		"cdmid": {
+			"contentType": "application/cdmi-domain",
+			"type": "static"
+		},
+		"cdmio": {
+			"contentType": "application/cdmi-object",
+			"type": "static"
+		},
+		"cdmiq": {
+			"contentType": "application/cdmi-queue",
+			"type": "static"
+		},
+		"cu": {
+			"contentType": "application/cu-seeme",
+			"type": "static"
+		},
+		"davmount": {
+			"contentType": "application/davmount+xml",
+			"type": "static"
+		},
+		"dssc": {
+			"contentType": "application/dssc+der",
+			"type": "static"
+		},
+		"xdssc": {
+			"contentType": "application/dssc+xml",
+			"type": "static"
+		},
+		"ecma": {
+			"contentType": "application/ecmascript",
+			"type": "static"
+		},
+		"emma": {
+			"contentType": "application/emma+xml",
+			"type": "static"
+		},
+		"exi": {
+			"contentType": "application/exi",
+			"type": "static"
+		},
+		"pfr": {
+			"contentType": "application/font-tdpfr",
+			"type": "static"
+		},
+		"stk": {
+			"contentType": "application/hyperstudio",
+			"type": "static"
+		},
+		"ipfix": {
+			"contentType": "application/ipfix",
+			"type": "static"
+		},
+		"ser": {
+			"contentType": "application/java-serialized-object",
+			"type": "static"
+		},
+		"class": {
+			"contentType": "application/java-vm",
+			"type": "static"
+		},
+		"lostxml": {
+			"contentType": "application/lost+xml",
+			"type": "static"
+		},
+		"hqx": {
+			"contentType": "application/mac-binhex40",
+			"type": "static"
+		},
+		"cpt": {
+			"contentType": "application/mac-compactpro",
+			"type": "static"
+		},
+		"mads": {
+			"contentType": "application/mads+xml",
+			"type": "static"
+		},
+		"mrc": {
+			"contentType": "application/marc",
+			"type": "static"
+		},
+		"mrcx": {
+			"contentType": "application/marcxml+xml",
+			"type": "static"
+		},
+		"ma": {
+			"contentType": "application/mathematica",
+			"type": "static"
+		},
+		"nb": {
+			"contentType": "application/mathematica",
+			"type": "static"
+		},
+		"mb": {
+			"contentType": "application/mathematica",
+			"type": "static"
+		},
+		"mathml": {
+			"contentType": "application/mathml+xml",
+			"type": "static"
+		},
+		"mbox": {
+			"contentType": "application/mbox",
+			"type": "static"
+		},
+		"mscml": {
+			"contentType": "application/mediaservercontrol+xml",
+			"type": "static"
+		},
+		"meta4": {
+			"contentType": "application/metalink4+xml",
+			"type": "static"
+		},
+		"mets": {
+			"contentType": "application/mets+xml",
+			"type": "static"
+		},
+		"mods": {
+			"contentType": "application/mods+xml",
+			"type": "static"
+		},
+		"m21": {
+			"contentType": "application/mp21",
+			"type": "static"
+		},
+		"mp21": {
+			"contentType": "application/mp21",
+			"type": "static"
+		},
+		"mp4s": {
+			"contentType": "application/mp4",
+			"type": "static"
+		},
+		"mxf": {
+			"contentType": "application/mxf",
+			"type": "static"
+		},
+		"bin": {
+			"contentType": "application/octet-stream",
+			"type": "static"
+		},
+		"dms": {
+			"contentType": "application/octet-stream",
+			"type": "static"
+		},
+		"lha": {
+			"contentType": "application/octet-stream",
+			"type": "static"
+		},
+		"lrf": {
+			"contentType": "application/octet-stream",
+			"type": "static"
+		},
+		"lzh": {
+			"contentType": "application/octet-stream",
+			"type": "static"
+		},
+		"so": {
+			"contentType": "application/octet-stream",
+			"type": "static"
+		},
+		"iso": {
+			"contentType": "application/octet-stream",
+			"type": "static"
+		},
+		"dmg": {
+			"contentType": "application/octet-stream",
+			"type": "static"
+		},
+		"dist": {
+			"contentType": "application/octet-stream",
+			"type": "static"
+		},
+		"distz": {
+			"contentType": "application/octet-stream",
+			"type": "static"
+		},
+		"pkg": {
+			"contentType": "application/octet-stream",
+			"type": "static"
+		},
+		"bpk": {
+			"contentType": "application/octet-stream",
+			"type": "static"
+		},
+		"dump": {
+			"contentType": "application/octet-stream",
+			"type": "static"
+		},
+		"elc": {
+			"contentType": "application/octet-stream",
+			"type": "static"
+		},
+		"deploy": {
+			"contentType": "application/octet-stream",
+			"type": "static"
+		},
+		"oda": {
+			"contentType": "application/oda",
+			"type": "static"
+		},
+		"opf": {
+			"contentType": "application/oebps-package+xml",
+			"type": "static"
+		},
+		"ogx": {
+			"contentType": "application/ogg",
+			"type": "static"
+		},
+		"onetoc": {
+			"contentType": "application/onenote",
+			"type": "static"
+		},
+		"onetoc2": {
+			"contentType": "application/onenote",
+			"type": "static"
+		},
+		"onetmp": {
+			"contentType": "application/onenote",
+			"type": "static"
+		},
+		"onepkg": {
+			"contentType": "application/onenote",
+			"type": "static"
+		},
+		"xer": {
+			"contentType": "application/patch-ops-error+xml",
+			"type": "static"
+		},
+		"pgp": {
+			"contentType": "application/pgp-encrypted",
+			"type": "static"
+		},
+		"asc": {
+			"contentType": "application/pgp-signature",
+			"type": "static"
+		},
+		"sig": {
+			"contentType": "application/pgp-signature",
+			"type": "static"
+		},
+		"prf": {
+			"contentType": "application/pics-rules",
+			"type": "static"
+		},
+		"p10": {
+			"contentType": "application/pkcs10",
+			"type": "static"
+		},
+		"p7m": {
+			"contentType": "application/pkcs7-mime",
+			"type": "static"
+		},
+		"p7c": {
+			"contentType": "application/pkcs7-mime",
+			"type": "static"
+		},
+		"p7s": {
+			"contentType": "application/pkcs7-signature",
+			"type": "static"
+		},
+		"p8": {
+			"contentType": "application/pkcs8",
+			"type": "static"
+		},
+		"ac": {
+			"contentType": "application/pkix-attr-cert",
+			"type": "static"
+		},
+		"cer": {
+			"contentType": "application/pkix-cert",
+			"type": "static"
+		},
+		"crl": {
+			"contentType": "application/pkix-crl",
+			"type": "static"
+		},
+		"pkipath": {
+			"contentType": "application/pkix-pkipath",
+			"type": "static"
+		},
+		"pki": {
+			"contentType": "application/pkixcmp",
+			"type": "static"
+		},
+		"pls": {
+			"contentType": "application/pls+xml",
+			"type": "static"
+		},
+		"ai": {
+			"contentType": "application/postscript",
+			"type": "static"
+		},
+		"eps": {
+			"contentType": "application/postscript",
+			"type": "static"
+		},
+		"ps": {
+			"contentType": "application/postscript",
+			"type": "static"
+		},
+		"cww": {
+			"contentType": "application/prs.cww",
+			"type": "static"
+		},
+		"pskcxml": {
+			"contentType": "application/pskc+xml",
+			"type": "static"
+		},
+		"rdf": {
+			"contentType": "application/rdf+xml",
+			"type": "static"
+		},
+		"rif": {
+			"contentType": "application/reginfo+xml",
+			"type": "static"
+		},
+		"rnc": {
+			"contentType": "application/relax-ng-compact-syntax",
+			"type": "static"
+		},
+		"rl": {
+			"contentType": "application/resource-lists+xml",
+			"type": "static"
+		},
+		"rld": {
+			"contentType": "application/resource-lists-diff+xml",
+			"type": "static"
+		},
+		"rs": {
+			"contentType": "application/rls-services+xml",
+			"type": "static"
+		},
+		"rsd": {
+			"contentType": "application/rsd+xml",
+			"type": "static"
+		},
+		"rss": {
+			"contentType": "application/rss+xml",
+			"type": "static"
+		},
+		"rtf": {
+			"contentType": "application/rtf",
+			"type": "static"
+		},
+		"sbml": {
+			"contentType": "application/sbml+xml",
+			"type": "static"
+		},
+		"scq": {
+			"contentType": "application/scvp-cv-request",
+			"type": "static"
+		},
+		"scs": {
+			"contentType": "application/scvp-cv-response",
+			"type": "static"
+		},
+		"spq": {
+			"contentType": "application/scvp-vp-request",
+			"type": "static"
+		},
+		"spp": {
+			"contentType": "application/scvp-vp-response",
+			"type": "static"
+		},
+		"sdp": {
+			"contentType": "application/sdp",
+			"type": "static"
+		},
+		"setpay": {
+			"contentType": "application/set-payment-initiation",
+			"type": "static"
+		},
+		"setreg": {
+			"contentType": "application/set-registration-initiation",
+			"type": "static"
+		},
+		"shf": {
+			"contentType": "application/shf+xml",
+			"type": "static"
+		},
+		"smi": {
+			"contentType": "application/smil+xml",
+			"type": "static"
+		},
+		"smil": {
+			"contentType": "application/smil+xml",
+			"type": "static"
+		},
+		"rq": {
+			"contentType": "application/sparql-query",
+			"type": "static"
+		},
+		"srx": {
+			"contentType": "application/sparql-results+xml",
+			"type": "static"
+		},
+		"gram": {
+			"contentType": "application/srgs",
+			"type": "static"
+		},
+		"grxml": {
+			"contentType": "application/srgs+xml",
+			"type": "static"
+		},
+		"sru": {
+			"contentType": "application/sru+xml",
+			"type": "static"
+		},
+		"ssml": {
+			"contentType": "application/ssml+xml",
+			"type": "static"
+		},
+		"tei": {
+			"contentType": "application/tei+xml",
+			"type": "static"
+		},
+		"teicorpus": {
+			"contentType": "application/tei+xml",
+			"type": "static"
+		},
+		"tfi": {
+			"contentType": "application/thraud+xml",
+			"type": "static"
+		},
+		"tsd": {
+			"contentType": "application/timestamped-data",
+			"type": "static"
+		},
+		"plb": {
+			"contentType": "application/vnd.3gpp.pic-bw-large",
+			"type": "static"
+		},
+		"psb": {
+			"contentType": "application/vnd.3gpp.pic-bw-small",
+			"type": "static"
+		},
+		"pvb": {
+			"contentType": "application/vnd.3gpp.pic-bw-var",
+			"type": "static"
+		},
+		"tcap": {
+			"contentType": "application/vnd.3gpp2.tcap",
+			"type": "static"
+		},
+		"pwn": {
+			"contentType": "application/vnd.3m.post-it-notes",
+			"type": "static"
+		},
+		"aso": {
+			"contentType": "application/vnd.accpac.simply.aso",
+			"type": "static"
+		},
+		"imp": {
+			"contentType": "application/vnd.accpac.simply.imp",
+			"type": "static"
+		},
+		"acu": {
+			"contentType": "application/vnd.acucobol",
+			"type": "static"
+		},
+		"atc": {
+			"contentType": "application/vnd.acucorp",
+			"type": "static"
+		},
+		"acutc": {
+			"contentType": "application/vnd.acucorp",
+			"type": "static"
+		},
+		"air": {
+			"contentType": "application/vnd.adobe.air-application-installer-package+zip",
+			"type": "static"
+		},
+		"fxp": {
+			"contentType": "application/vnd.adobe.fxp",
+			"type": "static"
+		},
+		"fxpl": {
+			"contentType": "application/vnd.adobe.fxp",
+			"type": "static"
+		},
+		"xdp": {
+			"contentType": "application/vnd.adobe.xdp+xml",
+			"type": "static"
+		},
+		"xfdf": {
+			"contentType": "application/vnd.adobe.xfdf",
+			"type": "static"
+		},
+		"ahead": {
+			"contentType": "application/vnd.ahead.space",
+			"type": "static"
+		},
+		"azf": {
+			"contentType": "application/vnd.airzip.filesecure.azf",
+			"type": "static"
+		},
+		"azs": {
+			"contentType": "application/vnd.airzip.filesecure.azs",
+			"type": "static"
+		},
+		"azw": {
+			"contentType": "application/vnd.amazon.ebook",
+			"type": "static"
+		},
+		"acc": {
+			"contentType": "application/vnd.americandynamics.acc",
+			"type": "static"
+		},
+		"ami": {
+			"contentType": "application/vnd.amiga.ami",
+			"type": "static"
+		},
+		"apk": {
+			"contentType": "application/vnd.android.package-archive",
+			"type": "static"
+		},
+		"cii": {
+			"contentType": "application/vnd.anser-web-certificate-issue-initiation",
+			"type": "static"
+		},
+		"fti": {
+			"contentType": "application/vnd.anser-web-funds-transfer-initiation",
+			"type": "static"
+		},
+		"atx": {
+			"contentType": "application/vnd.antix.game-component",
+			"type": "static"
+		},
+		"mpkg": {
+			"contentType": "application/vnd.apple.installer+xml",
+			"type": "static"
+		},
+		"m3u8": {
+			"contentType": "application/vnd.apple.mpegurl",
+			"type": "static"
+		},
+		"swi": {
+			"contentType": "application/vnd.aristanetworks.swi",
+			"type": "static"
+		},
+		"aep": {
+			"contentType": "application/vnd.audiograph",
+			"type": "static"
+		},
+		"mpm": {
+			"contentType": "application/vnd.blueice.multipass",
+			"type": "static"
+		},
+		"bmi": {
+			"contentType": "application/vnd.bmi",
+			"type": "static"
+		},
+		"rep": {
+			"contentType": "application/vnd.businessobjects",
+			"type": "static"
+		},
+		"cdxml": {
+			"contentType": "application/vnd.chemdraw+xml",
+			"type": "static"
+		},
+		"mmd": {
+			"contentType": "application/vnd.chipnuts.karaoke-mmd",
+			"type": "static"
+		},
+		"cdy": {
+			"contentType": "application/vnd.cinderella",
+			"type": "static"
+		},
+		"cla": {
+			"contentType": "application/vnd.claymore",
+			"type": "static"
+		},
+		"rp9": {
+			"contentType": "application/vnd.cloanto.rp9",
+			"type": "static"
+		},
+		"c4g": {
+			"contentType": "application/vnd.clonk.c4group",
+			"type": "static"
+		},
+		"c4d": {
+			"contentType": "application/vnd.clonk.c4group",
+			"type": "static"
+		},
+		"c4f": {
+			"contentType": "application/vnd.clonk.c4group",
+			"type": "static"
+		},
+		"c4p": {
+			"contentType": "application/vnd.clonk.c4group",
+			"type": "static"
+		},
+		"c4u": {
+			"contentType": "application/vnd.clonk.c4group",
+			"type": "static"
+		},
+		"c11amc": {
+			"contentType": "application/vnd.cluetrust.cartomobile-config",
+			"type": "static"
+		},
+		"c11amz": {
+			"contentType": "application/vnd.cluetrust.cartomobile-config-pkg",
+			"type": "static"
+		},
+		"csp": {
+			"contentType": "application/vnd.commonspace",
+			"type": "static"
+		},
+		"cdbcmsg": {
+			"contentType": "application/vnd.contact.cmsg",
+			"type": "static"
+		},
+		"cmc": {
+			"contentType": "application/vnd.cosmocaller",
+			"type": "static"
+		},
+		"clkx": {
+			"contentType": "application/vnd.crick.clicker",
+			"type": "static"
+		},
+		"clkk": {
+			"contentType": "application/vnd.crick.clicker.keyboard",
+			"type": "static"
+		},
+		"clkp": {
+			"contentType": "application/vnd.crick.clicker.palette",
+			"type": "static"
+		},
+		"clkt": {
+			"contentType": "application/vnd.crick.clicker.template",
+			"type": "static"
+		},
+		"clkw": {
+			"contentType": "application/vnd.crick.clicker.wordbank",
+			"type": "static"
+		},
+		"wbs": {
+			"contentType": "application/vnd.criticaltools.wbs+xml",
+			"type": "static"
+		},
+		"pml": {
+			"contentType": "application/vnd.ctc-posml",
+			"type": "static"
+		},
+		"ppd": {
+			"contentType": "application/vnd.cups-ppd",
+			"type": "static"
+		},
+		"car": {
+			"contentType": "application/vnd.curl.car",
+			"type": "static"
+		},
+		"pcurl": {
+			"contentType": "application/vnd.curl.pcurl",
+			"type": "static"
+		},
+		"rdz": {
+			"contentType": "application/vnd.data-vision.rdz",
+			"type": "static"
+		},
+		"uvf": {
+			"contentType": "application/vnd.dece.data",
+			"type": "static"
+		},
+		"uvvf": {
+			"contentType": "application/vnd.dece.data",
+			"type": "static"
+		},
+		"uvd": {
+			"contentType": "application/vnd.dece.data",
+			"type": "static"
+		},
+		"uvvd": {
+			"contentType": "application/vnd.dece.data",
+			"type": "static"
+		},
+		"uvt": {
+			"contentType": "application/vnd.dece.ttml+xml",
+			"type": "static"
+		},
+		"uvvt": {
+			"contentType": "application/vnd.dece.ttml+xml",
+			"type": "static"
+		},
+		"uvx": {
+			"contentType": "application/vnd.dece.unspecified",
+			"type": "static"
+		},
+		"uvvx": {
+			"contentType": "application/vnd.dece.unspecified",
+			"type": "static"
+		},
+		"fe_launch": {
+			"contentType": "application/vnd.denovo.fcselayout-link",
+			"type": "static"
+		},
+		"dna": {
+			"contentType": "application/vnd.dna",
+			"type": "static"
+		},
+		"mlp": {
+			"contentType": "application/vnd.dolby.mlp",
+			"type": "static"
+		},
+		"dpg": {
+			"contentType": "application/vnd.dpgraph",
+			"type": "static"
+		},
+		"dfac": {
+			"contentType": "application/vnd.dreamfactory",
+			"type": "static"
+		},
+		"ait": {
+			"contentType": "application/vnd.dvb.ait",
+			"type": "static"
+		},
+		"svc": {
+			"contentType": "application/vnd.dvb.service",
+			"type": "static"
+		},
+		"geo": {
+			"contentType": "application/vnd.dynageo",
+			"type": "static"
+		},
+		"mag": {
+			"contentType": "application/vnd.ecowin.chart",
+			"type": "static"
+		},
+		"nml": {
+			"contentType": "application/vnd.enliven",
+			"type": "static"
+		},
+		"esf": {
+			"contentType": "application/vnd.epson.esf",
+			"type": "static"
+		},
+		"msf": {
+			"contentType": "application/vnd.epson.msf",
+			"type": "static"
+		},
+		"qam": {
+			"contentType": "application/vnd.epson.quickanime",
+			"type": "static"
+		},
+		"slt": {
+			"contentType": "application/vnd.epson.salt",
+			"type": "static"
+		},
+		"ssf": {
+			"contentType": "application/vnd.epson.ssf",
+			"type": "static"
+		},
+		"es3": {
+			"contentType": "application/vnd.eszigno3+xml",
+			"type": "static"
+		},
+		"et3": {
+			"contentType": "application/vnd.eszigno3+xml",
+			"type": "static"
+		},
+		"ez2": {
+			"contentType": "application/vnd.ezpix-album",
+			"type": "static"
+		},
+		"ez3": {
+			"contentType": "application/vnd.ezpix-package",
+			"type": "static"
+		},
+		"fdf": {
+			"contentType": "application/vnd.fdf",
+			"type": "static"
+		},
+		"mseed": {
+			"contentType": "application/vnd.fdsn.mseed",
+			"type": "static"
+		},
+		"seed": {
+			"contentType": "application/vnd.fdsn.seed",
+			"type": "static"
+		},
+		"dataless": {
+			"contentType": "application/vnd.fdsn.seed",
+			"type": "static"
+		},
+		"gph": {
+			"contentType": "application/vnd.flographit",
+			"type": "static"
+		},
+		"ftc": {
+			"contentType": "application/vnd.fluxtime.clip",
+			"type": "static"
+		},
+		"fm": {
+			"contentType": "application/vnd.framemaker",
+			"type": "static"
+		},
+		"frame": {
+			"contentType": "application/vnd.framemaker",
+			"type": "static"
+		},
+		"maker": {
+			"contentType": "application/vnd.framemaker",
+			"type": "static"
+		},
+		"book": {
+			"contentType": "application/vnd.framemaker",
+			"type": "static"
+		},
+		"fnc": {
+			"contentType": "application/vnd.frogans.fnc",
+			"type": "static"
+		},
+		"ltf": {
+			"contentType": "application/vnd.frogans.ltf",
+			"type": "static"
+		},
+		"fsc": {
+			"contentType": "application/vnd.fsc.weblaunch",
+			"type": "static"
+		},
+		"oas": {
+			"contentType": "application/vnd.fujitsu.oasys",
+			"type": "static"
+		},
+		"oa2": {
+			"contentType": "application/vnd.fujitsu.oasys2",
+			"type": "static"
+		},
+		"oa3": {
+			"contentType": "application/vnd.fujitsu.oasys3",
+			"type": "static"
+		},
+		"fg5": {
+			"contentType": "application/vnd.fujitsu.oasysgp",
+			"type": "static"
+		},
+		"bh2": {
+			"contentType": "application/vnd.fujitsu.oasysprs",
+			"type": "static"
+		},
+		"ddd": {
+			"contentType": "application/vnd.fujixerox.ddd",
+			"type": "static"
+		},
+		"xdw": {
+			"contentType": "application/vnd.fujixerox.docuworks",
+			"type": "static"
+		},
+		"xbd": {
+			"contentType": "application/vnd.fujixerox.docuworks.binder",
+			"type": "static"
+		},
+		"fzs": {
+			"contentType": "application/vnd.fuzzysheet",
+			"type": "static"
+		},
+		"txd": {
+			"contentType": "application/vnd.genomatix.tuxedo",
+			"type": "static"
+		},
+		"ggb": {
+			"contentType": "application/vnd.geogebra.file",
+			"type": "static"
+		},
+		"ggt": {
+			"contentType": "application/vnd.geogebra.tool",
+			"type": "static"
+		},
+		"gex": {
+			"contentType": "application/vnd.geometry-explorer",
+			"type": "static"
+		},
+		"gre": {
+			"contentType": "application/vnd.geometry-explorer",
+			"type": "static"
+		},
+		"gxt": {
+			"contentType": "application/vnd.geonext",
+			"type": "static"
+		},
+		"g2w": {
+			"contentType": "application/vnd.geoplan",
+			"type": "static"
+		},
+		"g3w": {
+			"contentType": "application/vnd.geospace",
+			"type": "static"
+		},
+		"gmx": {
+			"contentType": "application/vnd.gmx",
+			"type": "static"
+		},
+		"kml": {
+			"contentType": "application/vnd.google-earth.kml+xml",
+			"type": "static"
+		},
+		"kmz": {
+			"contentType": "application/vnd.google-earth.kmz",
+			"type": "static"
+		},
+		"gqf": {
+			"contentType": "application/vnd.grafeq",
+			"type": "static"
+		},
+		"gqs": {
+			"contentType": "application/vnd.grafeq",
+			"type": "static"
+		},
+		"gac": {
+			"contentType": "application/vnd.groove-account",
+			"type": "static"
+		},
+		"ghf": {
+			"contentType": "application/vnd.groove-help",
+			"type": "static"
+		},
+		"gim": {
+			"contentType": "application/vnd.groove-identity-message",
+			"type": "static"
+		},
+		"grv": {
+			"contentType": "application/vnd.groove-injector",
+			"type": "static"
+		},
+		"gtm": {
+			"contentType": "application/vnd.groove-tool-message",
+			"type": "static"
+		},
+		"tpl": {
+			"contentType": "application/vnd.groove-tool-template",
+			"type": "static"
+		},
+		"vcg": {
+			"contentType": "application/vnd.groove-vcard",
+			"type": "static"
+		},
+		"hal": {
+			"contentType": "application/vnd.hal+xml",
+			"type": "static"
+		},
+		"zmm": {
+			"contentType": "application/vnd.handheld-entertainment+xml",
+			"type": "static"
+		},
+		"hbci": {
+			"contentType": "application/vnd.hbci",
+			"type": "static"
+		},
+		"les": {
+			"contentType": "application/vnd.hhe.lesson-player",
+			"type": "static"
+		},
+		"hpgl": {
+			"contentType": "application/vnd.hp-hpgl",
+			"type": "static"
+		},
+		"hpid": {
+			"contentType": "application/vnd.hp-hpid",
+			"type": "static"
+		},
+		"hps": {
+			"contentType": "application/vnd.hp-hps",
+			"type": "static"
+		},
+		"jlt": {
+			"contentType": "application/vnd.hp-jlyt",
+			"type": "static"
+		},
+		"pcl": {
+			"contentType": "application/vnd.hp-pcl",
+			"type": "static"
+		},
+		"pclxl": {
+			"contentType": "application/vnd.hp-pclxl",
+			"type": "static"
+		},
+		"sfd-hdstx": {
+			"contentType": "application/vnd.hydrostatix.sof-data",
+			"type": "static"
+		},
+		"x3d": {
+			"contentType": "application/vnd.hzn-3d-crossword",
+			"type": "static"
+		},
+		"mpy": {
+			"contentType": "application/vnd.ibm.minipay",
+			"type": "static"
+		},
+		"afp": {
+			"contentType": "application/vnd.ibm.modcap",
+			"type": "static"
+		},
+		"listafp": {
+			"contentType": "application/vnd.ibm.modcap",
+			"type": "static"
+		},
+		"list3820": {
+			"contentType": "application/vnd.ibm.modcap",
+			"type": "static"
+		},
+		"irm": {
+			"contentType": "application/vnd.ibm.rights-management",
+			"type": "static"
+		},
+		"sc": {
+			"contentType": "application/vnd.ibm.secure-container",
+			"type": "static"
+		},
+		"icc": {
+			"contentType": "application/vnd.iccprofile",
+			"type": "static"
+		},
+		"icm": {
+			"contentType": "application/vnd.iccprofile",
+			"type": "static"
+		},
+		"igl": {
+			"contentType": "application/vnd.igloader",
+			"type": "static"
+		},
+		"ivp": {
+			"contentType": "application/vnd.immervision-ivp",
+			"type": "static"
+		},
+		"ivu": {
+			"contentType": "application/vnd.immervision-ivu",
+			"type": "static"
+		},
+		"igm": {
+			"contentType": "application/vnd.insors.igm",
+			"type": "static"
+		},
+		"xpw": {
+			"contentType": "application/vnd.intercon.formnet",
+			"type": "static"
+		},
+		"xpx": {
+			"contentType": "application/vnd.intercon.formnet",
+			"type": "static"
+		},
+		"i2g": {
+			"contentType": "application/vnd.intergeo",
+			"type": "static"
+		},
+		"qbo": {
+			"contentType": "application/vnd.intu.qbo",
+			"type": "static"
+		},
+		"qfx": {
+			"contentType": "application/vnd.intu.qfx",
+			"type": "static"
+		},
+		"rcprofile": {
+			"contentType": "application/vnd.ipunplugged.rcprofile",
+			"type": "static"
+		},
+		"irp": {
+			"contentType": "application/vnd.irepository.package+xml",
+			"type": "static"
+		},
+		"xpr": {
+			"contentType": "application/vnd.is-xpr",
+			"type": "static"
+		},
+		"fcs": {
+			"contentType": "application/vnd.isac.fcs",
+			"type": "static"
+		},
+		"jam": {
+			"contentType": "application/vnd.jam",
+			"type": "static"
+		},
+		"rms": {
+			"contentType": "application/vnd.jcp.javame.midlet-rms",
+			"type": "static"
+		},
+		"jisp": {
+			"contentType": "application/vnd.jisp",
+			"type": "static"
+		},
+		"joda": {
+			"contentType": "application/vnd.joost.joda-archive",
+			"type": "static"
+		},
+		"ktz": {
+			"contentType": "application/vnd.kahootz",
+			"type": "static"
+		},
+		"ktr": {
+			"contentType": "application/vnd.kahootz",
+			"type": "static"
+		},
+		"karbon": {
+			"contentType": "application/vnd.kde.karbon",
+			"type": "static"
+		},
+		"chrt": {
+			"contentType": "application/vnd.kde.kchart",
+			"type": "static"
+		},
+		"kfo": {
+			"contentType": "application/vnd.kde.kformula",
+			"type": "static"
+		},
+		"flw": {
+			"contentType": "application/vnd.kde.kivio",
+			"type": "static"
+		},
+		"kon": {
+			"contentType": "application/vnd.kde.kontour",
+			"type": "static"
+		},
+		"kpr": {
+			"contentType": "application/vnd.kde.kpresenter",
+			"type": "static"
+		},
+		"kpt": {
+			"contentType": "application/vnd.kde.kpresenter",
+			"type": "static"
+		},
+		"ksp": {
+			"contentType": "application/vnd.kde.kspread",
+			"type": "static"
+		},
+		"kwd": {
+			"contentType": "application/vnd.kde.kword",
+			"type": "static"
+		},
+		"kwt": {
+			"contentType": "application/vnd.kde.kword",
+			"type": "static"
+		},
+		"htke": {
+			"contentType": "application/vnd.kenameaapp",
+			"type": "static"
+		},
+		"kia": {
+			"contentType": "application/vnd.kidspiration",
+			"type": "static"
+		},
+		"kne": {
+			"contentType": "application/vnd.kinar",
+			"type": "static"
+		},
+		"knp": {
+			"contentType": "application/vnd.kinar",
+			"type": "static"
+		},
+		"skp": {
+			"contentType": "application/vnd.koan",
+			"type": "static"
+		},
+		"skd": {
+			"contentType": "application/vnd.koan",
+			"type": "static"
+		},
+		"skt": {
+			"contentType": "application/vnd.koan",
+			"type": "static"
+		},
+		"skm": {
+			"contentType": "application/vnd.koan",
+			"type": "static"
+		},
+		"sse": {
+			"contentType": "application/vnd.kodak-descriptor",
+			"type": "static"
+		},
+		"lasxml": {
+			"contentType": "application/vnd.las.las+xml",
+			"type": "static"
+		},
+		"lbd": {
+			"contentType": "application/vnd.llamagraphics.life-balance.desktop",
+			"type": "static"
+		},
+		"lbe": {
+			"contentType": "application/vnd.llamagraphics.life-balance.exchange+xml",
+			"type": "static"
+		},
+		"apr": {
+			"contentType": "application/vnd.lotus-approach",
+			"type": "static"
+		},
+		"pre": {
+			"contentType": "application/vnd.lotus-freelance",
+			"type": "static"
+		},
+		"nsf": {
+			"contentType": "application/vnd.lotus-notes",
+			"type": "static"
+		},
+		"org": {
+			"contentType": "application/vnd.lotus-organizer",
+			"type": "static"
+		},
+		"scm": {
+			"contentType": "application/vnd.lotus-screencam",
+			"type": "static"
+		},
+		"lwp": {
+			"contentType": "application/vnd.lotus-wordpro",
+			"type": "static"
+		},
+		"portpkg": {
+			"contentType": "application/vnd.macports.portpkg",
+			"type": "static"
+		},
+		"mcd": {
+			"contentType": "application/vnd.mcd",
+			"type": "static"
+		},
+		"mc1": {
+			"contentType": "application/vnd.medcalcdata",
+			"type": "static"
+		},
+		"cdkey": {
+			"contentType": "application/vnd.mediastation.cdkey",
+			"type": "static"
+		},
+		"mwf": {
+			"contentType": "application/vnd.mfer",
+			"type": "static"
+		},
+		"mfm": {
+			"contentType": "application/vnd.mfmp",
+			"type": "static"
+		},
+		"flo": {
+			"contentType": "application/vnd.micrografx.flo",
+			"type": "static"
+		},
+		"igx": {
+			"contentType": "application/vnd.micrografx.igx",
+			"type": "static"
+		},
+		"mif": {
+			"contentType": "application/vnd.mif",
+			"type": "static"
+		},
+		"daf": {
+			"contentType": "application/vnd.mobius.daf",
+			"type": "static"
+		},
+		"dis": {
+			"contentType": "application/vnd.mobius.dis",
+			"type": "static"
+		},
+		"mbk": {
+			"contentType": "application/vnd.mobius.mbk",
+			"type": "static"
+		},
+		"mqy": {
+			"contentType": "application/vnd.mobius.mqy",
+			"type": "static"
+		},
+		"msl": {
+			"contentType": "application/vnd.mobius.msl",
+			"type": "static"
+		},
+		"plc": {
+			"contentType": "application/vnd.mobius.plc",
+			"type": "static"
+		},
+		"txf": {
+			"contentType": "application/vnd.mobius.txf",
+			"type": "static"
+		},
+		"mpn": {
+			"contentType": "application/vnd.mophun.application",
+			"type": "static"
+		},
+		"mpc": {
+			"contentType": "application/vnd.mophun.certificate",
+			"type": "static"
+		},
+		"xul": {
+			"contentType": "application/vnd.mozilla.xul+xml",
+			"type": "static"
+		},
+		"cil": {
+			"contentType": "application/vnd.ms-artgalry",
+			"type": "static"
+		},
+		"cab": {
+			"contentType": "application/vnd.ms-cab-compressed",
+			"type": "static"
+		},
+		"xls": {
+			"contentType": "application/vnd.ms-excel",
+			"type": "static"
+		},
+		"xlm": {
+			"contentType": "application/vnd.ms-excel",
+			"type": "static"
+		},
+		"xla": {
+			"contentType": "application/vnd.ms-excel",
+			"type": "static"
+		},
+		"xlc": {
+			"contentType": "application/vnd.ms-excel",
+			"type": "static"
+		},
+		"xlt": {
+			"contentType": "application/vnd.ms-excel",
+			"type": "static"
+		},
+		"xlw": {
+			"contentType": "application/vnd.ms-excel",
+			"type": "static"
+		},
+		"xlam": {
+			"contentType": "application/vnd.ms-excel.addin.macroenabled.12",
+			"type": "static"
+		},
+		"xlsb": {
+			"contentType": "application/vnd.ms-excel.sheet.binary.macroenabled.12",
+			"type": "static"
+		},
+		"xlsm": {
+			"contentType": "application/vnd.ms-excel.sheet.macroenabled.12",
+			"type": "static"
+		},
+		"xltm": {
+			"contentType": "application/vnd.ms-excel.template.macroenabled.12",
+			"type": "static"
+		},
+		"eot": {
+			"contentType": "application/vnd.ms-fontobject",
+			"type": "static"
+		},
+		"chm": {
+			"contentType": "application/vnd.ms-htmlhelp",
+			"type": "static"
+		},
+		"ims": {
+			"contentType": "application/vnd.ms-ims",
+			"type": "static"
+		},
+		"lrm": {
+			"contentType": "application/vnd.ms-lrm",
+			"type": "static"
+		},
+		"thmx": {
+			"contentType": "application/vnd.ms-officetheme",
+			"type": "static"
+		},
+		"cat": {
+			"contentType": "application/vnd.ms-pki.seccat",
+			"type": "static"
+		},
+		"stl": {
+			"contentType": "application/vnd.ms-pki.stl",
+			"type": "static"
+		},
+		"ppt": {
+			"contentType": "application/vnd.ms-powerpoint",
+			"type": "static"
+		},
+		"pps": {
+			"contentType": "application/vnd.ms-powerpoint",
+			"type": "static"
+		},
+		"pot": {
+			"contentType": "application/vnd.ms-powerpoint",
+			"type": "static"
+		},
+		"ppam": {
+			"contentType": "application/vnd.ms-powerpoint.addin.macroenabled.12",
+			"type": "static"
+		},
+		"pptm": {
+			"contentType": "application/vnd.ms-powerpoint.presentation.macroenabled.12",
+			"type": "static"
+		},
+		"sldm": {
+			"contentType": "application/vnd.ms-powerpoint.slide.macroenabled.12",
+			"type": "static"
+		},
+		"ppsm": {
+			"contentType": "application/vnd.ms-powerpoint.slideshow.macroenabled.12",
+			"type": "static"
+		},
+		"potm": {
+			"contentType": "application/vnd.ms-powerpoint.template.macroenabled.12",
+			"type": "static"
+		},
+		"mpp": {
+			"contentType": "application/vnd.ms-project",
+			"type": "static"
+		},
+		"mpt": {
+			"contentType": "application/vnd.ms-project",
+			"type": "static"
+		},
+		"docm": {
+			"contentType": "application/vnd.ms-word.document.macroenabled.12",
+			"type": "static"
+		},
+		"dotm": {
+			"contentType": "application/vnd.ms-word.template.macroenabled.12",
+			"type": "static"
+		},
+		"wps": {
+			"contentType": "application/vnd.ms-works",
+			"type": "static"
+		},
+		"wks": {
+			"contentType": "application/vnd.ms-works",
+			"type": "static"
+		},
+		"wcm": {
+			"contentType": "application/vnd.ms-works",
+			"type": "static"
+		},
+		"wdb": {
+			"contentType": "application/vnd.ms-works",
+			"type": "static"
+		},
+		"wpl": {
+			"contentType": "application/vnd.ms-wpl",
+			"type": "static"
+		},
+		"xps": {
+			"contentType": "application/vnd.ms-xpsdocument",
+			"type": "static"
+		},
+		"mseq": {
+			"contentType": "application/vnd.mseq",
+			"type": "static"
+		},
+		"mus": {
+			"contentType": "application/vnd.musician",
+			"type": "static"
+		},
+		"msty": {
+			"contentType": "application/vnd.muvee.style",
+			"type": "static"
+		},
+		"nlu": {
+			"contentType": "application/vnd.neurolanguage.nlu",
+			"type": "static"
+		},
+		"nnd": {
+			"contentType": "application/vnd.noblenet-directory",
+			"type": "static"
+		},
+		"nns": {
+			"contentType": "application/vnd.noblenet-sealer",
+			"type": "static"
+		},
+		"nnw": {
+			"contentType": "application/vnd.noblenet-web",
+			"type": "static"
+		},
+		"ngdat": {
+			"contentType": "application/vnd.nokia.n-gage.data",
+			"type": "static"
+		},
+		"n-gage": {
+			"contentType": "application/vnd.nokia.n-gage.symbian.install",
+			"type": "static"
+		},
+		"rpst": {
+			"contentType": "application/vnd.nokia.radio-preset",
+			"type": "static"
+		},
+		"rpss": {
+			"contentType": "application/vnd.nokia.radio-presets",
+			"type": "static"
+		},
+		"edm": {
+			"contentType": "application/vnd.novadigm.edm",
+			"type": "static"
+		},
+		"edx": {
+			"contentType": "application/vnd.novadigm.edx",
+			"type": "static"
+		},
+		"ext": {
+			"contentType": "application/vnd.novadigm.ext",
+			"type": "static"
+		},
+		"odc": {
+			"contentType": "application/vnd.oasis.opendocument.chart",
+			"type": "static"
+		},
+		"otc": {
+			"contentType": "application/vnd.oasis.opendocument.chart-template",
+			"type": "static"
+		},
+		"odb": {
+			"contentType": "application/vnd.oasis.opendocument.database",
+			"type": "static"
+		},
+		"odf": {
+			"contentType": "application/vnd.oasis.opendocument.formula",
+			"type": "static"
+		},
+		"odft": {
+			"contentType": "application/vnd.oasis.opendocument.formula-template",
+			"type": "static"
+		},
+		"odg": {
+			"contentType": "application/vnd.oasis.opendocument.graphics",
+			"type": "static"
+		},
+		"otg": {
+			"contentType": "application/vnd.oasis.opendocument.graphics-template",
+			"type": "static"
+		},
+		"odi": {
+			"contentType": "application/vnd.oasis.opendocument.image",
+			"type": "static"
+		},
+		"oti": {
+			"contentType": "application/vnd.oasis.opendocument.image-template",
+			"type": "static"
+		},
+		"odp": {
+			"contentType": "application/vnd.oasis.opendocument.presentation",
+			"type": "static"
+		},
+		"otp": {
+			"contentType": "application/vnd.oasis.opendocument.presentation-template",
+			"type": "static"
+		},
+		"ods": {
+			"contentType": "application/vnd.oasis.opendocument.spreadsheet",
+			"type": "static"
+		},
+		"ots": {
+			"contentType": "application/vnd.oasis.opendocument.spreadsheet-template",
+			"type": "static"
+		},
+		"odt": {
+			"contentType": "application/vnd.oasis.opendocument.text",
+			"type": "static"
+		},
+		"odm": {
+			"contentType": "application/vnd.oasis.opendocument.text-master",
+			"type": "static"
+		},
+		"ott": {
+			"contentType": "application/vnd.oasis.opendocument.text-template",
+			"type": "static"
+		},
+		"oth": {
+			"contentType": "application/vnd.oasis.opendocument.text-web",
+			"type": "static"
+		},
+		"xo": {
+			"contentType": "application/vnd.olpc-sugar",
+			"type": "static"
+		},
+		"dd2": {
+			"contentType": "application/vnd.oma.dd2+xml",
+			"type": "static"
+		},
+		"oxt": {
+			"contentType": "application/vnd.openofficeorg.extension",
+			"type": "static"
+		},
+		"pptx": {
+			"contentType": "application/vnd.openxmlformats-officedocument.presentationml.presentation",
+			"type": "static"
+		},
+		"sldx": {
+			"contentType": "application/vnd.openxmlformats-officedocument.presentationml.slide",
+			"type": "static"
+		},
+		"ppsx": {
+			"contentType": "application/vnd.openxmlformats-officedocument.presentationml.slideshow",
+			"type": "static"
+		},
+		"potx": {
+			"contentType": "application/vnd.openxmlformats-officedocument.presentationml.template",
+			"type": "static"
+		},
+		"xlsx": {
+			"contentType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+			"type": "static"
+		},
+		"xltx": {
+			"contentType": "application/vnd.openxmlformats-officedocument.spreadsheetml.template",
+			"type": "static"
+		},
+		"docx": {
+			"contentType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+			"type": "static"
+		},
+		"dotx": {
+			"contentType": "application/vnd.openxmlformats-officedocument.wordprocessingml.template",
+			"type": "static"
+		},
+		"mgp": {
+			"contentType": "application/vnd.osgeo.mapguide.package",
+			"type": "static"
+		},
+		"dp": {
+			"contentType": "application/vnd.osgi.dp",
+			"type": "static"
+		},
+		"pdb": {
+			"contentType": "application/vnd.palm",
+			"type": "static"
+		},
+		"pqa": {
+			"contentType": "application/vnd.palm",
+			"type": "static"
+		},
+		"oprc": {
+			"contentType": "application/vnd.palm",
+			"type": "static"
+		},
+		"paw": {
+			"contentType": "application/vnd.pawaafile",
+			"type": "static"
+		},
+		"str": {
+			"contentType": "application/vnd.pg.format",
+			"type": "static"
+		},
+		"ei6": {
+			"contentType": "application/vnd.pg.osasli",
+			"type": "static"
+		},
+		"efif": {
+			"contentType": "application/vnd.picsel",
+			"type": "static"
+		},
+		"wg": {
+			"contentType": "application/vnd.pmi.widget",
+			"type": "static"
+		},
+		"plf": {
+			"contentType": "application/vnd.pocketlearn",
+			"type": "static"
+		},
+		"pbd": {
+			"contentType": "application/vnd.powerbuilder6",
+			"type": "static"
+		},
+		"box": {
+			"contentType": "application/vnd.previewsystems.box",
+			"type": "static"
+		},
+		"mgz": {
+			"contentType": "application/vnd.proteus.magazine",
+			"type": "static"
+		},
+		"qps": {
+			"contentType": "application/vnd.publishare-delta-tree",
+			"type": "static"
+		},
+		"ptid": {
+			"contentType": "application/vnd.pvi.ptid1",
+			"type": "static"
+		},
+		"qxd": {
+			"contentType": "application/vnd.quark.quarkxpress",
+			"type": "static"
+		},
+		"qxt": {
+			"contentType": "application/vnd.quark.quarkxpress",
+			"type": "static"
+		},
+		"qwd": {
+			"contentType": "application/vnd.quark.quarkxpress",
+			"type": "static"
+		},
+		"qwt": {
+			"contentType": "application/vnd.quark.quarkxpress",
+			"type": "static"
+		},
+		"qxl": {
+			"contentType": "application/vnd.quark.quarkxpress",
+			"type": "static"
+		},
+		"qxb": {
+			"contentType": "application/vnd.quark.quarkxpress",
+			"type": "static"
+		},
+		"bed": {
+			"contentType": "application/vnd.realvnc.bed",
+			"type": "static"
+		},
+		"mxl": {
+			"contentType": "application/vnd.recordare.musicxml",
+			"type": "static"
+		},
+		"musicxml": {
+			"contentType": "application/vnd.recordare.musicxml+xml",
+			"type": "static"
+		},
+		"cryptonote": {
+			"contentType": "application/vnd.rig.cryptonote",
+			"type": "static"
+		},
+		"cod": {
+			"contentType": "application/vnd.rim.cod",
+			"type": "static"
+		},
+		"rm": {
+			"contentType": "application/vnd.rn-realmedia",
+			"type": "static"
+		},
+		"link66": {
+			"contentType": "application/vnd.route66.link66+xml",
+			"type": "static"
+		},
+		"st": {
+			"contentType": "application/vnd.sailingtracker.track",
+			"type": "static"
+		},
+		"see": {
+			"contentType": "application/vnd.seemail",
+			"type": "static"
+		},
+		"sema": {
+			"contentType": "application/vnd.sema",
+			"type": "static"
+		},
+		"semd": {
+			"contentType": "application/vnd.semd",
+			"type": "static"
+		},
+		"semf": {
+			"contentType": "application/vnd.semf",
+			"type": "static"
+		},
+		"ifm": {
+			"contentType": "application/vnd.shana.informed.formdata",
+			"type": "static"
+		},
+		"itp": {
+			"contentType": "application/vnd.shana.informed.formtemplate",
+			"type": "static"
+		},
+		"iif": {
+			"contentType": "application/vnd.shana.informed.interchange",
+			"type": "static"
+		},
+		"ipk": {
+			"contentType": "application/vnd.shana.informed.package",
+			"type": "static"
+		},
+		"twd": {
+			"contentType": "application/vnd.simtech-mindmapper",
+			"type": "static"
+		},
+		"twds": {
+			"contentType": "application/vnd.simtech-mindmapper",
+			"type": "static"
+		},
+		"mmf": {
+			"contentType": "application/vnd.smaf",
+			"type": "static"
+		},
+		"teacher": {
+			"contentType": "application/vnd.smart.teacher",
+			"type": "static"
+		},
+		"sdkm": {
+			"contentType": "application/vnd.solent.sdkm+xml",
+			"type": "static"
+		},
+		"sdkd": {
+			"contentType": "application/vnd.solent.sdkm+xml",
+			"type": "static"
+		},
+		"dxp": {
+			"contentType": "application/vnd.spotfire.dxp",
+			"type": "static"
+		},
+		"sfs": {
+			"contentType": "application/vnd.spotfire.sfs",
+			"type": "static"
+		},
+		"sdc": {
+			"contentType": "application/vnd.stardivision.calc",
+			"type": "static"
+		},
+		"sda": {
+			"contentType": "application/vnd.stardivision.draw",
+			"type": "static"
+		},
+		"sdd": {
+			"contentType": "application/vnd.stardivision.impress",
+			"type": "static"
+		},
+		"smf": {
+			"contentType": "application/vnd.stardivision.math",
+			"type": "static"
+		},
+		"sdw": {
+			"contentType": "application/vnd.stardivision.writer",
+			"type": "static"
+		},
+		"vor": {
+			"contentType": "application/vnd.stardivision.writer",
+			"type": "static"
+		},
+		"sgl": {
+			"contentType": "application/vnd.stardivision.writer-global",
+			"type": "static"
+		},
+		"sm": {
+			"contentType": "application/vnd.stepmania.stepchart",
+			"type": "static"
+		},
+		"sxc": {
+			"contentType": "application/vnd.sun.xml.calc",
+			"type": "static"
+		},
+		"stc": {
+			"contentType": "application/vnd.sun.xml.calc.template",
+			"type": "static"
+		},
+		"sxd": {
+			"contentType": "application/vnd.sun.xml.draw",
+			"type": "static"
+		},
+		"std": {
+			"contentType": "application/vnd.sun.xml.draw.template",
+			"type": "static"
+		},
+		"sxi": {
+			"contentType": "application/vnd.sun.xml.impress",
+			"type": "static"
+		},
+		"sti": {
+			"contentType": "application/vnd.sun.xml.impress.template",
+			"type": "static"
+		},
+		"sxm": {
+			"contentType": "application/vnd.sun.xml.math",
+			"type": "static"
+		},
+		"sxw": {
+			"contentType": "application/vnd.sun.xml.writer",
+			"type": "static"
+		},
+		"sxg": {
+			"contentType": "application/vnd.sun.xml.writer.global",
+			"type": "static"
+		},
+		"stw": {
+			"contentType": "application/vnd.sun.xml.writer.template",
+			"type": "static"
+		},
+		"sus": {
+			"contentType": "application/vnd.sus-calendar",
+			"type": "static"
+		},
+		"susp": {
+			"contentType": "application/vnd.sus-calendar",
+			"type": "static"
+		},
+		"svd": {
+			"contentType": "application/vnd.svd",
+			"type": "static"
+		},
+		"sis": {
+			"contentType": "application/vnd.symbian.install",
+			"type": "static"
+		},
+		"sisx": {
+			"contentType": "application/vnd.symbian.install",
+			"type": "static"
+		},
+		"xsm": {
+			"contentType": "application/vnd.syncml+xml",
+			"type": "static"
+		},
+		"bdm": {
+			"contentType": "application/vnd.syncml.dm+wbxml",
+			"type": "static"
+		},
+		"xdm": {
+			"contentType": "application/vnd.syncml.dm+xml",
+			"type": "static"
+		},
+		"tao": {
+			"contentType": "application/vnd.tao.intent-module-archive",
+			"type": "static"
+		},
+		"tmo": {
+			"contentType": "application/vnd.tmobile-livetv",
+			"type": "static"
+		},
+		"tpt": {
+			"contentType": "application/vnd.trid.tpt",
+			"type": "static"
+		},
+		"mxs": {
+			"contentType": "application/vnd.triscape.mxs",
+			"type": "static"
+		},
+		"tra": {
+			"contentType": "application/vnd.trueapp",
+			"type": "static"
+		},
+		"ufd": {
+			"contentType": "application/vnd.ufdl",
+			"type": "static"
+		},
+		"ufdl": {
+			"contentType": "application/vnd.ufdl",
+			"type": "static"
+		},
+		"utz": {
+			"contentType": "application/vnd.uiq.theme",
+			"type": "static"
+		},
+		"umj": {
+			"contentType": "application/vnd.umajin",
+			"type": "static"
+		},
+		"unityweb": {
+			"contentType": "application/vnd.unity",
+			"type": "static"
+		},
+		"uoml": {
+			"contentType": "application/vnd.uoml+xml",
+			"type": "static"
+		},
+		"vcx": {
+			"contentType": "application/vnd.vcx",
+			"type": "static"
+		},
+		"vsd": {
+			"contentType": "application/vnd.visio",
+			"type": "static"
+		},
+		"vst": {
+			"contentType": "application/vnd.visio",
+			"type": "static"
+		},
+		"vss": {
+			"contentType": "application/vnd.visio",
+			"type": "static"
+		},
+		"vsw": {
+			"contentType": "application/vnd.visio",
+			"type": "static"
+		},
+		"vis": {
+			"contentType": "application/vnd.visionary",
+			"type": "static"
+		},
+		"vsf": {
+			"contentType": "application/vnd.vsf",
+			"type": "static"
+		},
+		"wbxml": {
+			"contentType": "application/vnd.wap.wbxml",
+			"type": "static"
+		},
+		"wmlc": {
+			"contentType": "application/vnd.wap.wmlc",
+			"type": "static"
+		},
+		"wmlsc": {
+			"contentType": "application/vnd.wap.wmlscriptc",
+			"type": "static"
+		},
+		"wtb": {
+			"contentType": "application/vnd.webturbo",
+			"type": "static"
+		},
+		"nbp": {
+			"contentType": "application/vnd.wolfram.player",
+			"type": "static"
+		},
+		"wpd": {
+			"contentType": "application/vnd.wordperfect",
+			"type": "static"
+		},
+		"wqd": {
+			"contentType": "application/vnd.wqd",
+			"type": "static"
+		},
+		"stf": {
+			"contentType": "application/vnd.wt.stf",
+			"type": "static"
+		},
+		"xar": {
+			"contentType": "application/vnd.xara",
+			"type": "static"
+		},
+		"xfdl": {
+			"contentType": "application/vnd.xfdl",
+			"type": "static"
+		},
+		"hvd": {
+			"contentType": "application/vnd.yamaha.hv-dic",
+			"type": "static"
+		},
+		"hvs": {
+			"contentType": "application/vnd.yamaha.hv-script",
+			"type": "static"
+		},
+		"hvp": {
+			"contentType": "application/vnd.yamaha.hv-voice",
+			"type": "static"
+		},
+		"osf": {
+			"contentType": "application/vnd.yamaha.openscoreformat",
+			"type": "static"
+		},
+		"osfpvg": {
+			"contentType": "application/vnd.yamaha.openscoreformat.osfpvg+xml",
+			"type": "static"
+		},
+		"saf": {
+			"contentType": "application/vnd.yamaha.smaf-audio",
+			"type": "static"
+		},
+		"spf": {
+			"contentType": "application/vnd.yamaha.smaf-phrase",
+			"type": "static"
+		},
+		"cmp": {
+			"contentType": "application/vnd.yellowriver-custom-menu",
+			"type": "static"
+		},
+		"zir": {
+			"contentType": "application/vnd.zul",
+			"type": "static"
+		},
+		"zirz": {
+			"contentType": "application/vnd.zul",
+			"type": "static"
+		},
+		"zaz": {
+			"contentType": "application/vnd.zzazz.deck+xml",
+			"type": "static"
+		},
+		"vxml": {
+			"contentType": "application/voicexml+xml",
+			"type": "static"
+		},
+		"wgt": {
+			"contentType": "application/widget",
+			"type": "static"
+		},
+		"hlp": {
+			"contentType": "application/winhlp",
+			"type": "static"
+		},
+		"wsdl": {
+			"contentType": "application/wsdl+xml",
+			"type": "static"
+		},
+		"wspolicy": {
+			"contentType": "application/wspolicy+xml",
+			"type": "static"
+		},
+		"7z": {
+			"contentType": "application/x-7z-compressed",
+			"type": "static"
+		},
+		"abw": {
+			"contentType": "application/x-abiword",
+			"type": "static"
+		},
+		"ace": {
+			"contentType": "application/x-ace-compressed",
+			"type": "static"
+		},
+		"aab": {
+			"contentType": "application/x-authorware-bin",
+			"type": "static"
+		},
+		"x32": {
+			"contentType": "application/x-authorware-bin",
+			"type": "static"
+		},
+		"u32": {
+			"contentType": "application/x-authorware-bin",
+			"type": "static"
+		},
+		"vox": {
+			"contentType": "application/x-authorware-bin",
+			"type": "static"
+		},
+		"aam": {
+			"contentType": "application/x-authorware-map",
+			"type": "static"
+		},
+		"aas": {
+			"contentType": "application/x-authorware-seg",
+			"type": "static"
+		},
+		"bcpio": {
+			"contentType": "application/x-bcpio",
+			"type": "static"
+		},
+		"torrent": {
+			"contentType": "application/x-bittorrent",
+			"type": "static"
+		},
+		"bz": {
+			"contentType": "application/x-bzip",
+			"type": "static"
+		},
+		"bz2": {
+			"contentType": "application/x-bzip2",
+			"type": "static"
+		},
+		"boz": {
+			"contentType": "application/x-bzip2",
+			"type": "static"
+		},
+		"vcd": {
+			"contentType": "application/x-cdlink",
+			"type": "static"
+		},
+		"chat": {
+			"contentType": "application/x-chat",
+			"type": "static"
+		},
+		"pgn": {
+			"contentType": "application/x-chess-pgn",
+			"type": "static"
+		},
+		"cpio": {
+			"contentType": "application/x-cpio",
+			"type": "static"
+		},
+		"csh": {
+			"contentType": "application/x-csh",
+			"type": "static"
+		},
+		"deb": {
+			"contentType": "application/x-debian-package",
+			"type": "static"
+		},
+		"udeb": {
+			"contentType": "application/x-debian-package",
+			"type": "static"
+		},
+		"dir": {
+			"contentType": "application/x-director",
+			"type": "static"
+		},
+		"dcr": {
+			"contentType": "application/x-director",
+			"type": "static"
+		},
+		"dxr": {
+			"contentType": "application/x-director",
+			"type": "static"
+		},
+		"cst": {
+			"contentType": "application/x-director",
+			"type": "static"
+		},
+		"cct": {
+			"contentType": "application/x-director",
+			"type": "static"
+		},
+		"cxt": {
+			"contentType": "application/x-director",
+			"type": "static"
+		},
+		"w3d": {
+			"contentType": "application/x-director",
+			"type": "static"
+		},
+		"fgd": {
+			"contentType": "application/x-director",
+			"type": "static"
+		},
+		"swa": {
+			"contentType": "application/x-director",
+			"type": "static"
+		},
+		"wad": {
+			"contentType": "application/x-doom",
+			"type": "static"
+		},
+		"ncx": {
+			"contentType": "application/x-dtbncx+xml",
+			"type": "static"
+		},
+		"dtb": {
+			"contentType": "application/x-dtbook+xml",
+			"type": "static"
+		},
+		"res": {
+			"contentType": "application/x-dtbresource+xml",
+			"type": "static"
+		},
+		"dvi": {
+			"contentType": "application/x-dvi",
+			"type": "static"
+		},
+		"bdf": {
+			"contentType": "application/x-font-bdf",
+			"type": "static"
+		},
+		"gsf": {
+			"contentType": "application/x-font-ghostscript",
+			"type": "static"
+		},
+		"psf": {
+			"contentType": "application/x-font-linux-psf",
+			"type": "static"
+		},
+		"otf": {
+			"contentType": "application/x-font-otf",
+			"type": "static"
+		},
+		"pcf": {
+			"contentType": "application/x-font-pcf",
+			"type": "static"
+		},
+		"snf": {
+			"contentType": "application/x-font-snf",
+			"type": "static"
+		},
+		"ttf": {
+			"contentType": "application/x-font-ttf",
+			"type": "static"
+		},
+		"ttc": {
+			"contentType": "application/x-font-ttf",
+			"type": "static"
+		},
+		"pfa": {
+			"contentType": "application/x-font-type1",
+			"type": "static"
+		},
+		"pfb": {
+			"contentType": "application/x-font-type1",
+			"type": "static"
+		},
+		"pfm": {
+			"contentType": "application/x-font-type1",
+			"type": "static"
+		},
+		"afm": {
+			"contentType": "application/x-font-type1",
+			"type": "static"
+		},
+		"woff": {
+			"contentType": "application/x-font-woff",
+			"type": "static"
+		},
+		"spl": {
+			"contentType": "application/x-futuresplash",
+			"type": "static"
+		},
+		"gnumeric": {
+			"contentType": "application/x-gnumeric",
+			"type": "static"
+		},
+		"gtar": {
+			"contentType": "application/x-gtar",
+			"type": "static"
+		},
+		"hdf": {
+			"contentType": "application/x-hdf",
+			"type": "static"
+		},
+		"jnlp": {
+			"contentType": "application/x-java-jnlp-file",
+			"type": "static"
+		},
+		"latex": {
+			"contentType": "application/x-latex",
+			"type": "static"
+		},
+		"prc": {
+			"contentType": "application/x-mobipocket-ebook",
+			"type": "static"
+		},
+		"mobi": {
+			"contentType": "application/x-mobipocket-ebook",
+			"type": "static"
+		},
+		"application": {
+			"contentType": "application/x-ms-application",
+			"type": "static"
+		},
+		"wmd": {
+			"contentType": "application/x-ms-wmd",
+			"type": "static"
+		},
+		"wmz": {
+			"contentType": "application/x-ms-wmz",
+			"type": "static"
+		},
+		"xbap": {
+			"contentType": "application/x-ms-xbap",
+			"type": "static"
+		},
+		"mdb": {
+			"contentType": "application/x-msaccess",
+			"type": "static"
+		},
+		"obd": {
+			"contentType": "application/x-msbinder",
+			"type": "static"
+		},
+		"crd": {
+			"contentType": "application/x-mscardfile",
+			"type": "static"
+		},
+		"clp": {
+			"contentType": "application/x-msclip",
+			"type": "static"
+		},
+		"exe": {
+			"contentType": "application/x-msdownload",
+			"type": "static"
+		},
+		"dll": {
+			"contentType": "application/x-msdownload",
+			"type": "static"
+		},
+		"com": {
+			"contentType": "application/x-msdownload",
+			"type": "static"
+		},
+		"bat": {
+			"contentType": "application/x-msdownload",
+			"type": "static"
+		},
+		"msi": {
+			"contentType": "application/x-msdownload",
+			"type": "static"
+		},
+		"mvb": {
+			"contentType": "application/x-msmediaview",
+			"type": "static"
+		},
+		"m13": {
+			"contentType": "application/x-msmediaview",
+			"type": "static"
+		},
+		"m14": {
+			"contentType": "application/x-msmediaview",
+			"type": "static"
+		},
+		"wmf": {
+			"contentType": "application/x-msmetafile",
+			"type": "static"
+		},
+		"mny": {
+			"contentType": "application/x-msmoney",
+			"type": "static"
+		},
+		"pub": {
+			"contentType": "application/x-mspublisher",
+			"type": "static"
+		},
+		"scd": {
+			"contentType": "application/x-msschedule",
+			"type": "static"
+		},
+		"trm": {
+			"contentType": "application/x-msterminal",
+			"type": "static"
+		},
+		"wri": {
+			"contentType": "application/x-mswrite",
+			"type": "static"
+		},
+		"nc": {
+			"contentType": "application/x-netcdf",
+			"type": "static"
+		},
+		"cdf": {
+			"contentType": "application/x-netcdf",
+			"type": "static"
+		},
+		"p12": {
+			"contentType": "application/x-pkcs12",
+			"type": "static"
+		},
+		"pfx": {
+			"contentType": "application/x-pkcs12",
+			"type": "static"
+		},
+		"p7b": {
+			"contentType": "application/x-pkcs7-certificates",
+			"type": "static"
+		},
+		"spc": {
+			"contentType": "application/x-pkcs7-certificates",
+			"type": "static"
+		},
+		"p7r": {
+			"contentType": "application/x-pkcs7-certreqresp",
+			"type": "static"
+		},
+		"rar": {
+			"contentType": "application/x-rar-compressed",
+			"type": "static"
+		},
+		"sh": {
+			"contentType": "application/x-sh",
+			"type": "static"
+		},
+		"shar": {
+			"contentType": "application/x-shar",
+			"type": "static"
+		},
+		"swf": {
+			"contentType": "application/x-shockwave-flash",
+			"type": "static"
+		},
+		"xap": {
+			"contentType": "application/x-silverlight-app",
+			"type": "static"
+		},
+		"sit": {
+			"contentType": "application/x-stuffit",
+			"type": "static"
+		},
+		"sitx": {
+			"contentType": "application/x-stuffitx",
+			"type": "static"
+		},
+		"sv4cpio": {
+			"contentType": "application/x-sv4cpio",
+			"type": "static"
+		},
+		"sv4crc": {
+			"contentType": "application/x-sv4crc",
+			"type": "static"
+		},
+		"tar": {
+			"contentType": "application/x-tar",
+			"type": "static"
+		},
+		"tcl": {
+			"contentType": "application/x-tcl",
+			"type": "static"
+		},
+		"tex": {
+			"contentType": "application/x-tex",
+			"type": "static"
+		},
+		"tfm": {
+			"contentType": "application/x-tex-tfm",
+			"type": "static"
+		},
+		"texinfo": {
+			"contentType": "application/x-texinfo",
+			"type": "static"
+		},
+		"texi": {
+			"contentType": "application/x-texinfo",
+			"type": "static"
+		},
+		"ustar": {
+			"contentType": "application/x-ustar",
+			"type": "static"
+		},
+		"src": {
+			"contentType": "application/x-wais-source",
+			"type": "static"
+		},
+		"der": {
+			"contentType": "application/x-x509-ca-cert",
+			"type": "static"
+		},
+		"crt": {
+			"contentType": "application/x-x509-ca-cert",
+			"type": "static"
+		},
+		"fig": {
+			"contentType": "application/x-xfig",
+			"type": "static"
+		},
+		"xpi": {
+			"contentType": "application/x-xpinstall",
+			"type": "static"
+		},
+		"xdf": {
+			"contentType": "application/xcap-diff+xml",
+			"type": "static"
+		},
+		"xenc": {
+			"contentType": "application/xenc+xml",
+			"type": "static"
+		},
+		"xhtml": {
+			"contentType": "application/xhtml+xml",
+			"type": "static"
+		},
+		"xht": {
+			"contentType": "application/xhtml+xml",
+			"type": "static"
+		},
+		"dtd": {
+			"contentType": "application/xml-dtd",
+			"type": "static"
+		},
+		"xop": {
+			"contentType": "application/xop+xml",
+			"type": "static"
+		},
+		"xslt": {
+			"contentType": "application/xslt+xml",
+			"type": "static"
+		},
+		"xspf": {
+			"contentType": "application/xspf+xml",
+			"type": "static"
+		},
+		"mxml": {
+			"contentType": "application/xv+xml",
+			"type": "static"
+		},
+		"xhvml": {
+			"contentType": "application/xv+xml",
+			"type": "static"
+		},
+		"xvml": {
+			"contentType": "application/xv+xml",
+			"type": "static"
+		},
+		"xvm": {
+			"contentType": "application/xv+xml",
+			"type": "static"
+		},
+		"yang": {
+			"contentType": "application/yang",
+			"type": "static"
+		},
+		"yin": {
+			"contentType": "application/yin+xml",
+			"type": "static"
+		},
+		"zip": {
+			"contentType": "application/zip",
+			"type": "static"
+		},
+		"adp": {
+			"contentType": "audio/adpcm",
+			"type": "static"
+		},
+		"au": {
+			"contentType": "audio/basic",
+			"type": "static"
+		},
+		"snd": {
+			"contentType": "audio/basic",
+			"type": "static"
+		},
+		"mid": {
+			"contentType": "audio/midi",
+			"type": "static"
+		},
+		"midi": {
+			"contentType": "audio/midi",
+			"type": "static"
+		},
+		"kar": {
+			"contentType": "audio/midi",
+			"type": "static"
+		},
+		"rmi": {
+			"contentType": "audio/midi",
+			"type": "static"
+		},
+		"mp4a": {
+			"contentType": "audio/mp4",
+			"type": "static"
+		},
+		"mpga": {
+			"contentType": "audio/mpeg",
+			"type": "static"
+		},
+		"mp2": {
+			"contentType": "audio/mpeg",
+			"type": "static"
+		},
+		"mp2a": {
+			"contentType": "audio/mpeg",
+			"type": "static"
+		},
+		"mp3": {
+			"contentType": "audio/mpeg",
+			"type": "static"
+		},
+		"m2a": {
+			"contentType": "audio/mpeg",
+			"type": "static"
+		},
+		"m3a": {
+			"contentType": "audio/mpeg",
+			"type": "static"
+		},
+		"oga": {
+			"contentType": "audio/ogg",
+			"type": "static"
+		},
+		"ogg": {
+			"contentType": "audio/ogg",
+			"type": "static"
+		},
+		"spx": {
+			"contentType": "audio/ogg",
+			"type": "static"
+		},
+		"uva": {
+			"contentType": "audio/vnd.dece.audio",
+			"type": "static"
+		},
+		"uvva": {
+			"contentType": "audio/vnd.dece.audio",
+			"type": "static"
+		},
+		"eol": {
+			"contentType": "audio/vnd.digital-winds",
+			"type": "static"
+		},
+		"dra": {
+			"contentType": "audio/vnd.dra",
+			"type": "static"
+		},
+		"dts": {
+			"contentType": "audio/vnd.dts",
+			"type": "static"
+		},
+		"dtshd": {
+			"contentType": "audio/vnd.dts.hd",
+			"type": "static"
+		},
+		"lvp": {
+			"contentType": "audio/vnd.lucent.voice",
+			"type": "static"
+		},
+		"pya": {
+			"contentType": "audio/vnd.ms-playready.media.pya",
+			"type": "static"
+		},
+		"ecelp4800": {
+			"contentType": "audio/vnd.nuera.ecelp4800",
+			"type": "static"
+		},
+		"ecelp7470": {
+			"contentType": "audio/vnd.nuera.ecelp7470",
+			"type": "static"
+		},
+		"ecelp9600": {
+			"contentType": "audio/vnd.nuera.ecelp9600",
+			"type": "static"
+		},
+		"rip": {
+			"contentType": "audio/vnd.rip",
+			"type": "static"
+		},
+		"weba": {
+			"contentType": "audio/webm",
+			"type": "static"
+		},
+		"aac": {
+			"contentType": "audio/x-aac",
+			"type": "static"
+		},
+		"aif": {
+			"contentType": "audio/x-aiff",
+			"type": "static"
+		},
+		"aiff": {
+			"contentType": "audio/x-aiff",
+			"type": "static"
+		},
+		"aifc": {
+			"contentType": "audio/x-aiff",
+			"type": "static"
+		},
+		"m3u": {
+			"contentType": "audio/x-mpegurl",
+			"type": "static"
+		},
+		"wax": {
+			"contentType": "audio/x-ms-wax",
+			"type": "static"
+		},
+		"wma": {
+			"contentType": "audio/x-ms-wma",
+			"type": "static"
+		},
+		"ram": {
+			"contentType": "audio/x-pn-realaudio",
+			"type": "static"
+		},
+		"ra": {
+			"contentType": "audio/x-pn-realaudio",
+			"type": "static"
+		},
+		"rmp": {
+			"contentType": "audio/x-pn-realaudio-plugin",
+			"type": "static"
+		},
+		"wav": {
+			"contentType": "audio/x-wav",
+			"type": "static"
+		},
+		"cdx": {
+			"contentType": "chemical/x-cdx",
+			"type": "static"
+		},
+		"cif": {
+			"contentType": "chemical/x-cif",
+			"type": "static"
+		},
+		"cmdf": {
+			"contentType": "chemical/x-cmdf",
+			"type": "static"
+		},
+		"cml": {
+			"contentType": "chemical/x-cml",
+			"type": "static"
+		},
+		"csml": {
+			"contentType": "chemical/x-csml",
+			"type": "static"
+		},
+		"xyz": {
+			"contentType": "chemical/x-xyz",
+			"type": "static"
+		},
+		"bmp": {
+			"contentType": "image/bmp",
+			"type": "static"
+		},
+		"cgm": {
+			"contentType": "image/cgm",
+			"type": "static"
+		},
+		"g3": {
+			"contentType": "image/g3fax",
+			"type": "static"
+		},
+		"ief": {
+			"contentType": "image/ief",
+			"type": "static"
+		},
+		"ktx": {
+			"contentType": "image/ktx",
+			"type": "static"
+		},
+		"btif": {
+			"contentType": "image/prs.btif",
+			"type": "static"
+		},
+		"svg": {
+			"contentType": "image/svg+xml",
+			"type": "static"
+		},
+		"svgz": {
+			"contentType": "image/svg+xml",
+			"type": "static"
+		},
+		"tiff": {
+			"contentType": "image/tiff",
+			"type": "static"
+		},
+		"tif": {
+			"contentType": "image/tiff",
+			"type": "static"
+		},
+		"psd": {
+			"contentType": "image/vnd.adobe.photoshop",
+			"type": "static"
+		},
+		"uvi": {
+			"contentType": "image/vnd.dece.graphic",
+			"type": "static"
+		},
+		"uvvi": {
+			"contentType": "image/vnd.dece.graphic",
+			"type": "static"
+		},
+		"uvg": {
+			"contentType": "image/vnd.dece.graphic",
+			"type": "static"
+		},
+		"uvvg": {
+			"contentType": "image/vnd.dece.graphic",
+			"type": "static"
+		},
+		"sub": {
+			"contentType": "image/vnd.dvb.subtitle",
+			"type": "static"
+		},
+		"djvu": {
+			"contentType": "image/vnd.djvu",
+			"type": "static"
+		},
+		"djv": {
+			"contentType": "image/vnd.djvu",
+			"type": "static"
+		},
+		"dwg": {
+			"contentType": "image/vnd.dwg",
+			"type": "static"
+		},
+		"dxf": {
+			"contentType": "image/vnd.dxf",
+			"type": "static"
+		},
+		"fbs": {
+			"contentType": "image/vnd.fastbidsheet",
+			"type": "static"
+		},
+		"fpx": {
+			"contentType": "image/vnd.fpx",
+			"type": "static"
+		},
+		"fst": {
+			"contentType": "image/vnd.fst",
+			"type": "static"
+		},
+		"mmr": {
+			"contentType": "image/vnd.fujixerox.edmics-mmr",
+			"type": "static"
+		},
+		"rlc": {
+			"contentType": "image/vnd.fujixerox.edmics-rlc",
+			"type": "static"
+		},
+		"mdi": {
+			"contentType": "image/vnd.ms-modi",
+			"type": "static"
+		},
+		"npx": {
+			"contentType": "image/vnd.net-fpx",
+			"type": "static"
+		},
+		"wbmp": {
+			"contentType": "image/vnd.wap.wbmp",
+			"type": "static"
+		},
+		"xif": {
+			"contentType": "image/vnd.xiff",
+			"type": "static"
+		},
+		"webp": {
+			"contentType": "image/webp",
+			"type": "static"
+		},
+		"ras": {
+			"contentType": "image/x-cmu-raster",
+			"type": "static"
+		},
+		"cmx": {
+			"contentType": "image/x-cmx",
+			"type": "static"
+		},
+		"fh": {
+			"contentType": "image/x-freehand",
+			"type": "static"
+		},
+		"fhc": {
+			"contentType": "image/x-freehand",
+			"type": "static"
+		},
+		"fh4": {
+			"contentType": "image/x-freehand",
+			"type": "static"
+		},
+		"fh5": {
+			"contentType": "image/x-freehand",
+			"type": "static"
+		},
+		"fh7": {
+			"contentType": "image/x-freehand",
+			"type": "static"
+		},
+		"ico": {
+			"contentType": "image/x-icon",
+			"type": "static"
+		},
+		"pcx": {
+			"contentType": "image/x-pcx",
+			"type": "static"
+		},
+		"pic": {
+			"contentType": "image/x-pict",
+			"type": "static"
+		},
+		"pct": {
+			"contentType": "image/x-pict",
+			"type": "static"
+		},
+		"pnm": {
+			"contentType": "image/x-portable-anymap",
+			"type": "static"
+		},
+		"pbm": {
+			"contentType": "image/x-portable-bitmap",
+			"type": "static"
+		},
+		"pgm": {
+			"contentType": "image/x-portable-graymap",
+			"type": "static"
+		},
+		"ppm": {
+			"contentType": "image/x-portable-pixmap",
+			"type": "static"
+		},
+		"rgb": {
+			"contentType": "image/x-rgb",
+			"type": "static"
+		},
+		"xbm": {
+			"contentType": "image/x-xbitmap",
+			"type": "static"
+		},
+		"xpm": {
+			"contentType": "image/x-xpixmap",
+			"type": "static"
+		},
+		"xwd": {
+			"contentType": "image/x-xwindowdump",
+			"type": "static"
+		},
+		"eml": {
+			"contentType": "message/rfc822",
+			"type": "static"
+		},
+		"mime": {
+			"contentType": "message/rfc822",
+			"type": "static"
+		},
+		"igs": {
+			"contentType": "model/iges",
+			"type": "static"
+		},
+		"iges": {
+			"contentType": "model/iges",
+			"type": "static"
+		},
+		"msh": {
+			"contentType": "model/mesh",
+			"type": "static"
+		},
+		"mesh": {
+			"contentType": "model/mesh",
+			"type": "static"
+		},
+		"silo": {
+			"contentType": "model/mesh",
+			"type": "static"
+		},
+		"dae": {
+			"contentType": "model/vnd.collada+xml",
+			"type": "static"
+		},
+		"dwf": {
+			"contentType": "model/vnd.dwf",
+			"type": "static"
+		},
+		"gdl": {
+			"contentType": "model/vnd.gdl",
+			"type": "static"
+		},
+		"gtw": {
+			"contentType": "model/vnd.gtw",
+			"type": "static"
+		},
+		"mts": {
+			"contentType": "model/vnd.mts",
+			"type": "static"
+		},
+		"vtu": {
+			"contentType": "model/vnd.vtu",
+			"type": "static"
+		},
+		"wrl": {
+			"contentType": "model/vrml",
+			"type": "static"
+		},
+		"vrml": {
+			"contentType": "model/vrml",
+			"type": "static"
+		},
+		"ics": {
+			"contentType": "text/calendar",
+			"type": "static"
+		},
+		"ifb": {
+			"contentType": "text/calendar",
+			"type": "static"
+		},
+		"n3": {
+			"contentType": "text/n3",
+			"type": "static"
+		},
+		"txt": {
+			"contentType": "text/plain",
+			"type": "static"
+		},
+		"text": {
+			"contentType": "text/plain",
+			"type": "static"
+		},
+		"conf": {
+			"contentType": "text/plain",
+			"type": "static"
+		},
+		"def": {
+			"contentType": "text/plain",
+			"type": "static"
+		},
+		"list": {
+			"contentType": "text/plain",
+			"type": "static"
+		},
+		"log": {
+			"contentType": "text/plain",
+			"type": "static"
+		},
+		"in": {
+			"contentType": "text/plain",
+			"type": "static"
+		},
+		"dsc": {
+			"contentType": "text/prs.lines.tag",
+			"type": "static"
+		},
+		"rtx": {
+			"contentType": "text/richtext",
+			"type": "static"
+		},
+		"sgml": {
+			"contentType": "text/sgml",
+			"type": "static"
+		},
+		"sgm": {
+			"contentType": "text/sgml",
+			"type": "static"
+		},
+		"tsv": {
+			"contentType": "text/tab-separated-values",
+			"type": "static"
+		},
+		"t": {
+			"contentType": "text/troff",
+			"type": "static"
+		},
+		"tr": {
+			"contentType": "text/troff",
+			"type": "static"
+		},
+		"roff": {
+			"contentType": "text/troff",
+			"type": "static"
+		},
+		"man": {
+			"contentType": "text/troff",
+			"type": "static"
+		},
+		"me": {
+			"contentType": "text/troff",
+			"type": "static"
+		},
+		"ms": {
+			"contentType": "text/troff",
+			"type": "static"
+		},
+		"ttl": {
+			"contentType": "text/turtle",
+			"type": "static"
+		},
+		"uri": {
+			"contentType": "text/uri-list",
+			"type": "static"
+		},
+		"uris": {
+			"contentType": "text/uri-list",
+			"type": "static"
+		},
+		"urls": {
+			"contentType": "text/uri-list",
+			"type": "static"
+		},
+		"curl": {
+			"contentType": "text/vnd.curl",
+			"type": "static"
+		},
+		"dcurl": {
+			"contentType": "text/vnd.curl.dcurl",
+			"type": "static"
+		},
+		"scurl": {
+			"contentType": "text/vnd.curl.scurl",
+			"type": "static"
+		},
+		"mcurl": {
+			"contentType": "text/vnd.curl.mcurl",
+			"type": "static"
+		},
+		"fly": {
+			"contentType": "text/vnd.fly",
+			"type": "static"
+		},
+		"flx": {
+			"contentType": "text/vnd.fmi.flexstor",
+			"type": "static"
+		},
+		"gv": {
+			"contentType": "text/vnd.graphviz",
+			"type": "static"
+		},
+		"3dml": {
+			"contentType": "text/vnd.in3d.3dml",
+			"type": "static"
+		},
+		"spot": {
+			"contentType": "text/vnd.in3d.spot",
+			"type": "static"
+		},
+		"jad": {
+			"contentType": "text/vnd.sun.j2me.app-descriptor",
+			"type": "static"
+		},
+		"wml": {
+			"contentType": "text/vnd.wap.wml",
+			"type": "static"
+		},
+		"wmls": {
+			"contentType": "text/vnd.wap.wmlscript",
+			"type": "static"
+		},
+		"s": {
+			"contentType": "text/x-asm",
+			"type": "static"
+		},
+		"asm": {
+			"contentType": "text/x-asm",
+			"type": "static"
+		},
+		"c": {
+			"contentType": "text/x-c",
+			"type": "static"
+		},
+		"cc": {
+			"contentType": "text/x-c",
+			"type": "static"
+		},
+		"cxx": {
+			"contentType": "text/x-c",
+			"type": "static"
+		},
+		"cpp": {
+			"contentType": "text/x-c",
+			"type": "static"
+		},
+		"h": {
+			"contentType": "text/x-c",
+			"type": "static"
+		},
+		"hh": {
+			"contentType": "text/x-c",
+			"type": "static"
+		},
+		"dic": {
+			"contentType": "text/x-c",
+			"type": "static"
+		},
+		"f": {
+			"contentType": "text/x-fortran",
+			"type": "static"
+		},
+		"for": {
+			"contentType": "text/x-fortran",
+			"type": "static"
+		},
+		"f77": {
+			"contentType": "text/x-fortran",
+			"type": "static"
+		},
+		"f90": {
+			"contentType": "text/x-fortran",
+			"type": "static"
+		},
+		"p": {
+			"contentType": "text/x-pascal",
+			"type": "static"
+		},
+		"pas": {
+			"contentType": "text/x-pascal",
+			"type": "static"
+		},
+		"java": {
+			"contentType": "text/x-java-source",
+			"type": "static"
+		},
+		"etx": {
+			"contentType": "text/x-setext",
+			"type": "static"
+		},
+		"uu": {
+			"contentType": "text/x-uuencode",
+			"type": "static"
+		},
+		"vcs": {
+			"contentType": "text/x-vcalendar",
+			"type": "static"
+		},
+		"vcf": {
+			"contentType": "text/x-vcard",
+			"type": "static"
+		},
+		"3gp": {
+			"contentType": "video/3gpp",
+			"type": "static"
+		},
+		"3g2": {
+			"contentType": "video/3gpp2",
+			"type": "static"
+		},
+		"h261": {
+			"contentType": "video/h261",
+			"type": "static"
+		},
+		"h263": {
+			"contentType": "video/h263",
+			"type": "static"
+		},
+		"h264": {
+			"contentType": "video/h264",
+			"type": "static"
+		},
+		"jpgv": {
+			"contentType": "video/jpeg",
+			"type": "static"
+		},
+		"jpm": {
+			"contentType": "video/jpm",
+			"type": "static"
+		},
+		"jpgm": {
+			"contentType": "video/jpm",
+			"type": "static"
+		},
+		"mj2": {
+			"contentType": "video/mj2",
+			"type": "static"
+		},
+		"mjp2": {
+			"contentType": "video/mj2",
+			"type": "static"
+		},
+		"mpeg": {
+			"contentType": "video/mpeg",
+			"type": "static"
+		},
+		"mpg": {
+			"contentType": "video/mpeg",
+			"type": "static"
+		},
+		"mpe": {
+			"contentType": "video/mpeg",
+			"type": "static"
+		},
+		"m1v": {
+			"contentType": "video/mpeg",
+			"type": "static"
+		},
+		"m2v": {
+			"contentType": "video/mpeg",
+			"type": "static"
+		},
+		"ogv": {
+			"contentType": "video/ogg",
+			"type": "static"
+		},
+		"qt": {
+			"contentType": "lvideo/quicktime",
+			"type": "static"
+		},
+		"mov": {
+			"contentType": "lvideo/quicktime",
+			"type": "static"
+		},
+		"uvh": {
+			"contentType": "video/vnd.dece.hd",
+			"type": "static"
+		},
+		"uvvh": {
+			"contentType": "video/vnd.dece.hd",
+			"type": "static"
+		},
+		"uvm": {
+			"contentType": "video/vnd.dece.mobile",
+			"type": "static"
+		},
+		"uvvm": {
+			"contentType": "video/vnd.dece.mobile",
+			"type": "static"
+		},
+		"uvp": {
+			"contentType": "video/vnd.dece.pd",
+			"type": "static"
+		},
+		"uvvp": {
+			"contentType": "video/vnd.dece.pd",
+			"type": "static"
+		},
+		"uvs": {
+			"contentType": "video/vnd.dece.sd",
+			"type": "static"
+		},
+		"uvvs": {
+			"contentType": "video/vnd.dece.sd",
+			"type": "static"
+		},
+		"uvv": {
+			"contentType": "video/vnd.dece.video",
+			"type": "static"
+		},
+		"uvvv": {
+			"contentType": "video/vnd.dece.video",
+			"type": "static"
+		},
+		"fvt": {
+			"contentType": "video/vnd.fvt",
+			"type": "static"
+		},
+		"mxu": {
+			"contentType": "video/vnd.mpegurl",
+			"type": "static"
+		},
+		"m4u": {
+			"contentType": "video/vnd.mpegurl",
+			"type": "static"
+		},
+		"pyv": {
+			"contentType": "video/vnd.ms-playready.media.pyv",
+			"type": "static"
+		},
+		"uvu": {
+			"contentType": "video/vnd.uvvu.mp4",
+			"type": "static"
+		},
+		"uvvu": {
+			"contentType": "video/vnd.uvvu.mp4",
+			"type": "static"
+		},
+		"viv": {
+			"contentType": "video/vnd.vivo",
+			"type": "static"
+		},
+		"f4v": {
+			"contentType": "video/x-f4v",
+			"type": "static"
+		},
+		"fli": {
+			"contentType": "video/x-fli",
+			"type": "static"
+		},
+		"flv": {
+			"contentType": "video/x-flv",
+			"type": "static"
+		},
+		"m4v": {
+			"contentType": "video/x-m4v",
+			"type": "static"
+		},
+		"asf": {
+			"contentType": "video/x-ms-asf",
+			"type": "static"
+		},
+		"asx": {
+			"contentType": "video/x-ms-asf",
+			"type": "static"
+		},
+		"wm": {
+			"contentType": "video/x-ms-wm",
+			"type": "static"
+		},
+		"wmv": {
+			"contentType": "video/x-ms-wmv",
+			"type": "static"
+		},
+		"wmx": {
+			"contentType": "video/x-ms-wmx",
+			"type": "static"
+		},
+		"wvx": {
+			"contentType": "video/x-ms-wvx",
+			"type": "static"
+		},
+		"movie": {
+			"contentType": "video/x-sgi-movie",
+			"type": "static"
+		},
+		"ice": {
+			"contentType": "x-conference/x-cooltalk",
 			"type": "static"
 		}
 	}

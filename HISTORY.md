@@ -6,6 +6,10 @@ nodeserver History Version
 
 ### v0.5
 
+#### v0.5.2
+
+* Deleted old xml mimes and added all to mimes.json
+
 #### v0.5.1
 
 * Fixed some errors on install system
