@@ -72,8 +72,9 @@ module.exports = exports = new function() {
 
 				proxy.web(req, res, {
 					target: website.target
-				}, function(e) {
-					console.log(e);
+				}, function(e, req, res) {
+					res.statusCode = 400;
+					res.end('The website not respond');
 				});
 			}
 
@@ -87,8 +88,9 @@ module.exports = exports = new function() {
 
 		proxy.web(req, res, {
 			target: website.target
-		}, function(e) {
-			console.log(e);
+		}, function(e, req, res) {
+			res.statusCode = 400;
+			res.end('The website not respond');
 		});
 	};
 
@@ -323,7 +325,11 @@ module.exports = exports = new function() {
 			}
 		}
 
-		website.port = website.port || (Math.floor(Math.random() * 65000) + 20000);
+		website.port = website.port || (Math.floor(Math.random() * 65000));
+		if(website.port + 20000 <= 65536) {
+			website.port += 20000;
+		}
+		
 		website.target = website.target || "http://localhost:" + website.port;
 
 		this.websites.push(website);

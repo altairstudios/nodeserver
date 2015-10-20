@@ -6,9 +6,15 @@ nodeserver History Version
 
 ### v0.5
 
+#### v0.5.3
+
+* Added a 400 error when a site is down
+* Fixed a error that shutdown server when a cgi site port is over 65536
+* Deleted old xml mimes and added all to mimes.json
+
 #### v0.5.2
 
-* Deleted old xml mimes and added all to mimes.json
+* Updated documentation of install and use
 
 #### v0.5.1
 
