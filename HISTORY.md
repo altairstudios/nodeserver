@@ -6,6 +6,11 @@ nodeserver History Version
 
 ### v0.5
 
+#### v0.5.4
+
+* New worker class for manage all request for nodejs and cgi.
+* Add a new method getWebsiteFromBinding instead of getWebsiteFromUrl and getWebsiteFromSecureUrl
+
 #### v0.5.3
 
 * Added a 400 error when a site is down

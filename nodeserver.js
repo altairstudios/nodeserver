@@ -30,6 +30,8 @@ module.exports = exports = new function() {
 
 	core.terminal.nodeserver = this;
 	core.sockets.nodeserver = this;
+	core.workers.nodeserver = this;
+	core.workers.proxy = proxy;
 
 
 
@@ -47,213 +49,70 @@ module.exports = exports = new function() {
 
 
 
-	this.serverWorker = function(req, res) {
-		var host = req.headers.host;
-		var website = self.getWebsiteFromUrl(host);
+	this.getWebsiteFromBinding = function(url, onlySecure) {
+		onlySecure = onlySecure | false;
 
-		if(website == null) {
-			website = self.getWebsiteFromUrl(host + ":80");
-		}
+		var containBinding = function(url, bindings, hasRegex) {
+			var bindingsCount = bindings.length;
 
-		if(website == null) {
-			var website = self.getWebsiteFromSecureUrl(host);
+			for(var i = 0; i < bindingsCount; i++) {
+				var binding = bindings[i];
 
-			if(website == null) {
-				website = self.getWebsiteFromSecureUrl(host + ":443");
-			}
-
-			if(website == null) {
-				res.end();
-			} else {
-				if(website.type == "cgi") {
-					self.workerCGI(req, res, website);
-					return;
-				}
-
-				proxy.web(req, res, {
-					target: website.target
-				}, function(e, req, res) {
-					res.statusCode = 400;
-					res.end('The website not respond');
-				});
-			}
-
-			return;
-		}
-
-		if(website.type == "cgi") {
-			self.workerCGI(req, res, website);
-			return;
-		}
-
-		proxy.web(req, res, {
-			target: website.target
-		}, function(e, req, res) {
-			res.statusCode = 400;
-			res.end('The website not respond');
-		});
-	};
-
-
-	this.workerCGI = function(req, res, website) {
-		var host = (req.headers.host || '').split(':');
-		var address = host[0];
-		var port = host[1];
-		var env = JSON.parse(JSON.stringify(process.env));
-		var requestUrl = urlparser.parse(req.url, true);
-		var pathinfo = requestUrl.pathname;
-
-		if(pathinfo == "/") {
-			pathinfo = "/index.php";
-		} 
-
-		env.DOCUMENT_ROOT = website.script;
-		env.PATH_TRANSLATED = website.script;
-		env.SCRIPT_FILENAME = website.script + pathinfo;
-		env.GATEWAY_INTERFACE = "CGI/1.1";
-		env.SCRIPT_NAME = pathinfo;
-		env.PATH_INFO = pathinfo;
-		env.SERVER_NAME = address || 'unknown';
-		env.SERVER_PORT = port || 80;
-		env.SERVER_PROTOCOL = "HTTP/1.1";
-		env.SERVER_SOFTWARE = "NodeServer (AltairStudios)";
-
-		for (var header in req.headers) {
-			var name = 'HTTP_' + header.toUpperCase().replace(/-/g, '_');
-			env[name] = req.headers[header];
-		}
-
-		env.REQUEST_METHOD = req.method;
-		env.QUERY_STRING = requestUrl.search.substring(1) || '';
-		env.REMOTE_ADDR = req.connection.remoteAddress;
-		env.REMOTE_PORT = req.connection.remotePort;
-		
-		if('content-length' in req.headers) {
-			env.CONTENT_LENGTH = req.headers['content-length'];
-		}
-		
-		if('content-type' in req.headers) {
-			env.CONTENT_TYPE = req.headers['content-type'];
-		}
-
-		if('authorization' in req.headers) {
-			var auth = req.headers.authorization.split(' ');
-			env.AUTH_TYPE = auth[0];
-		}
-
-		console.log(env);
-
-		var extension = path.extname(pathinfo).substring(1);
-		var mimes = JSON.parse(fs.readFileSync(__dirname + "/configuration/mimes.json"));
-		var mime = mimes.mimes[extension];
-
-		if(mime) {
-			if(mime.type == "static") {
-				fs.readFile(website.script + pathinfo, function(err, file) {
-					if(err) {
-						res.writeHead(500, {"Content-Type": "text/plain"});
-						res.write(err + "\n");
-						res.end();
-						return;
-					}
-
-					res.writeHead(200);
-					res.write(file);
-					res.end();
-				});
-			} else if(mime.type == "php") {
-				var cgi = childProcess.spawn("php", ["-t", website.script, "-f", website.script + pathinfo], { env: env });
-				req.pipe(cgi.stdin);
-				
-				cgi.stderr.on('data', function(chunk) {
-					console.log(chunk);
-				});
-
-				cgi.stdout.pipe(res.connection);
-
-				cgi.on('exit', function(code, signal) {
-					console.log('cgi spawn %d "exit" event (code %s) (signal %s)', cgi.pid, code, signal);
-				});
-			}
-		} else {
-			res.writeHead(500, {"Content-Type": "text/plain"});
-			res.write("File not supported" + "\n");
-			res.end();
-			return;
-		}
-	};
-
-
-	this.getWebsiteFromUrl = function(url) {
-		var websitesCount = this.websites.length;
-
-		for(var i = 0; i < websitesCount; i++) {
-			var website = this.websites[i];
-			var bindingsCount = website.bindings.length;
-
-			for(var j = 0; j < bindingsCount; j++) {
-				var binding = website.bindings[j];
-
-				if(binding == url) {
-					return website;
-				}
-			}
-		}
-
-		//double check with regex
-		for(var i = 0; i < websitesCount; i++) {
-			var website = this.websites[i];
-			var bindingsCount = website.bindings.length;
-
-			for(var j = 0; j < bindingsCount; j++) {
-				var regex = new RegExp("^" + website.bindings[j] + "$", "gi")
-				
-				if(regex.test(url)) {
-					return website;
-				}
-			}
-		}
-	}
-
-
-
-
-	this.getWebsiteFromSecureUrl = function(url) {
-		var websitesCount = this.websites.length;
-
-		for(var i = 0; i < websitesCount; i++) {
-			var website = this.websites[i];
-
-			if(website.security) {
-				var bindingsCount = website.security.bindings.length;
-
-				for(var j = 0; j < bindingsCount; j++) {
-					var binding = website.security.bindings[j];
-
-					if(binding == url) {
-						return website;
-					}
-				}
-			}
-		}
-
-		//double check with regex
-		for(var i = 0; i < websitesCount; i++) {
-			var website = this.websites[i];
-
-			if(website.security) {
-				var bindingsCount = website.security.bindings.length;
-
-				for(var j = 0; j < bindingsCount; j++) {
+				if(hasRegex) {
 					var regex = new RegExp("^" + url + ":", "gi")
 					
-					if(regex.test(website.security.bindings[j])) {
-						return website;
+					if(regex.test(binding)) {
+						return true;
+					}
+				} else {
+					if(binding == url) {
+						return true;
 					}
 				}
 			}
+
+			return false;
+		};
+
+
+		var getWebsite = function(url, websites) {
+			var websitesCount = websites.length;
+
+			for(var i = 0; i < websitesCount; i++) {
+				var website = websites[i];
+
+				if(website.security) {
+					var result = containBinding(url, website.security.bindings, false);
+					if(result) return website;
+				}
+
+				if(!onlySecure) {
+					var result = containBinding(url, website.bindings, false);
+					if(result) return website;
+				}
+			}
+
+			for(var i = 0; i < websitesCount; i++) {
+				var website = websites[i];
+
+				if(website.security) {
+					var result = containBinding(url, website.security.bindings, true);
+					if(result) return website;
+				}
+
+				if(!onlySecure) {
+					var result = containBinding(url, website.bindings, true);
+					if(result) return website;
+				}
+			}
 		}
-	}
+
+		var thewebsite = getWebsite(url, self.websites);
+		if(thewebsite == null) thewebsite = getWebsite(url + ':80', self.websites);
+		if(thewebsite == null) thewebsite = getWebsite(url + ':443', self.websites);
+
+		return thewebsite;
+	};
 
 
 
@@ -329,7 +188,7 @@ module.exports = exports = new function() {
 		if(website.port + 20000 <= 65536) {
 			website.port += 20000;
 		}
-		
+
 		website.target = website.target || "http://localhost:" + website.port;
 
 		this.websites.push(website);
@@ -394,8 +253,6 @@ module.exports = exports = new function() {
 
 		website.log = [];
 
-		//console.log(child);
-
 		if(fs.existsSync(website.script)) {
 			child.start();
 		}
@@ -432,19 +289,6 @@ module.exports = exports = new function() {
 	this.start = function(started) {
 		if(started === undefined) {
 			if(this.unix) {
-				/*self.socket = net.createServer(function(client) {
-					client.on('data', function(data) {
-						if(data == 'status') {
-							var json = JSON.stringify(self.websites);
-							client.write(new Buffer(json));
-						} else if(data == 'stop') {
-							process.exit(0);
-						}
-					});
-				});
-				
-				self.socket.listen('/tmp/nodeserver.sock');*/
-
 				core.sockets.start();
 			}
 		}
@@ -454,7 +298,7 @@ module.exports = exports = new function() {
 		var securePorts = this.securePorts.length;
 
 		for(var i = 0; i < ports; i++) {
-			var server = require('http').createServer(this.serverWorker);
+			var server = require('http').createServer(core.workers.process);
 			server.listen(this.ports[i]);
 
 			this.servers.push(server);
@@ -463,7 +307,7 @@ module.exports = exports = new function() {
 
 		var secureOptions = {
 			SNICallback: function(domain, callback) {
-				var website = self.getWebsiteFromSecureUrl(domain);
+				var website = self.getWebsiteFromBinding(domain, true);
 
 				if(website) {
 					var security = {
@@ -489,7 +333,7 @@ module.exports = exports = new function() {
 		};
 
 		for(var i = 0; i < securePorts; i++) {
-			var server = require('https').createServer(secureOptions, this.serverWorker);
+			var server = require('https').createServer(secureOptions, core.workers.process);
 			server.listen(this.securePorts[i]);
 			this.servers.push(server);
 		}
@@ -519,12 +363,12 @@ module.exports = exports = new function() {
 		}
 	});
 
-/*
-	process.on('uncaughtException', function(err) {
+
+	/*process.on('uncaughtException', function(err) {
 		console.log('Error!!!!: ' + err);
 		console.log(arguments);
-	});
-*/
+	});*/
+
 
 	process.on('SIGINT', function() {
 		console.log('\nSayonara baby!!');
