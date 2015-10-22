@@ -9,6 +9,7 @@ nodeserver History Version
 #### v0.6.1
 
 * Add status information on shell $ nodeserver status
+* Add example on readme of status output
 
 #### v0.6.0
 

@@ -104,6 +104,8 @@ Check status and show a list of active webites
 
 	$ nodeserver status
 
+![nodeserver status](https://raw.githubusercontent.com/altairstudios/nodeserver/master/images/status.png)
+
 Stop the server
 
 	$ nodeserver stop
