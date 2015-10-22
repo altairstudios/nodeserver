@@ -6,6 +6,10 @@ nodeserver History Version
 
 ### v0.6
 
+#### v0.6.1
+
+* Add status information on shell $ nodeserver status
+
 #### v0.6.0
 
 * Change not respond websites from 400 to 504 HTTP code

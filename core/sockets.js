@@ -41,7 +41,9 @@ var sockets = module.exports = exports = {
 
 				jsonWebsite.type = website.type;
 				jsonWebsite.name = website.name;
-				jsonWebsite.status = ((website.process) ? ((website.process.running) ? 'started' : 'stopped') : 'started');
+				jsonWebsite.status = ((website.process) ? ((website.processStatus == 'start') ? 'start' : 'stop') : 'start');
+				jsonWebsite.pid = (website.process) ? website.process.pid : null;
+				jsonWebsite.usage = website.getUsage();
 
 				json.websites.push(jsonWebsite);
 			};

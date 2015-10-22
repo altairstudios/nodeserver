@@ -102,12 +102,53 @@ var terminal = module.exports = exports = {
 						socket.end();
 
 						if(json.websites.length > 0) {
+							console.log('Monitoring\n'.gray);
 							for (var i = 0; i < json.websites.length; i++) {
 								var website = json.websites[i];
-								var status = (website.status == 'started') ? ' * '.green : ' * '.red;
-								console.log(status + website.name + '\t\t'.gray);
-								console.log('   ' + website.type + '\t\t'.gray);
-								console.log('\n');
+								var status = (website.status == 'start') ? ' ● '.green : ' ● '.red;
+
+								var title = status + website.name.bold.green + ' (' + website.type.green + ')';
+
+								if(website.usage) {
+									title += ' - mem: ' + website.usage.size + ' MB';
+								}
+
+								console.log(title);
+
+								if(website.usage) {
+									var textCpu = website.usage.cpu.toString().split('');
+									var textMem = website.usage.mem.toString().split('');
+
+									while(textCpu.length < 5) {
+										textCpu.unshift(' ');
+									};
+
+									while(textMem.length < 5) {
+										textMem.unshift(' ');
+									};
+
+									var cpuBars = [];
+									var memBars = [];
+
+									for (var j = 0; j < 20; j++) {
+										if(website.usage.cpu > (j * 5)) {
+											cpuBars.push('🁢');
+										} else {
+											cpuBars.push(' ');
+										}
+									};
+
+									for (var j = 0; j < 20; j++) {
+										if(website.usage.mem > (j * 5)) {
+											memBars.push('🁢');
+										} else {
+											memBars.push(' ');
+										}
+									};
+
+									console.log('   CPU: '.grey + textCpu.join('').grey + '% ['.grey + cpuBars.join('').blue + ']'.grey);
+									console.log('   MEM: '.grey + textMem.join('').grey + '% ['.grey + memBars.join('').red + ']'.grey);
+								}
 							};
 						} else {
 							console.log('No websites configured'.gray);

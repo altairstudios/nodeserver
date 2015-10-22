@@ -1,5 +1,6 @@
 var crypto = require('crypto');
 var urlparser = require('url');
+var childProcess = require('child_process');
 
 
 
@@ -101,6 +102,31 @@ module.exports = exports = function(opts) {
 
 		if(this.log.length > 100) {
 			this.log.pop();
+		}
+	};
+
+
+
+	this.getUsage = function() {
+		if(!this.process) {
+			return;
+		}
+
+		try {
+			var usage = childProcess.execSync('ps -p ' + this.process.pid + ' -o %cpu=,%mem=,rss=').toString('utf8');
+			var mathUsage = usage.replace(/,/g, '.')
+			var cpu = parseFloat(mathUsage.substr(0, 5));
+			var mem = parseFloat(mathUsage.substr(5, 5));
+			var size = Math.round((parseFloat(mathUsage.substr(10)) / 1024) * 100) / 100;
+
+			return {
+				pid: this.pid,
+				cpu: cpu,
+				mem: mem,
+				size: size
+			};
+		} catch(ex) {
+			return;
 		}
 	};
 
