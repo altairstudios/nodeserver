@@ -12,6 +12,14 @@ module.exports = exports = new function() {
 
 
 
+	this.start = function(website) {
+		if(website.type == "node") {
+			this.workerNode(website);
+		}
+	};
+
+
+
 	this.process = function(req, res) {
 		var host = req.headers.host;
 		var website = self.nodeserver.getWebsiteFromBinding(host);
@@ -28,9 +36,74 @@ module.exports = exports = new function() {
 			self.proxy.web(req, res, {
 				target: website.target
 			}, function(e, req, res) {
-				res.statusCode = 400;
+				res.statusCode = 504;
 				res.end('The website not respond');
 			});
+		}
+	};
+
+
+
+	this.workerNode = function(website) {
+		var scriptPath = "";
+		var script = "";
+		var port = website.port;
+		var sslport = website.portssl || port + 11000;
+
+		if(website.absoluteScript === false) {
+			scriptPath = process.cwd() + "/" + path.dirname(website.script);
+		} else {
+			scriptPath = path.dirname(website.script);
+		}
+
+		script = path.basename(website.script);
+
+		var env = JSON.parse(JSON.stringify(process.env));
+		env.PORT = port;
+
+		var child = childProcess.spawn(process.execPath, [script], { env: env, cwd: scriptPath, stdio: 'pipe' });
+		website.process = child;
+		website.processStatus = 'start';
+
+
+		child.stderr.on('data', function(chunk) {
+			website.writeLog(chunk.toString('utf8'), 'error');
+			//console.log('Error:')
+			//console.log(chunk.toString('utf8'));
+		});
+
+		child.stdout.on('data', function(chunk) {
+			website.writeLog(chunk.toString('utf8'), 'log');
+			//console.log('Out:')
+			//console.log(chunk.toString('utf8'));
+		});
+
+		child.on('exit', function(code, signal) {
+			website.writeLog('cgi spawn ' + child.pid + ' "exit" event (code ' + code + ') (signal ' + signal + ') (status ' + website.processStatus + ')', 'log');
+			//console.log('cgi spawn %d "exit" event (code %s) (signal %s) (status %s)', child.pid, code, signal, website.processStatus);
+
+			if(website.processStatus == 'stop') {
+				website.processStatus = 'end';
+			} else {
+				website.processStatus = 'end';
+				self.workerNode(website);
+			}
+		});
+
+		website.operations = {
+			stop: function() {
+				website.processStatus = 'stop';
+				child.kill('SIGINT');
+			},
+			reboot: function() {
+				website.processStatus = 'stop';
+				child.kill('SIGINT');
+				website.operations.stop();
+				website.operations.start();
+			},
+			start: function() {
+				self.workerNode(website);
+			}
 		}
 	};
 
@@ -99,19 +172,30 @@ module.exports = exports = new function() {
 					res.writeHead(200);
 					res.write(file);
 					res.end();
+
+					website.writeLog(pathinfo, 'log');
 				});
 			} else if(mime.type == "php") {
 				var cgi = childProcess.spawn("php", ["-t", website.script, "-f", website.script + pathinfo], { env: env });
 				req.pipe(cgi.stdin);
 				
 				cgi.stderr.on('data', function(chunk) {
-					console.log(chunk);
+					console.log(chunk.toString('utf8'))
+					website.writeLog(chunk.toString('utf8'), 'error');
 				});
+
+				/*cgi.stdout.on('data', function(chunk) {
+					website.writeLog(chunk.toString('utf8'), 'log');
+					//console.log('Out:')
+					//console.log(chunk.toString('utf8'));
+				});*/
 
 				cgi.stdout.pipe(res.connection);
 
 				cgi.on('exit', function(code, signal) {
-					console.log('cgi spawn %d "exit" event (code %s) (signal %s)', cgi.pid, code, signal);
+					//console.log('cgi spawn %d "exit" event (code %s) (signal %s)', cgi.pid, code, signal);
+					//console.log(website.script)
+					website.writeLog(website.script, 'log');
 				});
 			}
 		} else {

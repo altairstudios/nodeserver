@@ -15,6 +15,7 @@ var core = require('./core');
 var crypto = require('crypto');
 
 
+
 module.exports = exports = new function() {
 	var self = this;
 	this.websites = [];
@@ -143,10 +144,7 @@ module.exports = exports = new function() {
 		this.websites = [];
 
 		for(var i = 0; i < this.config.sites.length; i++) {
-			var site = this.config.sites[i];
-
-			site.id = crypto.createHash('md5').update(site.name + site.bindings[0]).digest('hex');
-			this.addWebsite(site);
+			this.addWebsite(this.config.sites[i]);
 		}
 
 		if(this.config.nodeserver.admin.active) {
@@ -157,42 +155,29 @@ module.exports = exports = new function() {
 		} else if(this.admin) {
 			this.admin.stopAdminInterface();
 		}
-	}
+	};
 
 
-	this.addWebsite = function(website) {
-		console.log("add url: ".grey + website.name.blue);
 
-		if(website.type == "node") {
-			this.startChild(website);
+	this.addWebsite = function(site) {
+		var website = new core.models.website(site);
+
+		for(var i = 0; i < website.ports.http.length; i++) {
+			this.addPort(website.ports.http[i]);
 		}
 
-		for(var i = 0; i < website.bindings.length; i++) {
-			var url = urlparser.parse("http://" + website.bindings[i]);
-
-			this.addPort(url.port);
+		for(var i = 0; i < website.ports.https.length; i++) {
+			this.addSecurePort(website.ports.https[i]);
 		}
 
-		if(website.security) {
-			for(var i = 0; i < website.security.bindings.length; i++) {
-				var url = urlparser.parse("https://" + website.security.bindings[i]);
-				this.addSecurePort(url.port);
-			}
-
-			if(website.security.certs) {
-				this.baseCerts = website.security.certs;
-			}
+		if(website.security.certs != null) {
+			this.baseCerts = website.security.certs;
 		}
-
-		website.port = website.port || (Math.floor(Math.random() * 65000));
-		if(website.port + 20000 <= 65536) {
-			website.port += 20000;
-		}
-
-		website.target = website.target || "http://localhost:" + website.port;
 
 		this.websites.push(website);
+		core.workers.start(website);
 	};
+
 
 
 	this.addPort = function(port) {
@@ -216,74 +201,6 @@ module.exports = exports = new function() {
 		this.securePorts.push(port);
 	};
 
-
-	this.startChild = function(website) {
-		var scriptPath = "";
-		var script = "";
-		var port = website.port;
-		var sslport = website.portssl || port + 11000;
-
-		if(website.absoluteScript === false) {
-			scriptPath = process.cwd() + "/" + path.dirname(website.script);
-		} else {
-			scriptPath = path.dirname(website.script);
-		}
-
-		script = path.basename(website.script);
-
-		console.log("SCRIPT: " + script);
-		console.log("PATH: " + scriptPath);
-		console.log("PORT: " + port);
-
-		var childConfig = {
-			spinSleepTime: 10000,
-			max: 10,
-			silent: false,
-			options: [],
-			sourceDir: scriptPath,
-			cwd: scriptPath,
-			env: { 'PORT': port }
-		};
-
-		var child = new (forever.Monitor)(script, childConfig);
-
-		child.on('exit', function (forever) {
-			console.log('Closing script ' + forever.args[0]);
-		});
-
-		website.log = [];
-
-		if(fs.existsSync(website.script)) {
-			child.start();
-		}
-
-		if(child.child != null) {
-			child.child.stdout.on('data', function (data) {
-				var buff = new Buffer(data);
-				var lines = buff.toString('utf8').split(/(\r?\n)/g);
-				//console.log("foo: " + buff.toString('utf8'));
-				for (var i=0; i<lines.length; i++) {
-					// Process the line, noting it might be incomplete.
-					//console.log('###: ' + i + ' - ' + lines[i]);
-				}
-			});
-		}
-
-		var watchFucntion = function (curr, prev) {
-			child.stop();
-			
-			setTimeout(function() {
-				child.start();
-			}, 1000);
-		};
-		
-		fs.watchFile(scriptPath + '/' + script, watchFucntion);
-		//fs.watchFile(scriptPath + '/package.json', watchFucntion);
-
-		website.process = child;
-
-		return website;
-	}
 
 
 	this.start = function(started) {

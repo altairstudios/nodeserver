@@ -20,7 +20,7 @@ block content
 								=website.name
 								if website.process
 									span.pull-right.text-muted.small
-										em=((website.process.running) ? 'started' : 'stopped')
+										em=website.processStatus
 
 
 		div.col-lg-4

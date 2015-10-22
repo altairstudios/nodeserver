@@ -16,26 +16,21 @@ var findId = function(websites, webisteId) {
 
 
 var stop = function(website) {
-	if(website.process.running) {
-		website.process.stop();
+	if(website.processStatus != 'stop' && website.processStatus != 'end') {
+		website.operations.stop();
 	}
 }
 
 
 var start = function(website) {
-	if(!website.process.running && fs.existsSync(website.script)) {
-		website.process.start();
+	if(website.processStatus != 'start') {
+		website.operations.start();
 	}
 }
 
 var restart = function(website) {
 	stop(website);
-
-	if(fs.existsSync(website.script)) {
-		setTimeout(function() {
-			website.process.start(true);
-		}, 2000);
-	}
+	start(website);
 }
 
 
@@ -47,9 +42,6 @@ module.exports = exports = {
 		}
 
 		var website = findId(req.nodeserver.websites, req.params.websiteId);
-console.log('#######')
-		console.log(req.params)
-		console.log('#######')
 		start(website);
 
 		res.redirect('/websites/' + req.params.websiteId);
@@ -64,9 +56,9 @@ console.log('#######')
 
 		restart(website);
 
-		setTimeout(function() {
-			res.redirect('/websites/' + req.params.websiteId);
-		}, 2500);
+		//setTimeout(function() {
+		//}, 2500);
+		res.redirect('/websites/' + req.params.websiteId);
 	},
 	stop: function(req, res) {
 		if(!req.session || !req.session.validAdmin) {
@@ -78,8 +70,9 @@ console.log('#######')
 
 		stop(website);
 
-		setTimeout(function() {
-			res.redirect('/websites/' + req.params.websiteId);
-		}, 2000);
+		//setTimeout(function() {
+		//}, 2000);
+
+		res.redirect('/websites/' + req.params.websiteId);
 	}
 }

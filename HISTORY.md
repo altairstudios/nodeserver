@@ -4,6 +4,16 @@ nodeserver History Version
 
 ## Lasts versions
 
+### v0.6
+
+#### v0.6.0
+
+* Change not respond websites from 400 to 504 HTTP code
+* Deleted reboot button on admin. Now use stop and start buttons
+* Refactored website model
+* Refactored worker for nodejs to external workers file with cgi worker
+* Added log in admin with the last 100 log lines
+
 ### v0.5
 
 #### v0.5.4

@@ -8,20 +8,42 @@ block content
 
 	div.row
 		div.col-lg-8
-			div(class='panel panel-' + ((website.process) ? ((website.process.running) ? 'success' : 'danger') : 'success'))
+			div(class='panel panel-' + ((website.process) ? ((website.processStatus == 'start') ? 'success' : 'danger') : 'success'))
 				div.panel-heading
 					i.fa.fa-sitemap.fa-fw
 					|Status - 
-					=((website.process) ? ((website.process.running) ? 'started' : 'stopped') : 'started')
+					=((website.process) ? website.processStatus : 'started')
 				div.panel-body
 					if website.process
 						h4 Operations
 						button.btn.btn-success.btn-circle.btn-xl(type='buton' title='start' onclick='document.location="/websites/' + website.id + '/start"')
 							i.fa.fa-bolt
-						button.btn.btn-warning.btn-circle.btn-xl(type='buton' title='restart' onclick='document.location="/websites/' + website.id + '/restart"')
+						//-button.btn.btn-warning.btn-circle.btn-xl(type='buton' title='restart' onclick='document.location="/websites/' + website.id + '/restart"')
 							i.fa.fa-power-off
 						button.btn.btn-danger.btn-circle.btn-xl(type='buton' title='stop' onclick='document.location="/websites/' + website.id + '/stop"')
 							i.fa.fa-square
+			div(class='panel panel-default')
+				div.panel-heading
+					i.fa.fa-file-text-o.fa-fw
+					| Logs
+				div.panel-body
+					table.table.table-striped.table-bordered.table-hover
+						thead
+							tr
+								th Date
+								th type
+								th Message
+						tbody
+							each line in website.log
+								tr(class=(line.type == 'error') ? 'danger' : '')
+									td=line.date
+									td=line.type
+									td!=line.message.replace(/\n/g, '<br>')
+						tfoot
+							tr
+								th Date
+								th type
+								th Message
 
 		div.col-lg-4
 			div.panel.panel-default
