@@ -6,6 +6,10 @@ nodeserver History Version
 
 ### v0.6
 
+#### v0.6.2
+
+* Fixed an error with regex domains bindings
+
 #### v0.6.1
 
 * Add status information on shell $ nodeserver status

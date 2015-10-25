@@ -60,9 +60,12 @@ module.exports = exports = new function() {
 				var binding = bindings[i];
 
 				if(hasRegex) {
-					var regex = new RegExp("^" + url + ":", "gi")
+					var regex = new RegExp("^" + binding + ":", "gi")
+					console.log(regex);
+					console.log(binding);
+					console.log('---')
 					
-					if(regex.test(binding)) {
+					if(regex.test(url)) {
 						return true;
 					}
 				} else {
