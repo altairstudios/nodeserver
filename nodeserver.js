@@ -60,10 +60,7 @@ module.exports = exports = new function() {
 				var binding = bindings[i];
 
 				if(hasRegex) {
-					var regex = new RegExp("^" + binding + ":", "gi")
-					console.log(regex);
-					console.log(binding);
-					console.log('---')
+					var regex = new RegExp("^" + binding + "$", "gi")
 					
 					if(regex.test(url)) {
 						return true;
