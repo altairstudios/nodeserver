@@ -14,6 +14,7 @@ nodeserver History Version
 * Updated the mocha tests at last version
 * Update package version to new version v0.7.0
 * Add 4 mocha configuration tests
+* Add stats from NPM on README.md file
 
 ### v0.6
 
