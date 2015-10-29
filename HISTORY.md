@@ -13,6 +13,7 @@ nodeserver History Version
 * Check in terminal if socket exits but not a server listen, kill this socket and show a message 'server not running'
 * Updated the mocha tests at last version
 * Update package version to new version v0.7.0
+* Add 4 mocha configuration tests
 
 ### v0.6
 
