@@ -16,7 +16,7 @@ var crypto = require('crypto');
 
 
 
-module.exports = exports = new function() {
+module.exports = exports = function(inTerminal) {
 	var self = this;
 	this.websites = [];
 	this.ports = [];
@@ -207,6 +207,7 @@ module.exports = exports = new function() {
 		if(started === undefined) {
 			if(this.unix) {
 				core.sockets.start();
+
 			}
 		}
 
@@ -281,6 +282,9 @@ module.exports = exports = new function() {
 	});
 
 
+
+
+
 	/*process.on('uncaughtException', function(err) {
 		console.log('Error!!!!: ' + err);
 		console.log(arguments);
@@ -295,5 +299,9 @@ module.exports = exports = new function() {
 
 	this.terminal = core.terminal.process;
 
-	this.terminal(process.argv);
+	if(inTerminal) {
+		this.terminal(process.argv);
+	}
+
+	return self;
 };
