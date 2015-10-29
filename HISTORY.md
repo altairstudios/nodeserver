@@ -4,6 +4,16 @@ nodeserver History Version
 
 ## Lasts versions
 
+### v0.7
+
+#### v0.7.0
+
+* Clean nodeserver bash script
+* Change nodeserver script init from instance class to a class for initialize with a param 'inTerminal'. Example new require('nodeserver')(false)
+* Check in terminal if socket exits but not a server listen, kill this socket and show a message 'server not running'
+* Updated the mocha tests at last version
+* Update package version to new version v0.7.0
+
 ### v0.6
 
 #### v0.6.3
