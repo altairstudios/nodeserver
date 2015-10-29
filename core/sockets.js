@@ -5,37 +5,36 @@ var net = require('net');
 
 var sockets = module.exports = exports = {
 	start: function(params) {
-		sockets.nodeserver.socket = net.createServer(function(client) {
+		var self = this;
+		self.nodeserver.socket = net.createServer(function(client) {
 			client.on('data', function(data) {
 				if(data == 'status') {
-					sockets.operations.status(client);
+					self.operations.status(client);
 				} else if(data == 'stop') {
-					sockets.operations.stop(client);
+					self.operations.stop(client);
 				} else if(data == 'reload') {
-					sockets.operations.reload(client);
+					self.operations.reload(client);
 				}
 			});
 		});
 		
-		sockets.nodeserver.socket.listen('/tmp/nodeserver.sock');
+		self.nodeserver.socket.listen('/tmp/nodeserver.sock');
 	},
 	operations: {
 		stop: function(client) {
 			process.exit(0);
 		},
 		reload: function(client) {
-			sockets.nodeserver.hotConfig();
+			this.nodeserver.hotConfig();
 			client.write(new Buffer('reloaded'));
 		},
 		status: function(client) {
-			//console.log(sockets.nodeserver.websites);
-
 			var json = {
 				websites: []
 			};
 
-			for (var i = 0; i < sockets.nodeserver.websites.length; i++) {
-				var website = sockets.nodeserver.websites[i];
+			for (var i = 0; i < this.nodeserver.websites.length; i++) {
+				var website = this.nodeserver.websites[i];
 
 				var jsonWebsite = {};
 

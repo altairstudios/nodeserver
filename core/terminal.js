@@ -43,6 +43,11 @@ var terminal = module.exports = exports = {
 				console.log('stopping server...'.grey);
 
 				var socket = new net.Socket();
+				socket.on('error', function(e) {
+					if (e.code == 'ECONNREFUSED') {
+						fs.unlinkSync('/tmp/nodeserver.sock');
+					}
+				});
 				socket.connect('/tmp/nodeserver.sock', function() {
 					socket.write('stop', function() {});
 
@@ -63,6 +68,11 @@ var terminal = module.exports = exports = {
 				console.log('stopping server...'.grey);
 
 				var socket = new net.Socket();
+				socket.on('error', function(e) {
+					if (e.code == 'ECONNREFUSED') {
+						fs.unlinkSync('/tmp/nodeserver.sock');
+					}
+				});
 				socket.connect('/tmp/nodeserver.sock', function() {
 					socket.write('reload', function() {});
 
@@ -91,10 +101,16 @@ var terminal = module.exports = exports = {
 			var exists = fs.existsSync('/tmp/nodeserver.sock');
 
 			if(exists) {
-				console.log('Server running'.yellow);
-
 				var socket = new net.Socket();
+				socket.on('error', function(e) {
+					if (e.code == 'ECONNREFUSED') {
+						console.log('No server running'.yellow);
+						fs.unlinkSync('/tmp/nodeserver.sock');
+					}
+				});
+
 				socket.connect('/tmp/nodeserver.sock', function() {
+					console.log('Server running'.yellow);
 					socket.write('status', function() {});
 
 					socket.on('data', function(data) {
@@ -156,7 +172,7 @@ var terminal = module.exports = exports = {
 					});
 				});
 			} else {
-				console.log('No server running'.yellow)
+				console.log('No server running'.yellow);
 			}
 		},
 		install: function(params) {
