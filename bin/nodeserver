@@ -1,9 +1,3 @@
 #!/usr/local/bin/node
 
-//var httpProxy = require('http-proxy');
-var nodeserver = require('../nodeserver');
-
-//nodeserver.readConfigFile("../../node.config");
-//nodeserver.readConfigFile("nodeserver.config");
-
-//nodeserver.start();
+var nodeserver = new require('../nodeserver')(true);
