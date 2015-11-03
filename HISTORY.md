@@ -15,6 +15,8 @@ nodeserver History Version
 * Update package version to new version v0.7.0
 * Add 4 mocha configuration tests
 * Add stats from NPM on README.md file
+* Added mocha to script package and added travis configuration
+* Some fixes over nodejs 0.10.x with SSL
 
 ### v0.6
 
