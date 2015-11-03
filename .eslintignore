@@ -1,0 +1,3 @@
+admin/public/*
+node_modules/*
+test/*

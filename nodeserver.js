@@ -144,7 +144,15 @@ module.exports = exports = function(inTerminal) {
 			config = fs.readFileSync("/etc/nodeserver/nodeserver.config");
 		}
 
-		this.config = JSON.parse(config);
+		var json = JSON.parse(config);
+
+		this.readConfig(json);
+	};
+
+
+
+	this.readConfig = function(config) {
+		this.config = config;
 
 		if(this.config == null) {
 			return;

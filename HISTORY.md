@@ -18,6 +18,7 @@ nodeserver History Version
 * Added mocha to script package and added travis configuration
 * Some fixes over nodejs 0.10.x with SSL
 * Fixed socket close error when process exit on nodejs 0.10.40 - throw new Error('Not running');
+* Added gulp for future build and lint to test
 
 ### v0.6
 
