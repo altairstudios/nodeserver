@@ -17,6 +17,7 @@ nodeserver History Version
 * Add stats from NPM on README.md file
 * Added mocha to script package and added travis configuration
 * Some fixes over nodejs 0.10.x with SSL
+* Fixed socket close error when process exit on nodejs 0.10.40 - throw new Error('Not running');
 
 ### v0.6
 

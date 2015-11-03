@@ -297,7 +297,9 @@ module.exports = exports = function(inTerminal) {
 
 	process.on('exit', function(code) {
 		if(self.unix && self.socket) {
-			self.socket.close();
+			try {
+				self.socket.close();
+			} catch(ex) {}
 		}
 	});
 

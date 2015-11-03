@@ -11,7 +11,7 @@ node_js:
 script:
   - npm run test
 
-sudo: true
+sudo: false
 
 notifications:
   email:
