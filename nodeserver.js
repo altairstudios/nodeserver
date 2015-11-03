@@ -13,6 +13,7 @@ var net = require('net');
 require('colors');
 var core = require('./core');
 var crypto = require('crypto');
+var tls = require('tls');
 
 
 
@@ -36,6 +37,10 @@ module.exports = exports = function(inTerminal) {
 
 
 
+	/**
+	 * Stop all process of server, read again the configuration file and restart the server
+	 * @return {null}
+	 */
 	this.hotConfig = function() {
 		this.stop();
 		this.readConfigFile(this.configFile);
@@ -44,6 +49,10 @@ module.exports = exports = function(inTerminal) {
 
 
 
+	/**
+	 * Get version number of nodeserver
+	 * @return {string}
+	 */
 	this.getVersion = function() {
 		return require('./package.json').version;
 	};
@@ -51,7 +60,7 @@ module.exports = exports = function(inTerminal) {
 
 
 	this.getWebsiteFromBinding = function(url, onlySecure) {
-		onlySecure = onlySecure | false;
+		onlySecure = onlySecure || false;
 
 		var containBinding = function(url, bindings, hasRegex) {
 			var bindingsCount = bindings.length;
@@ -170,7 +179,7 @@ module.exports = exports = function(inTerminal) {
 			this.addSecurePort(website.ports.https[i]);
 		}
 
-		if(website.security.certs != null) {
+		if(website.security.certs != null && website.security.certs != undefined && website.security.certs.key != null) {
 			this.baseCerts = website.security.certs;
 		}
 
@@ -211,7 +220,6 @@ module.exports = exports = function(inTerminal) {
 			}
 		}
 
-
 		var ports = this.ports.length;
 		var securePorts = this.securePorts.length;
 
@@ -241,9 +249,21 @@ module.exports = exports = function(inTerminal) {
 						};
 					}
 
-					callback(null, require('tls').createSecureContext(security));
+					if(callback) {
+						callback(null, tls.createSecureContext(security));
+					} else {
+						try {
+							return tls.createSecureContext(certs);
+						} catch(e) {
+							return crypto.createCredentials(certs).context;
+						}
+					}
 				} else {
-					callback(true);
+					if(callback) {
+						callback(true);
+					} else {
+						return true;
+					}
 				}
 			},
 			key: (self.baseCerts.key && fs.existsSync(self.baseCerts.key)) ? fs.readFileSync(self.baseCerts.key) : '',
