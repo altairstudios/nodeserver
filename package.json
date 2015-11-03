@@ -50,7 +50,7 @@
     "nodeserver": "./bin/nodeserver"
   },
   "scripts": {
-    "test": "mocha"
+    "test": "mocha --no-timeouts"
   },
   "engines": {
     "node": "0.10.x",
