@@ -36,7 +36,7 @@ module.exports = exports = function(opts) {
 			this.port += 20000;
 		}
 
-		this.target = json.target || "http://localhost:" + this.port;
+		this.target = json.target || 'http://localhost:' + this.port;
 
 		this.ports = {
 			http: [],
@@ -47,11 +47,11 @@ module.exports = exports = function(opts) {
 		this.bindings = [];
 		if(json.bindings && json.bindings.length > 0) {
 			for (var i = 0; i < json.bindings.length; i++) {
-				var url = urlparser.parse("http://" + json.bindings[i]);
+				var url = urlparser.parse('http://' + json.bindings[i]);
 				this.ports.http.push(url.port);
 
 				this.bindings.push(json.bindings[i]);
-			};
+			}
 		}
 
 		this.security = {
@@ -76,17 +76,17 @@ module.exports = exports = function(opts) {
 				if(json.security.certs.ca && json.security.certs.ca.length > 0) {
 					for (var i = 0; i < json.security.certs.ca.length; i++) {
 						this.security.certs.ca.push(json.security.certs.ca[i]);
-					};
+					}
 				}
 			}
 
 			if(json.security.bindings && json.security.bindings.length > 0) {
 				for (var i = 0; i < json.security.bindings.length; i++) {
-					var url = urlparser.parse("https://" + json.security.bindings[i]);
+					var url = urlparser.parse('https://' + json.security.bindings[i]);
 					this.ports.https.push(url.port);
 
 					this.security.bindings.push(json.security.bindings[i]);
-				};
+				}
 			}
 		}
 	};
@@ -114,7 +114,7 @@ module.exports = exports = function(opts) {
 
 		try {
 			var usage = childProcess.execSync('ps -p ' + this.process.pid + ' -o %cpu=,%mem=,rss=').toString('utf8');
-			var mathUsage = usage.replace(/,/g, '.')
+			var mathUsage = usage.replace(/,/g, '.');
 			var cpu = parseFloat(mathUsage.substr(0, 5));
 			var mem = parseFloat(mathUsage.substr(5, 5));
 			var size = Math.round((parseFloat(mathUsage.substr(10)) / 1024) * 100) / 100;

@@ -13,7 +13,7 @@ module.exports = exports = new function() {
 
 
 	this.start = function(website) {
-		if(website.type == "node") {
+		if(website.type == 'node') {
 			this.workerNode(website);
 		}
 	};
@@ -28,7 +28,7 @@ module.exports = exports = new function() {
 			res.statusCode = 400;
 			res.end();
 		} else {
-			if(website.type == "cgi") {
+			if(website.type == 'cgi') {
 				self.workerCGI(req, res, website);
 				return;
 			}
@@ -45,13 +45,12 @@ module.exports = exports = new function() {
 
 
 	this.workerNode = function(website) {
-		var scriptPath = "";
-		var script = "";
+		var scriptPath = '';
+		var script = '';
 		var port = website.port;
-		var sslport = website.portssl || port + 11000;
-
+		
 		if(website.absoluteScript === false) {
-			scriptPath = process.cwd() + "/" + path.dirname(website.script);
+			scriptPath = process.cwd() + '/' + path.dirname(website.script);
 		} else {
 			scriptPath = path.dirname(website.script);
 		}
@@ -68,19 +67,14 @@ module.exports = exports = new function() {
 
 		child.stderr.on('data', function(chunk) {
 			website.writeLog(chunk.toString('utf8'), 'error');
-			//console.log('Error:')
-			//console.log(chunk.toString('utf8'));
 		});
 
 		child.stdout.on('data', function(chunk) {
 			website.writeLog(chunk.toString('utf8'), 'log');
-			//console.log('Out:')
-			//console.log(chunk.toString('utf8'));
 		});
 
 		child.on('exit', function(code, signal) {
 			website.writeLog('cgi spawn ' + child.pid + ' "exit" event (code ' + code + ') (signal ' + signal + ') (status ' + website.processStatus + ')', 'log');
-			//console.log('cgi spawn %d "exit" event (code %s) (signal %s) (status %s)', child.pid, code, signal, website.processStatus);
 
 			if(website.processStatus == 'stop') {
 				website.processStatus = 'end';
@@ -104,7 +98,7 @@ module.exports = exports = new function() {
 			start: function() {
 				self.workerNode(website);
 			}
-		}
+		};
 	};
 
 
@@ -117,20 +111,20 @@ module.exports = exports = new function() {
 		var requestUrl = urlparser.parse(req.url, true);
 		var pathinfo = requestUrl.pathname;
 
-		if(pathinfo == "/") {
-			pathinfo = "/index.php";
+		if(pathinfo == '/') {
+			pathinfo = '/index.php';
 		} 
 
 		env.DOCUMENT_ROOT = website.script;
 		env.PATH_TRANSLATED = website.script;
 		env.SCRIPT_FILENAME = website.script + pathinfo;
-		env.GATEWAY_INTERFACE = "CGI/1.1";
+		env.GATEWAY_INTERFACE = 'CGI/1.1';
 		env.SCRIPT_NAME = pathinfo;
 		env.PATH_INFO = pathinfo;
 		env.SERVER_NAME = address || 'unknown';
 		env.SERVER_PORT = port || 80;
-		env.SERVER_PROTOCOL = "HTTP/1.1";
-		env.SERVER_SOFTWARE = "NodeServer (AltairStudios)";
+		env.SERVER_PROTOCOL = 'HTTP/1.1';
+		env.SERVER_SOFTWARE = 'NodeServer (AltairStudios)';
 
 		for (var header in req.headers) {
 			var name = 'HTTP_' + header.toUpperCase().replace(/-/g, '_');
@@ -156,15 +150,15 @@ module.exports = exports = new function() {
 		}
 
 		var extension = path.extname(pathinfo).substring(1);
-		var mimes = JSON.parse(fs.readFileSync(__dirname + "/../../configuration/mimes.json"));
+		var mimes = JSON.parse(fs.readFileSync(__dirname + '/../../configuration/mimes.json'));
 		var mime = mimes.mimes[extension];
 
 		if(mime) {
-			if(mime.type == "static") {
+			if(mime.type == 'static') {
 				fs.readFile(website.script + pathinfo, function(err, file) {
 					if(err) {
-						res.writeHead(500, {"Content-Type": "text/plain"});
-						res.write(err + "\n");
+						res.writeHead(500, {'Content-Type': 'text/plain'});
+						res.write(err + '\n');
 						res.end();
 						return;
 					}
@@ -175,32 +169,23 @@ module.exports = exports = new function() {
 
 					website.writeLog(pathinfo, 'log');
 				});
-			} else if(mime.type == "php") {
-				var cgi = childProcess.spawn("php", ["-t", website.script, "-f", website.script + pathinfo], { env: env });
+			} else if(mime.type == 'php') {
+				var cgi = childProcess.spawn('php', ['-t', website.script, '-f', website.script + pathinfo], { env: env });
 				req.pipe(cgi.stdin);
 				
 				cgi.stderr.on('data', function(chunk) {
-					console.log(chunk.toString('utf8'))
 					website.writeLog(chunk.toString('utf8'), 'error');
 				});
 
-				/*cgi.stdout.on('data', function(chunk) {
-					website.writeLog(chunk.toString('utf8'), 'log');
-					//console.log('Out:')
-					//console.log(chunk.toString('utf8'));
-				});*/
-
 				cgi.stdout.pipe(res.connection);
 
-				cgi.on('exit', function(code, signal) {
-					//console.log('cgi spawn %d "exit" event (code %s) (signal %s)', cgi.pid, code, signal);
-					//console.log(website.script)
+				cgi.on('exit', function() {
 					website.writeLog(website.script, 'log');
 				});
 			}
 		} else {
-			res.writeHead(500, {"Content-Type": "text/plain"});
-			res.write("File not supported" + "\n");
+			res.writeHead(500, {'Content-Type': 'text/plain'});
+			res.write('File not supported' + '\n');
 			res.end();
 			return;
 		}

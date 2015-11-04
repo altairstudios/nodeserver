@@ -1,11 +1,11 @@
-require('colors');
-var fs = require('fs');
 var net = require('net');
 
 
-var sockets = module.exports = exports = {
-	start: function(params) {
+
+module.exports = exports = {
+	start: function() {
 		var self = this;
+
 		self.nodeserver.socket = net.createServer(function(client) {
 			client.on('data', function(data) {
 				if(data == 'status') {
@@ -21,7 +21,7 @@ var sockets = module.exports = exports = {
 		self.nodeserver.socket.listen('/tmp/nodeserver.sock');
 	},
 	operations: {
-		stop: function(client) {
+		stop: function() {
 			process.exit(0);
 		},
 		reload: function(client) {
@@ -45,9 +45,9 @@ var sockets = module.exports = exports = {
 				jsonWebsite.usage = website.getUsage();
 
 				json.websites.push(jsonWebsite);
-			};
+			}
 
 			client.write(new Buffer(JSON.stringify(json)));
-		},
+		}
 	}
 };

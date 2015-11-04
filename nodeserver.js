@@ -1,15 +1,8 @@
 var httpProxy = require('http-proxy');
-var proxy = httpProxy.createProxy({
-	xfwd: true
-});
-var urlparser = require('url');
+var proxy = httpProxy.createProxy({ xfwd: true });
 var fs = require('fs');
-var forever = require('forever-monitor');
-var path = require('path');
 var nodeserverAdmin = require('./admin');
-var childProcess = require('child_process');
 var os = require('os');
-var net = require('net');
 require('colors');
 var core = require('./core');
 var crypto = require('crypto');
@@ -69,7 +62,7 @@ module.exports = exports = function(inTerminal) {
 				var binding = bindings[i];
 
 				if(hasRegex) {
-					var regex = new RegExp("^" + binding + "$", "gi")
+					var regex = new RegExp('^' + binding + '$', 'gi');
 					
 					if(regex.test(url)) {
 						return true;
@@ -115,7 +108,7 @@ module.exports = exports = function(inTerminal) {
 					if(result) return website;
 				}
 			}
-		}
+		};
 
 		var thewebsite = getWebsite(url, self.websites);
 		if(thewebsite == null) thewebsite = getWebsite(url + ':80', self.websites);
@@ -127,7 +120,7 @@ module.exports = exports = function(inTerminal) {
 
 
 	this.readConfigFile = function(configFile) {
-		configFile = configFile || "nodeserver.config";
+		configFile = configFile || 'nodeserver.config';
 		var config = null;
 
 		if(fs.existsSync(configFile)) {
@@ -136,12 +129,12 @@ module.exports = exports = function(inTerminal) {
 		} else if(fs.existsSync(__dirname + configFile)) {
 			this.configFile = __dirname + configFile;
 			config = fs.readFileSync(__dirname + configFile);
-		}  else if(fs.existsSync(__dirname + "/" + configFile)) {
-			this.configFile = __dirname + "/" + configFile;
-			config = fs.readFileSync(__dirname + "/" + configFile);
-		} else if(fs.existsSync("/etc/nodeserver/nodeserver.config")) {
-			this.configFile = "/etc/nodeserver/nodeserver.config";
-			config = fs.readFileSync("/etc/nodeserver/nodeserver.config");
+		}  else if(fs.existsSync(__dirname + '/' + configFile)) {
+			this.configFile = __dirname + '/' + configFile;
+			config = fs.readFileSync(__dirname + '/' + configFile);
+		} else if(fs.existsSync('/etc/nodeserver/nodeserver.config')) {
+			this.configFile = '/etc/nodeserver/nodeserver.config';
+			config = fs.readFileSync('/etc/nodeserver/nodeserver.config');
 		}
 
 		var json = JSON.parse(config);
@@ -160,17 +153,22 @@ module.exports = exports = function(inTerminal) {
 
 		this.websites = [];
 
-		for(var i = 0; i < this.config.sites.length; i++) {
-			this.addWebsite(this.config.sites[i]);
+		if(this.config.sites && Array.isArray(this.config.sites)) {
+			for(var i = 0; i < this.config.sites.length; i++) {
+				this.addWebsite(this.config.sites[i]);
+			}	
 		}
+		
 
-		if(this.config.nodeserver.admin.active) {
-			if(!this.admin) {
-				this.admin = new nodeserverAdmin(self);
-				this.admin.adminInterface();
-			}
-		} else if(this.admin) {
-			this.admin.stopAdminInterface();
+		if(this.config.nodeserver && this.config.nodeserver.admin) {
+			if(this.config.nodeserver.admin.active) {
+				if(!this.admin) {
+					this.admin = new nodeserverAdmin(self);
+					this.admin.adminInterface();
+				}
+			} else if(this.admin) {
+				this.admin.stopAdminInterface();
+			}	
 		}
 	};
 
@@ -246,7 +244,7 @@ module.exports = exports = function(inTerminal) {
 				if(website) {
 					var security = {
 						key: fs.readFileSync(website.security.certs.key),
-						cert: fs.readFileSync(website.security.certs.cert),
+						cert: fs.readFileSync(website.security.certs.cert)
 					};
 
 					if(website.security.certs.ca) {
@@ -254,16 +252,16 @@ module.exports = exports = function(inTerminal) {
 
 						for (var i = website.security.certs.ca.length - 1; i >= 0; i--) {
 							security.ca.push(fs.readFileSync(website.security.certs.ca[i]));
-						};
+						}
 					}
 
 					if(callback) {
 						callback(null, tls.createSecureContext(security));
 					} else {
 						try {
-							return tls.createSecureContext(certs);
+							return tls.createSecureContext(security);
 						} catch(e) {
-							return crypto.createCredentials(certs).context;
+							return crypto.createCredentials(security).context;
 						}
 					}
 				} else {
@@ -303,7 +301,7 @@ module.exports = exports = function(inTerminal) {
 
 
 
-	process.on('exit', function(code) {
+	process.on('exit', function() {
 		if(self.unix && self.socket) {
 			try {
 				self.socket.close();
@@ -322,7 +320,9 @@ module.exports = exports = function(inTerminal) {
 
 
 	process.on('SIGINT', function() {
+		/*eslint-disable*/
 		console.log('\nSayonara baby!!');
+		/*eslint-enable*/
 		process.exit(0);
 	});
 

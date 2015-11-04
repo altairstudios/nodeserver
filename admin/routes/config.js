@@ -5,8 +5,8 @@ module.exports = exports = {
 			return;
 		}
 
-		req.nodeserver.hotConfig()
+		req.nodeserver.hotConfig();
 
 		res.redirect('/?1');
 	}
-}
+};

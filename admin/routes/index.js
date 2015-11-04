@@ -10,4 +10,4 @@ module.exports = exports = {
 	websiteStart: websiteOperations.start,
 	websiteRestart: websiteOperations.restart,
 	websiteStop: websiteOperations.stop
-}
+};

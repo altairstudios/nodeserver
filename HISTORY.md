@@ -13,12 +13,13 @@ nodeserver History Version
 * Check in terminal if socket exits but not a server listen, kill this socket and show a message 'server not running'
 * Updated the mocha tests at last version
 * Update package version to new version v0.7.0
-* Add 4 mocha configuration tests
+* Add 6 mocha configuration tests
 * Add stats from NPM on README.md file
 * Added mocha to script package and added travis configuration
 * Some fixes over nodejs 0.10.x with SSL
 * Fixed socket close error when process exit on nodejs 0.10.40 - throw new Error('Not running');
 * Added gulp for future build and lint to test
+* Fixed lint errors
 
 ### v0.6
 

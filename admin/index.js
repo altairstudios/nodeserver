@@ -1,6 +1,6 @@
 var express = require('express');
 var routes = require('./routes');
-var jade = require("jade");
+
 
 
 module.exports = exports = function(nodeserver) {
@@ -11,7 +11,6 @@ module.exports = exports = function(nodeserver) {
 	this.nodeserver = nodeserver;
 	this.loginErros = {};
 
-	//console.log(this.config);
 
 
 	this.configureExpress = function() {
@@ -53,6 +52,7 @@ module.exports = exports = function(nodeserver) {
 	};
 
 
+
 	this.configureRoutes = function() {
 		this.app.get('/', this.routes.home);
 
@@ -68,17 +68,19 @@ module.exports = exports = function(nodeserver) {
 	};
 
 
-	this.adminInterface = function() {
-		var self = this;
 
+	this.adminInterface = function() {
 		this.app.listen(this.config.port || 10000);
 	};
+
+
 
 	this.stopAdminInterface = function() {
 		this.app.close();
 	};
 
 
+
 	this.configureExpress();
 	this.configureRoutes();
-}
+};

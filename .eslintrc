@@ -15,7 +15,9 @@
         "semi": [
             2,
             "always"
-        ]
+        ],
+        "no-redeclare": 1,
+        "no-empty": 1
     },
     "env": {
         "node": true

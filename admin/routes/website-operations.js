@@ -1,13 +1,5 @@
-var fs = require('fs');
-
 var findId = function(websites, webisteId) {
 	for(var i = 0; i < websites.length; i++) {
-		/*for(var j = 0; j < websites[i].bindings.length; j++) {
-			if(websites[i].bindings[j] == binding) {
-				return websites[i];
-			}
-		}*/
-
 		if(websites[i].id == webisteId) {
 			return websites[i];
 		}
@@ -19,19 +11,19 @@ var stop = function(website) {
 	if(website.processStatus != 'stop' && website.processStatus != 'end') {
 		website.operations.stop();
 	}
-}
+};
 
 
 var start = function(website) {
 	if(website.processStatus != 'start') {
 		website.operations.start();
 	}
-}
+};
 
 var restart = function(website) {
 	stop(website);
 	start(website);
-}
+};
 
 
 module.exports = exports = {
@@ -56,8 +48,6 @@ module.exports = exports = {
 
 		restart(website);
 
-		//setTimeout(function() {
-		//}, 2500);
 		res.redirect('/websites/' + req.params.websiteId);
 	},
 	stop: function(req, res) {
@@ -70,9 +60,6 @@ module.exports = exports = {
 
 		stop(website);
 
-		//setTimeout(function() {
-		//}, 2000);
-
 		res.redirect('/websites/' + req.params.websiteId);
 	}
-}
+};

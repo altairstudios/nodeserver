@@ -13,8 +13,6 @@ module.exports = exports = function(req, res) {
 		} else {
 			var ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
 
-			console.log(req.admin.loginErros)
-
 			if(req.admin.loginErros[ip]) {
 				req.admin.loginErros[ip].errors = req.admin.loginErros[ip].errors + 1;
 				req.admin.loginErros[ip].last = new Date();
@@ -27,7 +25,7 @@ module.exports = exports = function(req, res) {
 					errors: 1,
 					last: new Date(),
 					block: null
-				}
+				};
 			}
 		}
 	}
