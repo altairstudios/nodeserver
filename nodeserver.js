@@ -323,8 +323,10 @@ module.exports = exports = function(inTerminal) {
 
 
 	process.on('uncaughtException', function(err) {
+		/*eslint-disable*/
 		console.error('Nodeserver Error ' + err);
 		console.error(arguments);
+		/*eslint-enable*/
 	});
 
 
