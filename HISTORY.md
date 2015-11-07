@@ -12,6 +12,7 @@ nodeserver History Version
 * Fixed admin close interface
 * Fixed an error when admin port is used
 * Added more admin tests
+* Updated admin to express4
 
 #### v0.7.0
 

@@ -1,5 +1,8 @@
 var express = require('express');
 var routes = require('./routes');
+var bodyParser = require('body-parser');
+var cookieParser = require('cookie-parser');
+var session = require('express-session');
 
 
 
@@ -15,13 +18,12 @@ module.exports = exports = function(nodeserver) {
 
 
 	this.configureExpress = function() {
-		this.app.use(express.bodyParser());
-		this.app.use(express.cookieParser());
-		this.app.use(express.session({ secret: require('crypto').createHash('sha1').digest('base64') }));
+		this.app.use(bodyParser.urlencoded({ extended: true }));
+		this.app.use(bodyParser.json());
+
+		this.app.use(cookieParser());
+		this.app.use(session({ secret: require('crypto').createHash('sha1').digest('base64'), resave: true, saveUninitialized: true }));
 		this.app.use('/', express.static(__dirname + '/public'));
-		this.app.use(express.compress());
-		this.app.use(express.logger('dev'));
-		this.app.use(express.methodOverride());
 
 		this.app.use(function(req, res, next) {
 			req.config = admin.config;

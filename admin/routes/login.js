@@ -2,7 +2,7 @@ var crypto = require('crypto');
 
 
 module.exports = exports = function(req, res) {
-	if(req.route.method == 'post') {
+	if(req.method == 'POST') {
 		var user = req.body.user;
 		var password = req.body.password;
 
