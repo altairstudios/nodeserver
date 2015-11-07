@@ -29,10 +29,10 @@ describe('Admin', function() {
 		it('Set only active true and check access', testAdmin.onlyActiveTrueAccess);
 		it('Set user void');
 		it('Set password void');
-		it('Set user and password void', testAdmin.prueba);
-		it('Set invalid password', testAdmin.prueba);
-		it('Set used port', testAdmin.prueba);
-		it('Set all correct data and desactive', testAdmin.prueba);
+		it('Set user and password void');
+		it('Set invalid password');
+		it('Set used port');
+		it('Set all correct data and desactive');
 	});
 
 	describe('Test admin login', function() {

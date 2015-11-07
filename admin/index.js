@@ -77,7 +77,9 @@ module.exports = exports = function(nodeserver) {
 
 
 	this.stopAdminInterface = function() {
-		this.server.close();
+		try {
+			this.server.close();
+		} catch(ex) {}
 	};
 
 
