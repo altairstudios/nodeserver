@@ -10,6 +10,7 @@ module.exports = exports = {
 		assert.equal(0, nodeserver.websites.length, 'The number of web pages should be 0');
 		assert.equal(undefined, nodeserver.admin, 'The admin should be undefined');
 
+		nodeserver.exit();
 		done();
 	},
 	malformedConfigurationFile: function(done) {
@@ -20,6 +21,7 @@ module.exports = exports = {
 		assert.equal(0, nodeserver.websites.length, 'The number of web pages should be 0');
 		assert.equal(undefined, nodeserver.admin, 'The admin should be undefined');
 
+		nodeserver.exit();
 		done();
 	},
 	emptyConfigurationFile: function(done) {
@@ -30,6 +32,7 @@ module.exports = exports = {
 		assert.equal(0, nodeserver.websites.length, 'The number of web pages should be 0');
 		assert.equal(undefined, nodeserver.admin, 'The admin should be undefined');
 
+		nodeserver.exit();
 		done();
 	},
 	emptyConfigurationJSON: function(done) {
@@ -40,6 +43,7 @@ module.exports = exports = {
 		assert.equal(0, nodeserver.websites.length, 'The number of web pages should be 0');
 		assert.equal(undefined, nodeserver.admin, 'The admin should be undefined');
 
+		nodeserver.exit();
 		done();
 	},
 	stringPropertiesFile: function(done) {
@@ -50,6 +54,7 @@ module.exports = exports = {
 		assert.equal(0, nodeserver.websites.length, 'The number of web pages should be 0');
 		assert.equal(undefined, nodeserver.admin, 'The admin should be undefined');
 
+		nodeserver.exit();
 		done();
 	},
 	stringPropertiesJSON: function(done) {
@@ -60,6 +65,7 @@ module.exports = exports = {
 		assert.equal(0, nodeserver.websites.length, 'The number of web pages should be 0');
 		assert.equal(undefined, nodeserver.admin, 'The admin should be undefined');
 
+		nodeserver.exit();
 		done();
 	}
 };

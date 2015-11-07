@@ -6,6 +6,12 @@ nodeserver History Version
 
 ### v0.7
 
+#### v0.7.1
+
+* Fixed problem when close the server process
+* Fixed admin close interface
+* Added more admin tests
+
 #### v0.7.0
 
 * Clean nodeserver bash script

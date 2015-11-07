@@ -1,29 +1,31 @@
 var assert = require('assert');
 var testConfiguration = require('./tests/configurations');
+var testAdmin = require('./tests/admin');
+
 
 
 describe('Configurations', function() {
 	describe('Incomplete configurations', function() {
-		it('No configuration set', function(done){ testConfiguration.noConfigurations(done); });
-		it('malformed configuration from file', function(done){ testConfiguration.malformedConfigurationFile(done); });
-		it('empty configuration from file', function(done){ testConfiguration.emptyConfigurationFile(done); });
-		it('empty configuration from json', function(done){ testConfiguration.emptyConfigurationJSON(done); });
-		it('string properties configuration from file', function(done){ testConfiguration.stringPropertiesFile(done); });
-		it('string properties configuration from json', function(done){ testConfiguration.stringPropertiesJSON(done); });
+		it('No configuration set', testConfiguration.noConfigurations);
+		it('malformed configuration from file', testConfiguration.malformedConfigurationFile);
+		it('empty configuration from file', testConfiguration.emptyConfigurationFile);
+		it('empty configuration from json', testConfiguration.emptyConfigurationJSON);
+		it('string properties configuration from file', testConfiguration.stringPropertiesFile);
+		it('string properties configuration from json', testConfiguration.stringPropertiesJSON);
 	});
 });
 
 describe('Admin', function() {
 	describe('Test admin configuration', function() {
-		it('Set admin config empty');
-		it('Set only active false and check access');
-		it('Set only active true and check access');
+		it('Set admin config empty', testAdmin.configEmpty);
+		it('Set only active false and check access', testAdmin.onlyActiveFalse);
+		it('Set only active true and check access', testAdmin.onlyActiveTrue);
 		it('Set user void');
 		it('Set password void');
-		it('Set user and password void');
-		it('Set invalid password');
-		it('Set used port');
-		it('Set all correct data and desactive');
+		it('Set user and password void', testAdmin.prueba);
+		it('Set invalid password', testAdmin.prueba);
+		it('Set used port', testAdmin.prueba);
+		it('Set all correct data and desactive', testAdmin.prueba);
 	});
 
 	describe('Test admin login', function() {

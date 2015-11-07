@@ -10,6 +10,7 @@ module.exports = exports = function(nodeserver) {
 	this.config = nodeserver.config;
 	this.nodeserver = nodeserver;
 	this.loginErros = {};
+	this.server = null;
 
 
 
@@ -70,13 +71,13 @@ module.exports = exports = function(nodeserver) {
 
 
 	this.adminInterface = function() {
-		this.app.listen(this.config.port || 10000);
+		this.server = this.app.listen(this.config.port || 10000);
 	};
 
 
 
 	this.stopAdminInterface = function() {
-		this.app.close();
+		this.server.close();
 	};
 
 

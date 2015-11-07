@@ -1,6 +1,6 @@
 {
   "name": "nodeserver",
-  "version": "0.7.0",
+  "version": "0.7.1",
   "description": "Nodeserver is a NodeJS Web Server with reverse proxy functionality alternative to Nginx reverse proxy for NodeJS projects",
   "main": "nodeserver.js",
   "author": {
@@ -51,7 +51,7 @@
     "nodeserver": "./bin/nodeserver"
   },
   "scripts": {
-    "test": "mocha --no-timeouts",
+    "test": "mocha --no-timeouts --async-only",
     "build": "NODE_ENV=production gulp build",
     "build-dev": "gulp build",
     "release": "gulp release",

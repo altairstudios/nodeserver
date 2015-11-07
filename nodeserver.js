@@ -301,22 +301,31 @@ module.exports = exports = function(inTerminal) {
 
 
 
-	process.on('exit', function() {
+	this.exit = function() {
+		if(this.admin) {
+			this.admin.stopAdminInterface();
+		}
+
 		if(self.unix && self.socket) {
 			try {
 				self.socket.close();
 			} catch(ex) {}
 		}
+	};
+
+
+
+	process.on('exit', function() {
+		self.exit();
 	});
 
 
 
 
-
-	/*process.on('uncaughtException', function(err) {
-		console.log('Error!!!!: ' + err);
-		console.log(arguments);
-	});*/
+	process.on('uncaughtException', function(err) {
+		console.error('Nodeserver Error ' + err);
+		console.error(arguments);
+	});
 
 
 	process.on('SIGINT', function() {
