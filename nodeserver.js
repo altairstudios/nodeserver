@@ -315,6 +315,10 @@ module.exports = exports = function(inTerminal) {
 
 
 
+	//process.setMaxListeners(100);
+
+
+
 	process.on('exit', function() {
 		self.exit();
 	});
@@ -322,12 +326,12 @@ module.exports = exports = function(inTerminal) {
 
 
 
-	process.on('uncaughtException', function(err) {
-		/*eslint-disable*/
+	/*process.on('uncaughtException', function(err) {
+		/*eslint-disable*-/
 		console.error('Nodeserver Error ' + err);
 		console.error(arguments);
-		/*eslint-enable*/
-	});
+		/*eslint-enable*-/
+	});*/
 
 
 	process.on('SIGINT', function() {

@@ -4,6 +4,10 @@ var testAdmin = require('./tests/admin');
 
 
 
+process.setMaxListeners(1000);
+
+
+
 describe('Configurations', function() {
 	describe('Incomplete configurations', function() {
 		it('No configuration set', testConfiguration.noConfigurations);
@@ -15,11 +19,14 @@ describe('Configurations', function() {
 	});
 });
 
+
+
 describe('Admin', function() {
 	describe('Test admin configuration', function() {
 		it('Set admin config empty', testAdmin.configEmpty);
-		it('Set only active false and check access', testAdmin.onlyActiveFalse);
-		it('Set only active true and check access', testAdmin.onlyActiveTrue);
+		it('Set only active false and check online', testAdmin.onlyActiveFalse);
+		it('Set only active true and check online', testAdmin.onlyActiveTrue);
+		it('Set only active true and check access', testAdmin.onlyActiveTrueAccess);
 		it('Set user void');
 		it('Set password void');
 		it('Set user and password void', testAdmin.prueba);
@@ -37,6 +44,8 @@ describe('Admin', function() {
 		it('Try correct access');
 	});
 });
+
+
 
 describe('Server type', function() {
 	describe('General', function() {
