@@ -27,12 +27,12 @@ describe('Admin', function() {
 		it('Set only active false and check online', testAdmin.onlyActiveFalse);
 		it('Set only active true and check online', testAdmin.onlyActiveTrue);
 		it('Set only active true and check access', testAdmin.onlyActiveTrueAccess);
-		it('Set user void');
-		it('Set password void');
-		it('Set user and password void');
-		it('Set invalid password');
-		it('Set used port');
-		it('Set all correct data and desactive');
+		it('Set user void and check access', testAdmin.onlyUserVoidAccess);
+		it('Set password void and check access', testAdmin.onlyPasswordVoidAccess);
+		it('Set user and password void', testAdmin.userPasswordVoidAccess);
+		it('Set invalid password', testAdmin.invalidPassword);
+		it('Set used port', testAdmin.usedPort);
+		it('Set all correct data and desactive', testAdmin.allOkButDesactivate);
 	});
 
 	describe('Test admin login', function() {

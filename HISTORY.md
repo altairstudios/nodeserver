@@ -10,6 +10,7 @@ nodeserver History Version
 
 * Fixed problem when close the server process
 * Fixed admin close interface
+* Fixed an error when admin port is used
 * Added more admin tests
 
 #### v0.7.0

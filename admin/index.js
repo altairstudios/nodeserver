@@ -71,7 +71,9 @@ module.exports = exports = function(nodeserver) {
 
 
 	this.adminInterface = function() {
-		this.server = this.app.listen(this.config.port || 10000);
+		this.server = this.app.listen(this.config.port || 10000).on('error', function() {
+			admin.server.close();
+		});
 	};
 
 
