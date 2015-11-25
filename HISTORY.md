@@ -14,6 +14,7 @@ nodeserver History Version
 * Added more admin tests
 * Updated admin to express4
 * Set force detached false for childproccess of nodejs
+* Added travis tests for nodejs 5.1.0
 
 #### v0.7.0
 
