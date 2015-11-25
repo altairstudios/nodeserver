@@ -13,6 +13,7 @@ nodeserver History Version
 * Fixed an error when admin port is used
 * Added more admin tests
 * Updated admin to express4
+* Set force detached false for childproccess of nodejs
 
 #### v0.7.0
 

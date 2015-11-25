@@ -60,7 +60,7 @@ module.exports = exports = new function() {
 		var env = JSON.parse(JSON.stringify(process.env));
 		env.PORT = port;
 
-		var child = childProcess.spawn(process.execPath, [script], { env: env, cwd: scriptPath, stdio: 'pipe' });
+		var child = childProcess.spawn(process.execPath, [script], { env: env, cwd: scriptPath, stdio: 'pipe', detached: false });
 		website.process = child;
 		website.processStatus = 'start';
 
