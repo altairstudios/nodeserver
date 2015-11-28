@@ -10,6 +10,11 @@ node_js:
   - "5.0"
   - "5.1"
 
+addons:
+  apt:
+    packages:
+    - g++-4.8
+
 before_script:
   - npm run lint
 
