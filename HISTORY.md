@@ -6,6 +6,10 @@ nodeserver History Version
 
 ### v0.7
 
+#### v0.7.2
+
+* Fixed error when try exec "nodeserver status" and server down by the error
+
 #### v0.7.1
 
 * Fixed problem when close the server process

@@ -2,7 +2,7 @@ var net = require('net');
 
 
 
-module.exports = exports = {
+var sockets = module.exports = exports = {
 	start: function() {
 		var self = this;
 
@@ -33,8 +33,8 @@ module.exports = exports = {
 				websites: []
 			};
 
-			for (var i = 0; i < this.nodeserver.websites.length; i++) {
-				var website = this.nodeserver.websites[i];
+			for (var i = 0; i < sockets.nodeserver.websites.length; i++) {
+				var website = sockets.nodeserver.websites[i];
 
 				var jsonWebsite = {};
 
