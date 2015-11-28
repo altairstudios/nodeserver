@@ -9,7 +9,7 @@ Nodeserver is a production webserver Node.js applications. It allows you to keep
 
 If you have ideas or questions, open a new issue with your ideas.
 
-[![Version npm](https://img.shields.io/npm/v/nodeserver.svg?style=flat-square)](https://www.npmjs.com/package/nodeserver)[![NPM Downloads](https://img.shields.io/npm/dm/nodeserver.svg?style=flat-square)](https://www.npmjs.com/package/nodeserver)[![Travis Build Status](https://api.travis-ci.org/altairstudios/nodeserver.svg)](https://travis-ci.org/altairstudios/nodeserver)[![Coverage Status](https://coveralls.io/repos/altairstudios/nodeserver/badge.svg?branch=master&service=github)](https://coveralls.io/github/altairstudios/nodeserver?branch=master)
+[![Version npm](https://img.shields.io/npm/v/nodeserver.svg?style=flat-square)](https://www.npmjs.com/package/nodeserver)[![NPM Downloads](https://img.shields.io/npm/dm/nodeserver.svg?style=flat-square)](https://www.npmjs.com/package/nodeserver)[![Travis Build Status](https://api.travis-ci.org/altairstudios/nodeserver.svg)](https://travis-ci.org/altairstudios/nodeserver)
 
 
 
