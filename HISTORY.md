@@ -6,6 +6,10 @@ nodeserver History Version
 
 ### v0.7
 
+#### v0.7.3
+
+* Fixed error when stop server or refresh server config not stop the childs nodejs processes and duplicate them.
+
 #### v0.7.2
 
 * Fixed error when try exec "nodeserver status" and server down by the error

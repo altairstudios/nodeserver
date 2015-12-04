@@ -288,6 +288,10 @@ module.exports = exports = function(inTerminal) {
 
 
 	this.stop = function() {
+		for(var i = 0; i < this.websites.length; i++) {
+			this.websites[i].operations.stop();
+		}
+
 		for(var i = 0; i < this.servers.length; i++) {
 			this.servers[i].close();
 		}
