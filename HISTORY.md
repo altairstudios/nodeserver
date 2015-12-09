@@ -4,6 +4,12 @@ nodeserver History Version
 
 ## Lasts versions
 
+### v0.8
+
+#### v0.8.0
+
+* Fixed error when refresh a webserver with no nodejs websites (php, cgi)
+
 ### v0.7
 
 #### v0.7.3
