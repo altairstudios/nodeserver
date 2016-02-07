@@ -20,5 +20,5 @@ module.exports = exports = function(req, res) {
 		uptime: os.uptime()
 	};
 
-	res.render('home', { websites: req.nodeserver.websites, memory: memory, cpus: cpus });
+	res.render('home', { websites: req.nodeserver.websites, memory: memory, cpus: cpus, banned: req.admin.loginErros });
 };

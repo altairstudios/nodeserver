@@ -30,5 +30,5 @@ module.exports = exports = function(req, res) {
 		}
 	}
 
-	res.render('login', { prueba: 'abc'});
+	res.render('login');
 };

@@ -39,6 +39,26 @@ block content
 					| Server load
 				div.panel-body
 					div#load-usage-chart
+		div.col-lg-6
+			div.panel.panel-default
+				div.panel-heading
+					i.fa.fa-thumbs-o-down
+					|&nbsp;Banned
+				div.panel-body
+					table.table
+						thead
+							tr
+								th IP
+								th Until
+								th Last
+								th Errors
+						tbody
+							each ban,ip in banned
+								tr
+									td=ip
+									td=(ban.block) ? ban.block.getFullYear() + '-' + (ban.block.getMonth() + 1) + '-' + ban.block.getDate() + ' ' + ban.block.getHours() + ':' + ban.block.getMinutes() : ''
+									td=(ban.last) ? ban.last.getFullYear() + '-' + (ban.last.getMonth() + 1) + '-' + ban.last.getDate() + ' ' + ban.last.getHours() + ':' + ban.last.getMinutes() : ''
+									td=ban.errors
 
 	script
 		|var memory = !{JSON.stringify(memory)};
