@@ -17,7 +17,8 @@
             "always"
         ],
         "no-redeclare": 1,
-        "no-empty": 1
+        "no-empty": 1,
+        "no-unused-vars": [1, {"vars": "all", "args": "after-used"}]
     },
     "env": {
         "node": true

@@ -7,7 +7,6 @@ var childProcess = require('child_process');
 
 module.exports = exports = {
 	start: function(website) {
-		
 	},
 	request: function(req, res, website, engine) {
 		var host = (req.headers.host || '').split(':');
@@ -86,7 +85,6 @@ module.exports = exports = {
 				req.pipe(cgi.stdin);
 				
 				cgi.stderr.on('data', function(chunk) {
-					console.log(chunk)
 					website.writeLog(chunk.toString('utf8'), 'error');
 				});
 
