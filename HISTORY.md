@@ -9,6 +9,7 @@ nodeserver History Version
 #### v0.8.0
 
 * Fixed error when refresh a webserver with no nodejs websites (php, cgi)
+* Split separated workers type in files for node, cgi, php, python (not implemented yet)
 
 ### v0.7
 
