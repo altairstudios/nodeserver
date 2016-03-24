@@ -7,6 +7,7 @@ require('colors');
 var core = require('./core');
 var crypto = require('crypto');
 var tls = require('tls');
+var path = require('path');
 
 
 
@@ -123,6 +124,10 @@ module.exports = exports = function(inTerminal) {
 		configFile = configFile || 'nodeserver.config';
 		var config = null;
 
+		if(!path.isAbsolute(configFile)) {
+			configFile = path.resolve(process.cwd(), configFile);
+		}
+
 		if(fs.existsSync(configFile)) {
 			this.configFile = configFile;
 			config = fs.readFileSync(configFile);
@@ -175,7 +180,7 @@ module.exports = exports = function(inTerminal) {
 
 
 	this.addWebsite = function(site) {
-		var website = new core.models.website(site);
+		var website = new core.models.website(site, this);
 
 		for(var i = 0; i < website.ports.http.length; i++) {
 			this.addPort(website.ports.http[i]);

@@ -1,10 +1,12 @@
 var crypto = require('crypto');
 var urlparser = require('url');
 var childProcess = require('child_process');
+var path = require('path');
+var fs = require('fs');
 
 
 
-module.exports = exports = function(opts) {
+module.exports = exports = function(opts, nodeserver) {
 	opts = opts || {};
 
 	this.id = crypto.createHash('md5').update(Math.random().toString()).digest('hex');
@@ -26,6 +28,11 @@ module.exports = exports = function(opts) {
 
 
 	this.parseConfig = function(json) {
+		if(typeof json === "string") {
+			this.name = json;
+			json = JSON.parse(fs.readFileSync(path.dirname(nodeserver.configFile) + '/sites/' + json + '.config'));
+		}
+
 		this.name = json.name || this.name;
 		this.id = crypto.createHash('md5').update(this.name + Math.random().toString()).digest('hex');
 		this.type = json.type || this.type;
@@ -88,6 +95,12 @@ module.exports = exports = function(opts) {
 					this.security.bindings.push(json.security.bindings[i]);
 				}
 			}
+		}
+
+
+		if(this.name == 'mitiendadigital') {
+			console.log(this);
+			console.log(json)
 		}
 	};
 

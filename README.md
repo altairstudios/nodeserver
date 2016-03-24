@@ -93,7 +93,9 @@ The syntax of these file are:
 				]
 			},
 			"script": "/var/www/nodejs2/server.js"
-		}]
+		},
+		"this-is-a-file-include-located-in-sites-name-dot-config"
+		]
 	}
 
 

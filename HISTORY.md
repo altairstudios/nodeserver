@@ -12,6 +12,7 @@ nodeserver History Version
 * Split separated workers type in files for node, cgi, php, python (not implemented yet)
 * Updated travis test to nodejs 5.5
 * #18 Show in the admin interface a log with attempt login on admin 
+* Add support to separate configuration in files using string object against json object. The file is separated in folder "/sites/name.config" 
 
 ### v0.7
 
