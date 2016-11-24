@@ -6,6 +6,10 @@ nodeserver History Version
 
 ### v0.8
 
+#### v0.8.2
+
+* Fixed ".+:80" domain pattern
+
 #### v0.8.1
 
 * Fixed SSL problem for differents ports as 80 and 443.

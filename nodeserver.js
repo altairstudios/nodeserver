@@ -67,7 +67,7 @@ module.exports = exports = function(inTerminal) {
 				var binding = bindings[i];
 
 				if(hasRegex) {
-					var regex = new RegExp('^' + binding + '\:.*$', 'gi');
+					var regex = new RegExp('^' + binding + '$', 'gi');
 					
 					if(regex.test(url)) {
 						return true;
