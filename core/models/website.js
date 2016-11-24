@@ -28,7 +28,7 @@ module.exports = exports = function(opts, nodeserver) {
 
 
 	this.parseConfig = function(json) {
-		if(typeof json === "string") {
+		if(typeof json === 'string') {
 			this.name = json;
 			json = JSON.parse(fs.readFileSync(path.dirname(nodeserver.configFile) + '/sites/' + json + '.config'));
 		}

@@ -6,6 +6,10 @@ nodeserver History Version
 
 ### v0.8
 
+#### v0.8.3
+
+* Fixed tests warnings
+
 #### v0.8.2
 
 * Fixed ".+:80" domain pattern
