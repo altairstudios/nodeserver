@@ -22,7 +22,10 @@ var sockets = module.exports = exports = {
 	},
 	operations: {
 		stop: function() {
-			process.exit(0);
+			sockets.nodeserver.stop();
+			setTimeout(function() {
+				process.exit(0);
+			}, 5000);
 		},
 		reload: function(client) {
 			this.nodeserver.hotConfig();

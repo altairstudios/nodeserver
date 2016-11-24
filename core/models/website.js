@@ -96,12 +96,6 @@ module.exports = exports = function(opts, nodeserver) {
 				}
 			}
 		}
-
-
-		if(this.name == 'mitiendadigital') {
-			console.log(this);
-			console.log(json)
-		}
 	};
 
 

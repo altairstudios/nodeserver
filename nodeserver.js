@@ -1,5 +1,8 @@
 var httpProxy = require('http-proxy');
-var proxy = httpProxy.createProxy({ xfwd: true });
+var http = require('http');
+var https = require('https');
+var agent = new http.Agent({ maxSockets: Number.MAX_VALUE });
+var proxy = httpProxy.createProxy({ xfwd: true, agent });
 var fs = require('fs');
 var nodeserverAdmin = require('./admin');
 var os = require('os');
@@ -53,8 +56,9 @@ module.exports = exports = function(inTerminal) {
 
 
 
-	this.getWebsiteFromBinding = function(url, onlySecure) {
+	this.getWebsiteFromBinding = function(url, onlySecure, ignorePort) {
 		onlySecure = onlySecure || false;
+		ignorePort = ignorePort || false;
 
 		var containBinding = function(url, bindings, hasRegex) {
 			var bindingsCount = bindings.length;
@@ -63,7 +67,7 @@ module.exports = exports = function(inTerminal) {
 				var binding = bindings[i];
 
 				if(hasRegex) {
-					var regex = new RegExp('^' + binding + '$', 'gi');
+					var regex = new RegExp('^' + binding + '\:.*$', 'gi');
 					
 					if(regex.test(url)) {
 						return true;
@@ -112,6 +116,13 @@ module.exports = exports = function(inTerminal) {
 		};
 
 		var thewebsite = getWebsite(url, self.websites);
+		for (var i = self.securePorts.length - 1; i >= 0; i--) {
+			thewebsite = getWebsite(url + ':' + self.securePorts[i], self.websites);
+			if(thewebsite != null) {
+				return thewebsite;
+			}
+		}
+
 		if(thewebsite == null) thewebsite = getWebsite(url + ':80', self.websites);
 		if(thewebsite == null) thewebsite = getWebsite(url + ':443', self.websites);
 
@@ -235,7 +246,7 @@ module.exports = exports = function(inTerminal) {
 		var securePorts = this.securePorts.length;
 
 		for(var i = 0; i < ports; i++) {
-			var server = require('http').createServer(core.workers.process);
+			var server = http.createServer(core.workers.process);
 			server.listen(this.ports[i]);
 
 			this.servers.push(server);
@@ -244,7 +255,7 @@ module.exports = exports = function(inTerminal) {
 
 		var secureOptions = {
 			SNICallback: function(domain, callback) {
-				var website = self.getWebsiteFromBinding(domain, true);
+				var website = self.getWebsiteFromBinding(domain, true, true);
 
 				if(website) {
 					var security = {
@@ -282,7 +293,7 @@ module.exports = exports = function(inTerminal) {
 		};
 
 		for(var i = 0; i < securePorts; i++) {
-			var server = require('https').createServer(secureOptions, core.workers.process);
+			var server = https.createServer(secureOptions, core.workers.process);
 			server.listen(this.securePorts[i]);
 			this.servers.push(server);
 		}
@@ -313,6 +324,8 @@ module.exports = exports = function(inTerminal) {
 
 
 	this.exit = function() {
+		this.stop();
+
 		if(this.admin) {
 			this.admin.stopAdminInterface();
 		}

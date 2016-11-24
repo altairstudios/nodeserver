@@ -6,6 +6,11 @@ nodeserver History Version
 
 ### v0.8
 
+#### v0.8.1
+
+* Fixed SSL problem for differents ports as 80 and 443.
+* Stop funtionality add stop website child proccess before exit main proccess
+
 #### v0.8.0
 
 * Fixed error when refresh a webserver with no nodejs websites (php, cgi)
