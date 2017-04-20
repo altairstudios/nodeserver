@@ -27,7 +27,7 @@ module.exports = exports = new function() {
 
 		if(website == null) {
 			res.statusCode = 400;
-			res.end();
+			res.end('No site');
 		} else {
 			if(self.workers[website.type]) {
 				self.workers[website.type].request(req, res, website, self);

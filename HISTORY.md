@@ -4,6 +4,13 @@ nodeserver History Version
 
 ## Lasts versions
 
+### v0.9
+
+#### v0.9.0
+
+* Update Travis with last nodejs versions
+* Add multiple ssl for a single process using security.custom[].bingings
+
 ### v0.8
 
 #### v0.8.3

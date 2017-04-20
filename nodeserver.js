@@ -60,6 +60,8 @@ module.exports = exports = function(inTerminal) {
 		onlySecure = onlySecure || false;
 		ignorePort = ignorePort || false;
 
+
+
 		var containBinding = function(url, bindings, hasRegex) {
 			var bindingsCount = bindings.length;
 
@@ -115,16 +117,22 @@ module.exports = exports = function(inTerminal) {
 			}
 		};
 
+
 		var thewebsite = getWebsite(url, self.websites);
-		for (var i = self.securePorts.length - 1; i >= 0; i--) {
-			thewebsite = getWebsite(url + ':' + self.securePorts[i], self.websites);
-			if(thewebsite != null) {
-				return thewebsite;
-			}
-		}
 
 		if(thewebsite == null) thewebsite = getWebsite(url + ':80', self.websites);
 		if(thewebsite == null) thewebsite = getWebsite(url + ':443', self.websites);
+		
+		if(thewebsite) {
+			return thewebsite;
+		}
+
+		for (var i = self.securePorts.length - 1; i >= 0; i--) {
+			var secureWebsite = getWebsite(url + ':' + self.securePorts[i], self.websites);
+			if(secureWebsite != null) {
+				return secureWebsite;
+			}
+		}
 
 		return thewebsite;
 	};
@@ -258,10 +266,11 @@ module.exports = exports = function(inTerminal) {
 				var website = self.getWebsiteFromBinding(domain, true, true);
 
 				if(website) {
-					var security = {
+					var security = website.getSecurity(domain);
+					/*{
 						key: fs.readFileSync(website.security.certs.key),
 						cert: fs.readFileSync(website.security.certs.cert)
-					};
+					};*/
 
 					if(website.security.certs.ca) {
 						security.ca = [];

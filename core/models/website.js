@@ -17,6 +17,7 @@ module.exports = exports = function(opts, nodeserver) {
 	this.security = {};
 	this.script = null;
 	this.target = null;
+	this.json = {};
 
 	this.ports = {
 		http: [],
@@ -31,6 +32,9 @@ module.exports = exports = function(opts, nodeserver) {
 		if(typeof json === 'string') {
 			this.name = json;
 			json = JSON.parse(fs.readFileSync(path.dirname(nodeserver.configFile) + '/sites/' + json + '.config'));
+			this.json = json;
+		} else {
+			this.json = json;
 		}
 
 		this.name = json.name || this.name;
@@ -95,6 +99,19 @@ module.exports = exports = function(opts, nodeserver) {
 					this.security.bindings.push(json.security.bindings[i]);
 				}
 			}
+
+
+			if(json.security.custom && json.security.custom.length > 0) {
+				for (var i = 0; i < json.security.custom.length; i++) {
+					if(json.security.custom[i].bindings && json.security.custom[i].bindings.length > 0) {
+						for (var j = 0; j < json.security.custom[i].bindings.length; j++) {
+							var url = urlparser.parse('https://' + json.security.custom[i].bindings[j]);
+							this.ports.https.push(url.port);
+							this.security.bindings.push(json.security.custom[i].bindings[j]);
+						}
+					}
+				}
+			}
 		}
 	};
 
@@ -135,6 +152,32 @@ module.exports = exports = function(opts, nodeserver) {
 		} catch(ex) {
 			return;
 		}
+	};
+
+
+
+	this.getSecurity = function(domain) {
+		var security = {
+			key: fs.readFileSync(this.security.certs.key),
+			cert: fs.readFileSync(this.security.certs.cert)
+		};
+
+		if(this.json.security.custom && this.json.security.custom.length > 0) {
+			for (var i = 0; i < this.json.security.custom.length; i++) {
+				if(this.json.security.custom[i].bindings && this.json.security.custom[i].bindings.length > 0) {
+					for (var j = 0; j < this.json.security.custom[i].bindings.length; j++) {
+						if(this.json.security.custom[i].bindings[j] == domain) {
+							return {
+								key: fs.readFileSync(this.json.security.custom[i].certs.key),
+								cert: fs.readFileSync(this.json.security.custom[i].certs.cert)
+							};
+						}
+					}
+				}
+			}
+		}
+
+		return security;
 	};
 
 
