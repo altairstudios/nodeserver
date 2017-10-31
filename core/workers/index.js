@@ -8,7 +8,8 @@ module.exports = exports = new function() {
 	this.workers = {
 		'node': require('./node'),
 		'cgi': require('./cgi'),
-		'php': require('./php')
+		'php': require('./php'),
+		'cdn': require('./cdn')
 	};
 
 

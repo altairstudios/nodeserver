@@ -1,6 +1,12 @@
 var assert = require('assert');
-var testConfiguration = require('./tests/configurations');
-var testAdmin = require('./tests/admin');
+
+var tests = {
+	configuration: require('./tests/configurations'),
+	admin: require('./tests/admin'),
+	server: {
+		cdn: require('./tests/server.cdn')
+	}
+}
 
 
 
@@ -10,12 +16,12 @@ process.setMaxListeners(1000);
 
 describe('Configurations', function() {
 	describe('Incomplete configurations', function() {
-		it('No configuration set', testConfiguration.noConfigurations);
-		it('malformed configuration from file', testConfiguration.malformedConfigurationFile);
-		it('empty configuration from file', testConfiguration.emptyConfigurationFile);
-		it('empty configuration from json', testConfiguration.emptyConfigurationJSON);
-		it('string properties configuration from file', testConfiguration.stringPropertiesFile);
-		it('string properties configuration from json', testConfiguration.stringPropertiesJSON);
+		it('No configuration set', tests.configuration.noConfigurations);
+		it('malformed configuration from file', tests.configuration.malformedConfigurationFile);
+		it('empty configuration from file', tests.configuration.emptyConfigurationFile);
+		it('empty configuration from json', tests.configuration.emptyConfigurationJSON);
+		it('string properties configuration from file', tests.configuration.stringPropertiesFile);
+		it('string properties configuration from json', tests.configuration.stringPropertiesJSON);
 	});
 });
 
@@ -23,16 +29,16 @@ describe('Configurations', function() {
 
 describe('Admin', function() {
 	describe('Test admin configuration', function() {
-		it('Set admin config empty', testAdmin.configEmpty);
-		it('Set only active false and check online', testAdmin.onlyActiveFalse);
-		it('Set only active true and check online', testAdmin.onlyActiveTrue);
-		it('Set only active true and check access', testAdmin.onlyActiveTrueAccess);
-		it('Set user void and check access', testAdmin.onlyUserVoidAccess);
-		it('Set password void and check access', testAdmin.onlyPasswordVoidAccess);
-		it('Set user and password void', testAdmin.userPasswordVoidAccess);
-		it('Set invalid password', testAdmin.invalidPassword);
-		it('Set used port', testAdmin.usedPort);
-		it('Set all correct data and desactive', testAdmin.allOkButDesactivate);
+		it('Set admin config empty', tests.admin.configEmpty);
+		it('Set only active false and check online', tests.admin.onlyActiveFalse);
+		it('Set only active true and check online', tests.admin.onlyActiveTrue);
+		it('Set only active true and check access', tests.admin.onlyActiveTrueAccess);
+		it('Set user void and check access', tests.admin.onlyUserVoidAccess);
+		it('Set password void and check access', tests.admin.onlyPasswordVoidAccess);
+		it('Set user and password void', tests.admin.userPasswordVoidAccess);
+		it('Set invalid password', tests.admin.invalidPassword);
+		it('Set used port', tests.admin.usedPort);
+		it('Set all correct data and desactive', tests.admin.allOkButDesactivate);
 	});
 
 	describe('Test admin login', function() {
@@ -107,6 +113,9 @@ describe('Server type', function() {
 
 	describe('CDN', function() {
 		describe('Connections', function() {
+			it('Test html index default response', tests.server.cdn.indexResponse);
+			it('Test html index default html response', tests.server.cdn.htmlIndexResponse);
+			it('Test html index default htm response', tests.server.cdn.htmIndexResponse);
 			it('Test files cache');
 		});
 	});
