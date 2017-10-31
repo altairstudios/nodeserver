@@ -13,90 +13,119 @@ If you have ideas or questions, open a new issue with your ideas.
 
 
 
-### How install
+## How install
 
 Install nodeserver script via npm:
 
-	$ sudo npm install nodeserver -g
+```bash
+$ sudo npm install nodeserver -g
+```
 
 Install daemon on the system. Currently only support CentOS.
 
-	$ sudo nodeserver install centos
+```bash
+$ sudo nodeserver install centos
+```
 
 
-### Configuration
+## Configuration
 
-Nodeserver can read a configuration in /etc/nodeserver/nodeserver.config
+By default nodeserver read configuration in /etc/nodeserver/nodeserver.config
 
-The syntax of these file are:
+You can use other path using the command:
 
-	{
-		"nodeserver": {
-			"admin": {
-				"active": [true|false],
-				"port": admin-port-number,
-				"user": "user-for-admin",
-				"password": "hash-password"
-			}
-		},
-		"sites": [{
-			"name": "website name",
-			"type": "node|cgi",
-			"bindings": [
-				"example.com:80",
-				"www.example.com:80",
-				"otherbindings:8080",
-			],
-			"port": "internal port number for the project, do not repeat it. Only for node"
-			"script": "absolute script for server.js for node or doc_root for php (cgi)",
-			"security": {
-				"certs": {
-					"key": "/absolutepath/keycert.key",
-					"cert": "/absolutepath/cert.cert",
-					"ca": ["/absolutepath/ca.cert"]
-				},
-				"bindings": [
-					"securehostforhttps.com:443",
-					"www.securehostforhttps.com:443"
-				]
+```bash
+$ nodeserver start /path/to/config
+```
+
+or use loop nodeserver with
+
+```bash
+$ nodeserver start-loop /path/to/config
+```
+
+
+### Basic configuration
+
+The basic configuration file are json with format:
+
+```json
+{
+	"nodeserver": {
+		"admin": {
+			"active": "true|false - active the admin web interface",
+			"port": "admin listen port. We recommend use port 10000",
+			"user": "user for admin access, we recommend not use admin, root or similars",
+			"password": "hash password. See generate password section"
+		}
+	},
+	"sites": []
+}
+```
+
+The admin interface is a web page where administrator can start, stop process, view logs, etc. If active is false, the other options not mandatory.
+
+
+### Site configuration
+
+Sites is a array of sites. The site has the next format:
+
+```json
+{
+	"name": "Site name, identify in administrator cli or web",
+	"type": "Site type use supported workers: cdn, cgi, php, node, python",
+	"bindings": ["array of string with domain (or ip) and port. By default use domain and port 80: example.com:80"],
+	"port": "use only in node site. Start the node site in theese port",
+	"script": "absolute path of script server in node sites or document root in php, cgi o cdn sites",
+	"security": {
+		"certs": {
+				"key": "absolute path for certificate key",
+				"cert": "absolute path for certificate",
+				"ca": ["array of certificate ca"]
 			},
-		}, {
-			"name": "php website",
-			"type": "cgi",
 			"bindings": [
-				"myphpsite.com:80"
-			],
-			"script": "/var/www/phpsite"
-		}, {
-			"name": "standar nodejs site",
-			"type": "node",
-			"bindings": [
-				"standarnodejs.com:80"
-			],
-			"port": "10001",
-			"script": "/var/www/nodejs1/server.js"
-		}, {
-			"name": "secure nodejs site",
-			"type": "node",
-			"bindings": [
-				"securenodejs.com:80"
-			],
-			"port": "10002",
-			"security": {
-				"certs": {
-					"key": "/absolutepath/keycert.key",
-					"cert": "/absolutepath/cert.cert",
-					"ca": ["/absolutepath/ca.cert"]
-				},
-				"bindings": [
-					"securenodejs.com:443"
-				]
-			},
-			"script": "/var/www/nodejs2/server.js"
-		},
-		"this-is-a-file-include-located-in-sites-name-dot-config"
-		]
+				"similar to bindings option but uses only for SSL connection. By default use domain with port 443, example.com:443"
+			]
 	}
+}
+```
+
+The port option is only mandatory for nodejs sites.
+
+Use the security option only if you use a SSL in sites.
+
+
+### Reference site configuration
+
+In config file you can use a string for any site where determine the relative path for configuration site. If use /etc/nodeserver for configuration you can create a "sites" folder inside and save a example.config for save json configuration for this site.
+
+A simple configuration nodeserver.config is:
+
+```json
+{
+	"nodeserver": {
+		"admin": {
+			"active": false
+		}
+	},
+	"sites": [
+		"sites/example.com"
+	]
+}
+```
+
+The site / example.com.config file are:
+
+```json
+{
+	"name": "Example site",
+	"type": "cdn",
+	"bindings": [
+		"example.com:80"
+	],
+	"script": "/var/web/example.com"
+}
+```
 
 
 ### Servers operations
@@ -142,7 +171,7 @@ Thanks to the following companies and projects whose work we have used or taken 
 
 (The MIT License)
 
-Copyright (c) 2014-2015 Juan Benavides
+Copyright (c) 2014-2017 Juan Benavides
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
