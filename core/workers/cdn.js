@@ -20,6 +20,6 @@ module.exports = exports = {
 			etag: true,
 			lastModified: true,
 			maxAge: 0
-		}).pipe(res)
+		}).pipe(res);
 	}
 };
