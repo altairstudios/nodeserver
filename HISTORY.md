@@ -6,6 +6,11 @@ nodeserver History Version
 
 ### v0.9
 
+#### v0.9.1
+
+* Update Travis with last nodejs versions
+* New CDN site with plain html format
+
 #### v0.9.0
 
 * Update Travis with last nodejs versions
