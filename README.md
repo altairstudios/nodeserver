@@ -51,15 +51,15 @@ The basic configuration file are json with format:
 
 ```json
 {
-	"nodeserver": {
-		"admin": {
-			"active": "true|false - active the admin web interface",
-			"port": "admin listen port. We recommend use port 10000",
-			"user": "user for admin access, we recommend not use admin, root or similars",
-			"password": "hash password. See generate password section"
-		}
-	},
-	"sites": []
+  "nodeserver": {
+    "admin": {
+      "active": "true|false - active the admin web interface",
+      "port": "admin listen port. We recommend use port 10000",
+      "user": "user for admin access, we recommend not use admin, root or similars",
+      "password": "hash password. See generate password section"
+    }
+  },
+  "sites": []
 }
 ```
 
@@ -72,21 +72,21 @@ Sites is a array of sites. The site has the next format:
 
 ```json
 {
-	"name": "Site name, identify in administrator cli or web",
-	"type": "Site type use supported workers: cdn, cgi, php, node, python",
-	"bindings": ["array of string with domain (or ip) and port. By default use domain and port 80: example.com:80"],
-	"port": "use only in node site. Start the node site in theese port",
-	"script": "absolute path of script server in node sites or document root in php, cgi o cdn sites",
-	"security": {
-		"certs": {
-				"key": "absolute path for certificate key",
-				"cert": "absolute path for certificate",
-				"ca": ["array of certificate ca"]
-			},
-			"bindings": [
-				"similar to bindings option but uses only for SSL connection. By default use domain with port 443, example.com:443"
-			]
-	}
+  "name": "Site name, identify in administrator cli or web",
+  "type": "Site type use supported workers: cdn, cgi, php, node, python",
+  "bindings": ["array of string with domain (or ip) and port. By default use domain and port 80: example.com:80"],
+  "port": "use only in node site. Start the node site in theese port",
+  "script": "absolute path of script server in node sites or document root in php, cgi o cdn sites",
+  "security": {
+    "certs": {
+      "key": "absolute path for certificate key",
+      "cert": "absolute path for certificate",
+      "ca": ["array of certificate ca"]
+    },
+    "bindings": [
+      "similar to bindings option but uses only for SSL connection. By default use domain with port 443, example.com:443"
+    ]
+  }
 }
 ```
 
@@ -103,14 +103,14 @@ A simple configuration nodeserver.config is:
 
 ```json
 {
-	"nodeserver": {
-		"admin": {
-			"active": false
-		}
-	},
-	"sites": [
-		"sites/example.com"
-	]
+  "nodeserver": {
+    "admin": {
+      "active": false
+    }
+  },
+  "sites": [
+    "sites/example.com"
+  ]
 }
 ```
 
@@ -118,12 +118,12 @@ The site / example.com.config file are:
 
 ```json
 {
-	"name": "Example site",
-	"type": "cdn",
-	"bindings": [
-		"example.com:80"
-	],
-	"script": "/var/web/example.com"
+  "name": "Example site",
+  "type": "cdn",
+  "bindings": [
+    "example.com:80"
+  ],
+  "script": "/var/web/example.com"
 }
 ```
 
@@ -132,26 +132,35 @@ The site / example.com.config file are:
 
 Start server
 
-	$ sudo nodeserver start
+```bash
+  $ sudo nodeserver start
+```
 
 Check status and show a list of active webites
 
-	$ nodeserver status
+```bash
+  $ nodeserver status
+```
 
 ![nodeserver status](https://raw.githubusercontent.com/altairstudios/nodeserver/master/images/status.png)
 
 Stop the server
 
-	$ nodeserver stop
+```bash
+  $ nodeserver stop
+```
 
 Reload server configuration if nodeserver.config change without stop the server
 
-	$ nodeserver reload
+```bash
+  $ nodeserver reload
+```
 
 Generate a hash password for use in config file
 
-	$ nodeserver password mypasswordtohash
-
+```bash
+  $ nodeserver password mypasswordtohash
+```
 
 ## Thanks
 
